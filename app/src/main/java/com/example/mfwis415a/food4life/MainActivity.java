@@ -19,5 +19,11 @@ public class MainActivity extends AppCompatActivity {
         Log.d(LOG_TAG, "Inhalt des Tests: " + testEintrag.toString());
 
         dataSource = new TagebuchDataSource(this);
+
+        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        dataSource.open();
+
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        dataSource.close();
     }
 }
