@@ -14,11 +14,11 @@ public class TagebuchDataSource {
     private static final String LOG_TAG = TagebuchDataSource.class.getSimpleName();
 
     private SQLiteDatabase database;
-    private TagebuchDataSource dbHelper;
+    private TagebuchHelper dbHelper;
 
 
     public TagebuchDataSource(Context context) {
         Log.d(LOG_TAG, "Unsere DataSource erzeugt jetzt den dbHelper.");
-        dbHelper = new TagebuchDataSource(context);
+        dbHelper = new TagebuchHelper(context);
     }
 }
