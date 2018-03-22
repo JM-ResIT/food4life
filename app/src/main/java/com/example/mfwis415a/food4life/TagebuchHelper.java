@@ -29,18 +29,25 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String TIME = "TIME";
     public static final String LIMIT = "DAYLIMIT";
 
+    public static final String DATABASE_LMTABLE = "LEBENSMITTEL";
+    public static final String TITEL = "TITEL";
+
+
+    //TODO create missing tables
     private static final String SQL_CREATE = "CREATE TABLE " +
             DATABASE_TBTABLE + "(" +
             KEY_TBID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             MENU_ID + " INTEGER, " +
             LM_ID + " INTEGER, " +
             LIMIT + " INTEGER, " +
-            TIME + " DATETIME DEFAULT CURRENT_TIMESTAMP); ";
+            TIME + " DATETIME DEFAULT CURRENT_TIMESTAMP); " +
+
+            "CREATE TABLE " +
+            DATABASE_LMTABLE + "(" +
+            LM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TITEL + " STRING);";
 
             /*
-            "CREATE TABLE Lebensmittel (ID_LM integer PRIMARY KEY AUTOINCREMENT, Titel string);" +
-
-                    "CREATE TABLE TAGEBUCHEINTRAG (ID_TBEINTRAG integer PRIMARY KEY AUTOINCREMENT, ID_MENU integer, ID_LM integer, Uhrzeit timestamp, Tageshoechstwert integer);" +
 
                     "CREATE TABLE Einheiten (ID_EINHEIT integer PRIMARY KEY AUTOINCREMENT, Name string);" +
 

@@ -49,7 +49,7 @@ public class TagebuchDataSource {
     }
 
     public void listAllFromTagebuchEintrag(){
-        Cursor cursor = databaseRead.rawQuery("SELECT * FROM TAGEBUCHEINTRAG", null);
+        Cursor cursor = databaseRead.rawQuery("SELECT * FROM " + TagebuchHelper.DATABASE_TBTABLE , null);
 
         while(cursor.moveToNext()){
             Log.d(LOG_TAG, "EINTRAG");
