@@ -15,15 +15,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Tagebucheintrag testEintrag = new Tagebucheintrag("12.12.12", 5, 102, 12,123);
-        Log.d(LOG_TAG, "Inhalt des Tests: " + testEintrag.toString());
-
         dataSource = new TagebuchDataSource(this);
 
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
 
-        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+        //add db data for testing
+        dataSource.addTagebuchEintrag();
+
+        dataSource.listAllFromTagebuchEintrag();
+
         dataSource.close();
+
+    }
+
+    // now just for testing
+    private void addTagebucheintrag(){
+
     }
 }

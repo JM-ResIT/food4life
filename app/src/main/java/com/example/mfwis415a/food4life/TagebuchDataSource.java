@@ -4,7 +4,9 @@ package com.example.mfwis415a.food4life;
  * Created by bburczek on 19.03.2018.
  */
 
+import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
@@ -14,8 +16,8 @@ public class TagebuchDataSource {
     private static final String LOG_TAG = TagebuchDataSource.class.getSimpleName();
 
     private SQLiteDatabase database;
+    private SQLiteDatabase databaseRead;
     private TagebuchHelper dbHelper;
-
 
     public TagebuchDataSource(Context context) {
         Log.d(LOG_TAG, "Unsere DataSource erzeugt jetzt den dbHelper.");
@@ -25,11 +27,35 @@ public class TagebuchDataSource {
     public void open() {
         Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
         database = dbHelper.getWritableDatabase();
+        databaseRead = dbHelper.getReadableDatabase();
         Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + database.getPath());
     }
 
     public void close() {
         dbHelper.close();
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
+    }
+
+    public void addTagebuchEintrag(){
+
+        Log.d(LOG_TAG, "Testdaten werden eingepflegt");
+        ContentValues contentValues = new ContentValues();
+
+        contentValues.put(TagebuchHelper.MENU_ID, 12);
+        contentValues.put(TagebuchHelper.LM_ID, 13);
+        contentValues.put(TagebuchHelper.LIMIT, 2500);
+
+        database.insert(TagebuchHelper.DATABASE_TBTABLE, null, contentValues);
+    }
+
+    public void listAllFromTagebuchEintrag(){
+        Cursor cursor = databaseRead.rawQuery("SELECT * FROM TAGEBUCHEINTRAG", null);
+
+        while(cursor.moveToNext()){
+            Log.d(LOG_TAG, "EINTRAG");
+            Log.d(LOG_TAG, cursor.getString(1) + " "+ cursor.getString(2)+ " " + cursor.getString(3)+ " " + cursor.getString(4));
+        }
+
+
     }
 }
