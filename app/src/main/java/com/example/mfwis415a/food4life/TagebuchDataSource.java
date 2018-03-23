@@ -41,7 +41,7 @@ public class TagebuchDataSource {
         Log.d(LOG_TAG, "Testdaten werden eingepflegt");
         ContentValues contentValues = new ContentValues();
 
-        contentValues.put(TagebuchHelper.MENU_ID, 12);
+        contentValues.put(TagebuchHelper.MENU_ID, 14232);
         contentValues.put(TagebuchHelper.LM_ID, 13);
         contentValues.put(TagebuchHelper.LIMIT, 2500);
 
@@ -55,7 +55,5 @@ public class TagebuchDataSource {
             Log.d(LOG_TAG, "EINTRAG");
             Log.d(LOG_TAG, cursor.getString(1) + " "+ cursor.getString(2)+ " " + cursor.getString(3)+ " " + cursor.getString(4));
         }
-
-
     }
 }
