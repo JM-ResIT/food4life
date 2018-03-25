@@ -42,7 +42,7 @@ public class TagebuchDataSource {
         ContentValues contentValues = new ContentValues();
 
         contentValues.put(TagebuchHelper.MENU_ID, 14232);
-        contentValues.put(TagebuchHelper.LM_ID, 13);
+        contentValues.put(TagebuchHelper.LEBENSMITTEL_ID, 13);
         contentValues.put(TagebuchHelper.LIMIT, 2500);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, contentValues);

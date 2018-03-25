@@ -4,16 +4,10 @@ package com.example.mfwis415a.food4life;
  * Created by bburczek on 19.03.2018.
  */
 
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
-
-import java.security.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class TagebuchHelper extends SQLiteOpenHelper {
 
@@ -23,41 +17,64 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 1;
 
     public static final String DATABASE_TBTABLE = "TAGEBUCHEINTRAG";
-    public static final String KEY_TBID = "TBE_ID";
+    public static final String TAGEBUCHEINTRAG_ID = "TB_ID";
+    public static final String LEBENSMITTEL_ID = "LM_ID";
     public static final String MENU_ID = "MENU_ID";
-    public static final String LM_ID = "LM_ID";
-    public static final String TIME = "TIME";
-    public static final String LIMIT = "DAYLIMIT";
+    public static final String ZEIT = "ZEIT";
+    public static final String LIMIT = "TAGESLIMIT";
 
     public static final String DATABASE_LMTABLE = "LEBENSMITTEL";
     public static final String TITEL = "TITEL";
+
+    public static final String DATABASE_EINTABLE = "EINHEIT";
+    public static final String EINHEIT_ID = "EN_ID";
+
+    public static final String DATABASE_MENUTABLE = "MENU";
+
+    public static final String DATABASE_ENTSPTABLE = "ENTSPRECHUNG";
+    public static final String ENTSPRECHUNG_ID = "ENTSP_ID";
+    public static final String ANZAHL = "ANZAHL";
+    public static final String ENTSPRECHUNG = "ENTSPRECHUNG";
+
+    public static final String DATABASE_MENU_LM_TABLE = "MENU_LM";
 
 
     //TODO create missing tables
     private static final String SQL_CREATE = "CREATE TABLE " +
             DATABASE_TBTABLE + "(" +
-            KEY_TBID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             MENU_ID + " INTEGER, " +
-            LM_ID + " INTEGER, " +
+            LEBENSMITTEL_ID + " INTEGER, " +
             LIMIT + " INTEGER, " +
-            TIME + " DATETIME DEFAULT CURRENT_TIMESTAMP); " +
+            ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); " +
 
             "CREATE TABLE " +
             DATABASE_LMTABLE + "(" +
-            LM_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);";
+            LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TITEL + " STRING);" +
 
-            /*
+            "CREATE TABLE " +
+            DATABASE_EINTABLE + "(" +
+            EINHEIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TITEL + " STRING);" +
 
-                    "CREATE TABLE Einheiten (ID_EINHEIT integer PRIMARY KEY AUTOINCREMENT, Name string);" +
+            "CREATE TABLE " +
+            DATABASE_MENUTABLE + "(" +
+            MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            TITEL + " STRING);" +
 
-                    "CREATE TABLE Menü (ID_MENU integer PRIMARY KEY AUTOINCREMENT, Menübezeichnung string);" +
+            "CREATE TABLE " +
+            DATABASE_ENTSPTABLE + "(" +
+            ENTSPRECHUNG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            LEBENSMITTEL_ID + " INTEGER, " +
+            ANZAHL + " FLOAT, " +
+            EINHEIT_ID + " INTEGER, " +
+            ENTSPRECHUNG + " INTEGER);" +
 
-                    "CREATE TABLE Entsprechungen (ID_ENTSPRECHUNG integer PRIMARY KEY AUTOINCREMENT, ID_LM integer, Anzahl float, ID_EINHEIT integer, Entsprechung integer);" +
-
-                    "CREATE TABLE Menü_LM (ID_LM integer, ID_MENU integer);";
-
-                    */
+            "CREATE TABLE " +
+            DATABASE_MENU_LM_TABLE + "(" +
+            LEBENSMITTEL_ID + " INTEGER, " +
+            MENU_ID + " INTEGER);";
 
     public TagebuchHelper(Context context) {
         //super(context, "PLATZHALTER_DATENBANKNAME", null, 1);
