@@ -18,7 +18,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddMeal.AddMeal" android:label="Hinzufügen"></activity>
+        <activity
+            android:name=".AddMeal.AddMeal"
+            android:label="Hinzufügen" />
+        <activity android:name=".FoodList.FoodList" />
+        <activity android:name=".MenuList.MenuList" />
+        <activity android:name=".UnitList.UnitList" />
+        <activity android:name=".Profile.Profile" />
+        <activity android:name=".Calendar.Calendar"></activity>
     </application>
 
 </manifest>
