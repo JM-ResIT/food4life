@@ -8,15 +8,19 @@ import android.view.View;
 import android.widget.Button;
 
 import com.example.mfwis415a.food4life.AddMeal.AddMeal;
+import com.example.mfwis415a.food4life.FoodList.FoodList;
 import com.example.mfwis415a.food4life.R;
 
 import database.TagebuchDataSource;
+
+// List View: http://www.programmierenlernenhq.de/tutorial-android-listview-verwenden/
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private Button addMeal;
+    private Button foodList;
     private TagebuchDataSource dataSource;
 
     @Override
@@ -25,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         addMeal = (Button) findViewById(R.id.Hinzufuegen);
+        foodList = (Button) findViewById(R.id.goToFoodList);
 
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,6 +38,15 @@ public class MainActivity extends AppCompatActivity {
                 myIntent.putExtra("key", "test"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
 
+            }
+        });
+
+        foodList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, FoodList.class);
+                myIntent.putExtra("key", "test"); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
             }
         });
 

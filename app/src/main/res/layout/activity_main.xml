@@ -48,4 +48,12 @@
         android:layout_below="@+id/Datum"
         android:layout_marginTop="@dimen/activity_vertical_margin" />
 
+    <Button
+        android:id="@+id/goToFoodList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:text="Lebensmittel" />
+
+
 </RelativeLayout>

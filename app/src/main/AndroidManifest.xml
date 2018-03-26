@@ -21,11 +21,16 @@
         <activity
             android:name=".AddMeal.AddMeal"
             android:label="Hinzufügen" />
-        <activity android:name=".FoodList.FoodList" />
+        <activity
+            android:name=".FoodList.FoodList"
+            android:label="Lebensmittel" />
         <activity android:name=".MenuList.MenuList" />
         <activity android:name=".UnitList.UnitList" />
         <activity android:name=".Profile.Profile" />
-        <activity android:name=".Calendar.Calendar"></activity>
+        <activity android:name=".Calendar.Calendar" />
+        <activity
+            android:name=".AddFood.AddFood"
+            android:label="Hinzufügen"></activity>
     </application>
 
 </manifest>
