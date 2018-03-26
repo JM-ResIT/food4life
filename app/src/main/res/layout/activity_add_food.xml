@@ -1,9 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.mfwis415a.food4life.AddFood.AddFood">
 
-</android.support.constraint.ConstraintLayout>
+
+    <EditText
+        android:id="@+id/foodName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="28dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/foodAmount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/foodName"
+        android:layout_alignStart="@+id/foodName"
+        android:layout_below="@+id/foodName"
+        android:layout_marginTop="11dp"
+        android:ems="10"
+        android:hint="Anzahl"
+        android:inputType="textPersonName" />
+
+    <Spinner
+        android:id="@+id/foodUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/foodAmount"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="23dp" />
+
+    <EditText
+        android:id="@+id/equivalent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/foodAmount"
+        android:layout_alignRight="@+id/foodAmount"
+        android:layout_below="@+id/foodUnit"
+        android:layout_marginTop="15dp"
+        android:ems="10"
+        android:hint="kcal"
+        android:inputType="textPersonName" />
+
+    <Button
+        android:id="@+id/addFood"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/equivalent"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/equivalent"
+        android:text="Hinzufügen" />
+</RelativeLayout>

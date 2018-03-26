@@ -60,15 +60,9 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource.listAllFromTagebuchEintrag();
 
-        dataSource.close();
+        //dataSource.close();
 
     }
-
-    // now just for testing
-    private void addTagebucheintrag(){
-
-    }
-
 
 
 }

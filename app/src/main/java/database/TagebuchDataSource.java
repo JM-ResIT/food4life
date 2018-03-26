@@ -25,14 +25,14 @@ public class TagebuchDataSource {
     }
 
     public void open() {
-        Log.d(LOG_TAG, "Eine Referenz auf die Datenbank wird jetzt angefragt.");
-        database = dbHelper.getWritableDatabase();
-        databaseRead = dbHelper.getReadableDatabase();
-        Log.d(LOG_TAG, "Datenbank-Referenz erhalten. Pfad zur Datenbank: " + database.getPath());
+            database = dbHelper.getWritableDatabase();
+            databaseRead = dbHelper.getReadableDatabase();
     }
 
     public void close() {
-        dbHelper.close();
+        if (database != null && database.isOpen()) {
+            dbHelper.close();
+        }
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
@@ -46,6 +46,13 @@ public class TagebuchDataSource {
         contentValues.put(TagebuchHelper.LIMIT, 2500);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, contentValues);
+    }
+
+    public void addFood(String name){
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TagebuchHelper.TITEL, name);
+
+        database.insert(TagebuchHelper.DATABASE_LMTABLE, null, contentValues);
     }
 
     public void listAllFromTagebuchEintrag(){
