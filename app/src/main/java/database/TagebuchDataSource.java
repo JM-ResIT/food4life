@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package database;
 
 /**
  * Created by bburczek on 19.03.2018.
