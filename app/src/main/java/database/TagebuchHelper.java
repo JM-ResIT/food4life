@@ -4,6 +4,7 @@ package database;
  * Created by bburczek on 19.03.2018.
  */
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -40,52 +41,63 @@ public class TagebuchHelper extends SQLiteOpenHelper {
 
 
     //TODO create missing tables
-    private static final String SQL_CREATE = "CREATE TABLE " +
+    private static final String SQL_CREATE_TBTABLE =
+            "CREATE TABLE " +
             DATABASE_TBTABLE + "(" +
             TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             MENU_ID + " INTEGER, " +
             LEBENSMITTEL_ID + " INTEGER, " +
             LIMIT + " INTEGER, " +
-            ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); " +
+            ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); ";
 
+    private static final String SQL_CREATE_LMTABLE =
             "CREATE TABLE " +
             DATABASE_LMTABLE + "(" +
             LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);" +
+            TITEL + " STRING); ";
 
+    private static final String SQL_CREATE_EINTABLE =
             "CREATE TABLE " +
             DATABASE_EINTABLE + "(" +
             EINHEIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);" +
+            TITEL + " STRING);";
 
+    private static final String SQL_CREATE_MENUTABLE =
             "CREATE TABLE " +
             DATABASE_MENUTABLE + "(" +
             MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);" +
+            TITEL + " STRING);";
 
+    private static final String SQL_CREATE_ENTSPTABLE =
             "CREATE TABLE " +
             DATABASE_ENTSPTABLE + "(" +
             ENTSPRECHUNG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
             LEBENSMITTEL_ID + " INTEGER, " +
             ANZAHL + " FLOAT, " +
             EINHEIT_ID + " INTEGER, " +
-            ENTSPRECHUNG + " INTEGER);" +
+            ENTSPRECHUNG + " INTEGER);";
 
+    private static final String SQL_CREATE_MENU_LM_TABLE =
             "CREATE TABLE " +
             DATABASE_MENU_LM_TABLE + "(" +
             LEBENSMITTEL_ID + " INTEGER, " +
             MENU_ID + " INTEGER);";
 
+
     public TagebuchHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-        Log.d(LOG_TAG, "DbHelper hat die Datenbank: " + getDatabaseName() + " erzeugt.");
     }
 
+    @SuppressLint("SQLiteString")
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
-            Log.d(LOG_TAG, "Die Tabelle wird mit SQL-Befehl: " + SQL_CREATE + " angelegt.");
-            db.execSQL(SQL_CREATE);
+            db.execSQL(SQL_CREATE_TBTABLE);
+            db.execSQL(SQL_CREATE_LMTABLE);
+            db.execSQL(SQL_CREATE_EINTABLE);
+            db.execSQL(SQL_CREATE_ENTSPTABLE);
+            db.execSQL(SQL_CREATE_MENUTABLE);
+            db.execSQL(SQL_CREATE_MENU_LM_TABLE);
         } catch (Exception ex) {
             Log.e(LOG_TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
         }

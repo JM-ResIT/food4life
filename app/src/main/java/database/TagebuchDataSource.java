@@ -10,10 +10,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-
 public class TagebuchDataSource {
-
-    private static final String LOG_TAG = TagebuchDataSource.class.getSimpleName();
 
     private SQLiteDatabase database;
     private SQLiteDatabase databaseRead;

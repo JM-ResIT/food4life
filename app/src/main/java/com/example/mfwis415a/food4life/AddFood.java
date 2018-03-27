@@ -22,11 +22,11 @@ public class AddFood extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
+        dataSource = new TagebuchDataSource(this);
 
         addFood = (Button) findViewById(R.id.addFood);
 
-        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
-        // dataSource.open();
+        dataSource.open();
 
         //TODO Fertigstellung
         addFood.setOnClickListener(new View.OnClickListener() {
@@ -42,6 +42,5 @@ public class AddFood extends AppCompatActivity {
             }
         });
 
-        // dataSource.close();
     }
 }

@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        dataSource = new TagebuchDataSource(this);
+
         addMeal = (Button) findViewById(R.id.Hinzufuegen);
         foodList = (Button) findViewById(R.id.goToFoodList);
 
@@ -46,14 +48,22 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dataSource = new TagebuchDataSource(this);
+        dataSource.open();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
 
         Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
-
-        dataSource.close();
-
     }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
 
+        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+
+    }
 }
