@@ -36,6 +36,7 @@ public class TagebuchDataSource {
         Log.d(LOG_TAG, "Datenbank mit Hilfe des DbHelpers geschlossen.");
     }
 
+    /*
     public void addTagebuchEintrag(){
 
         Log.d(LOG_TAG, "Testdaten werden eingepflegt");
@@ -47,6 +48,8 @@ public class TagebuchDataSource {
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, contentValues);
     }
+    */
+
 
     public void addFood(String name){
         ContentValues contentValues = new ContentValues();
@@ -55,6 +58,7 @@ public class TagebuchDataSource {
         database.insert(TagebuchHelper.DATABASE_LMTABLE, null, contentValues);
     }
 
+    /*
     public void listAllFromTagebuchEintrag(){
         Cursor cursor = databaseRead.rawQuery("SELECT * FROM " + TagebuchHelper.DATABASE_TBTABLE , null);
 
@@ -63,4 +67,5 @@ public class TagebuchDataSource {
             Log.d(LOG_TAG, cursor.getString(1) + " "+ cursor.getString(2)+ " " + cursor.getString(3)+ " " + cursor.getString(4));
         }
     }
+    */
 }

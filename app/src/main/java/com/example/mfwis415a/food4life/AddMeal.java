@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life.AddMeal;
+package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
