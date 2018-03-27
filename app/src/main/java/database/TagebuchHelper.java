@@ -77,12 +77,10 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             MENU_ID + " INTEGER);";
 
     public TagebuchHelper(Context context) {
-        //super(context, "PLATZHALTER_DATENBANKNAME", null, 1);
         super(context, DB_NAME, null, DB_VERSION);
         Log.d(LOG_TAG, "DbHelper hat die Datenbank: " + getDatabaseName() + " erzeugt.");
     }
 
-    // Die onCreate-Methode wird nur aufgerufen, falls die Datenbank noch nicht existiert
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {
