@@ -49,21 +49,19 @@ public class MainActivity extends AppCompatActivity {
         })*/
 
         dataSource.open();
+
+        dataSource.insertSampleDataIfEmpty();
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-
-        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
         dataSource.open();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-
-        Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
-
+        dataSource.close();
     }
 }

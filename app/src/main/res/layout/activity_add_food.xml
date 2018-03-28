@@ -31,7 +31,7 @@
         android:layout_marginTop="11dp"
         android:ems="10"
         android:hint="Anzahl"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <Spinner
         android:id="@+id/foodUnit"
@@ -54,7 +54,7 @@
         android:layout_marginTop="15dp"
         android:ems="10"
         android:hint="kcal"
-        android:inputType="textPersonName" />
+        android:inputType="number" />
 
     <Button
         android:id="@+id/addFood"
