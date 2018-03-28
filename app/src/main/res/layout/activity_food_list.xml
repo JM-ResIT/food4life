@@ -17,7 +17,7 @@
         android:layout_alignParentTop="true" />
 
         <ListView
-            android:id="@+id/lebensmittel"
+            android:id="@+id/foodList"
             android:layout_below="@+id/addFood"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />

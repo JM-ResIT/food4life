@@ -1,9 +1,11 @@
 package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -11,12 +13,16 @@ import android.widget.ListView;
 import java.util.List;
 
 import database.TagebuchDataSource;
+import database.TagebuchHelper;
 
 public class FoodList extends AppCompatActivity {
 
     private Button addFood;
+    private ListView foodList;
 
     private TagebuchDataSource dataSource;
+
+    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +31,7 @@ public class FoodList extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
         addFood = (Button) findViewById(R.id.addFood);
+        foodList = (ListView) findViewById(R.id.foodList);
 
         dataSource.open();
 
@@ -33,27 +40,35 @@ public class FoodList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(FoodList.this, AddFood.class);
-                myIntent.putExtra("key", "test"); //Optional parameters
+                // myIntent.putExtra("key", "test"); //Optional parameters
                 FoodList.this.startActivity(myIntent);
 
+            }
+        });
+
+        foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Log.d(LOG_TAG, "Selected Item: " + foodList.getItemAtPosition(position));
             }
         });
 
     }
 
 
-    public void loadFoods(){
+    public void loadFoods() {
         List<String> lables = dataSource.getAllFoods();
 
-        if(!lables.isEmpty()) {
+        if (!lables.isEmpty()) {
             // Get a handle to the list view
-            ListView lv = (ListView) findViewById(R.id.lebensmittel);
+            ListView lv = (ListView) findViewById(R.id.foodList);
 
             lv.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, lables));
         }
 
     }
+
 
 }
 
