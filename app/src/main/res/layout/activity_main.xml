@@ -4,56 +4,110 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey3"
     tools:context="com.example.mfwis415a.food4life.MainActivity">
 
-    <TextView
-        android:id="@+id/Datum"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:text="12.12.12" />
-
-    <TextView
-        android:id="@+id/Prozentanzeige"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:text="69%" />
-
-    <TextView
-        android:id="@+id/Fruehstueck"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:text="Frühstück"
-        tools:text="Frühstück" />
-
-    <Button
-        android:id="@+id/Hinzufuegen"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:layout_below="@+id/Fruehstueck"
-        android:layout_centerVertical="true"
-        android:background="@drawable/button_bg_round"
-        android:text="+"
-        android:textColor="@color/red"
-        android:textSize="@dimen/textsize_buttonPlus" />
-
-    <ProgressBar
-        android:id="@+id/progressBar4"
-        style="?android:attr/progressBarStyleHorizontal"
+    <LinearLayout
+        android:id="@+id/LinearLayout1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Datum"
-        android:layout_marginTop="@dimen/activity_vertical_margin" />
+        android:layout_height="60dp"
+        android:layout_marginTop="12dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/goToFoodList"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:text="Lebensmittel" />
+    <LinearLayout
+        android:id="@+id/LinearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="82dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <TextView
+            android:layout_width="120dp"
+            android:layout_height="35dp"
+            android:text="Frühstück"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginLeft="4dp"/>
+
+        <Button
+            android:id="@+id/Hinzufuegen1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/button_bg_round"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout3"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="172dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/Hinzufuegen2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/button_bg_round"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout4"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="262dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/Hinzufuegen3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/button_bg_round"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayout5"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_marginTop="352dp"
+        android:orientation="vertical"
+        android:background="@color/white">
+
+        <Button
+            android:id="@+id/Hinzufuegen4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="45dp"
+            android:layout_marginLeft="4dp"
+            android:background="@drawable/button_bg_round"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/red"
+            android:textSize="20dp" />
+    </LinearLayout>
 
 
-</RelativeLayout>
+
+    </RelativeLayout>
