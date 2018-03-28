@@ -5,7 +5,6 @@ package database;
  */
 
 import android.annotation.SuppressLint;
-import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -41,7 +40,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String DATABASE_MENU_LM_TABLE = "MENU_LM";
 
     public static final String EINHEIT = "EINHEIT";
-
+    public static final String BESCHREIBUNG = "BESCHREIBUNG";
 
     //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
@@ -57,7 +56,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             "CREATE TABLE " +
                     DATABASE_LMTABLE + "(" +
                     LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    TITEL + " STRING); ";
+                    TITEL + " STRING, " +
+                    BESCHREIBUNG + " STRING);";
 
     private static final String SQL_CREATE_EINTABLE =
             "CREATE TABLE " +
@@ -100,9 +100,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             db.execSQL(SQL_CREATE_ENTSPTABLE);
             db.execSQL(SQL_CREATE_MENUTABLE);
             db.execSQL(SQL_CREATE_MENU_LM_TABLE);
-
         } catch (Exception ex) {
-            Log.e(LOG_TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
+            Log.e(LOG_TAG, "Error creating tables: " + ex.getMessage());
         }
     }
 
