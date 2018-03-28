@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
 
-        addMeal = (Button) findViewById(R.id.Hinzufuegen);
+       /* addMeal = (Button) findViewById(R.id.Hinzufuegen);
         foodList = (Button) findViewById(R.id.goToFoodList);
 
         addMeal.setOnClickListener(new View.OnClickListener() {
@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 myIntent.putExtra("key", "test"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
-        });
+        })*/
 
         dataSource.open();
     }
