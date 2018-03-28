@@ -5,6 +5,7 @@ package database;
  */
 
 import android.annotation.SuppressLint;
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -39,50 +40,51 @@ public class TagebuchHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_MENU_LM_TABLE = "MENU_LM";
 
+    public static final String EINHEIT = "EINHEIT";
+
 
     //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
             "CREATE TABLE " +
-            DATABASE_TBTABLE + "(" +
-            TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            MENU_ID + " INTEGER, " +
-            LEBENSMITTEL_ID + " INTEGER, " +
-            LIMIT + " INTEGER, " +
-            ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); ";
+                    DATABASE_TBTABLE + "(" +
+                    TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    MENU_ID + " INTEGER, " +
+                    LEBENSMITTEL_ID + " INTEGER, " +
+                    LIMIT + " INTEGER, " +
+                    ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); ";
 
     private static final String SQL_CREATE_LMTABLE =
             "CREATE TABLE " +
-            DATABASE_LMTABLE + "(" +
-            LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING); ";
+                    DATABASE_LMTABLE + "(" +
+                    LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TITEL + " STRING); ";
 
     private static final String SQL_CREATE_EINTABLE =
             "CREATE TABLE " +
-            DATABASE_EINTABLE + "(" +
-            EINHEIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);";
+                    DATABASE_EINTABLE + "(" +
+                    EINHEIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TITEL + " STRING);";
 
     private static final String SQL_CREATE_MENUTABLE =
             "CREATE TABLE " +
-            DATABASE_MENUTABLE + "(" +
-            MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            TITEL + " STRING);";
+                    DATABASE_MENUTABLE + "(" +
+                    MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    TITEL + " STRING);";
 
     private static final String SQL_CREATE_ENTSPTABLE =
             "CREATE TABLE " +
-            DATABASE_ENTSPTABLE + "(" +
-            ENTSPRECHUNG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            LEBENSMITTEL_ID + " INTEGER, " +
-            ANZAHL + " FLOAT, " +
-            EINHEIT_ID + " INTEGER, " +
-            ENTSPRECHUNG + " INTEGER);";
+                    DATABASE_ENTSPTABLE + "(" +
+                    ENTSPRECHUNG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    LEBENSMITTEL_ID + " INTEGER, " +
+                    ANZAHL + " FLOAT, " +
+                    EINHEIT + " STRING, " +
+                    ENTSPRECHUNG + " INTEGER);";
 
     private static final String SQL_CREATE_MENU_LM_TABLE =
             "CREATE TABLE " +
-            DATABASE_MENU_LM_TABLE + "(" +
-            LEBENSMITTEL_ID + " INTEGER, " +
-            MENU_ID + " INTEGER);";
-
+                    DATABASE_MENU_LM_TABLE + "(" +
+                    LEBENSMITTEL_ID + " INTEGER, " +
+                    MENU_ID + " INTEGER);";
 
     public TagebuchHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
@@ -98,6 +100,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             db.execSQL(SQL_CREATE_ENTSPTABLE);
             db.execSQL(SQL_CREATE_MENUTABLE);
             db.execSQL(SQL_CREATE_MENU_LM_TABLE);
+
         } catch (Exception ex) {
             Log.e(LOG_TAG, "Fehler beim Anlegen der Tabelle: " + ex.getMessage());
         }
@@ -107,4 +110,6 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 
     }
+
+
 }
