@@ -30,7 +30,7 @@
         <activity android:name=".Calendar" />
         <activity
             android:name=".AddFood"
-            android:label="Hinzufügen"></activity>
+            android:label="Lebensmittel Hinzufügen"></activity>
     </application>
 
 </manifest>
