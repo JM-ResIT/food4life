@@ -115,6 +115,7 @@ public class TagebuchDataSource {
     public void insertSampleDataIfEmpty() {
         String count = "SELECT count(*) FROM " + TagebuchHelper.DATABASE_EINTABLE;
         Cursor mcursor = database.rawQuery(count, null);
+
         mcursor.moveToFirst();
         int icount = mcursor.getInt(0);
         if (icount > 0) {
