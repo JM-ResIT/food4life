@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
 
 import database.TagebuchDataSource;
 
@@ -21,7 +24,11 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addMeal;
     private Button foodList;
+    private Button menuList;
     private ImageButton calendar;
+    private ImageButton profile;
+    private SimpleDateFormat showDate;
+    private TextView tv;
     private TagebuchDataSource dataSource;
 
     @Override
@@ -45,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
 
        /* addMeal = (Button) findViewById(R.id.AddFood);
-        foodList = (Button) findViewById(R.id.goToFoodList);
+
 
         addMeal.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -55,20 +62,46 @@ public class MainActivity extends AppCompatActivity {
                 MainActivity.this.startActivity(myIntent);
 
             }
-        });
+        }); */
 
+        foodList =  findViewById(R.id.goToFoodList);
         foodList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, FoodList.class);
-                myIntent.putExtra("key", "test"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
-        })*/
+        });
+
+        menuList = findViewById(R.id.goToMenuList);
+        menuList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, MenuList.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
+
+        profile = findViewById(R.id.goToProfile);
+        profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, Profile.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
 
         dataSource.open();
 
         dataSource.insertSampleDataIfEmpty();
+
+
+        long date = System.currentTimeMillis();
+
+        tv = findViewById(R.id.Date);
+        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+        String dateString = showDate.format(date);
+        tv.setText(dateString);
     }
 
     @Override
