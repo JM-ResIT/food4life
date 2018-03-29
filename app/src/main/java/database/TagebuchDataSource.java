@@ -10,9 +10,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.mfwis415a.food4life.MainActivity;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,14 +26,14 @@ public class TagebuchDataSource {
     }
 
     public void open() {
-        Log.d(LOG_TAG, "Die Datenquelle wird geöffnet.");
+        Log.d(LOG_TAG, "Open Database.");
         database = dbHelper.getWritableDatabase();
         databaseRead = dbHelper.getReadableDatabase();
     }
 
     public void close() {
         if (database != null && database.isOpen()) {
-            Log.d(LOG_TAG, "Die Datenquelle wird geschlossen.");
+            Log.d(LOG_TAG, "Close Database.");
             dbHelper.close();
         }
     }
@@ -65,10 +62,33 @@ public class TagebuchDataSource {
         return labels;
     }
 
-    public void addFoodEntry(String name, int amount, String unit, int equivalent) {
+    public List<String> getAllFoods(){
+        List<String> labels = new ArrayList<String>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE;
+
+        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+
+        while (cursor.moveToNext()) {
+            labels.add(cursor.getString(1));
+        }
+
+        // closing connection
+        cursor.close();
+        databaseRead.close();
+
+        // returning lables
+        return labels;
+    }
+
+    public void addFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent) {
         if(!name.isEmpty()){
             ContentValues lmValues = new ContentValues();
             lmValues.put(TagebuchHelper.TITEL, name);
+            lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
 
             long idLM = database.insert(TagebuchHelper.DATABASE_LMTABLE, null, lmValues);
 

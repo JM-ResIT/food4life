@@ -27,10 +27,17 @@
         <activity android:name=".MenuList" />
         <activity android:name=".UnitList" />
         <activity android:name=".Profile" />
-        <activity android:name=".Calendar" />
+
+        <activity
+            android:name=".Calendar"
+            android:label="Kalender">
+        </activity>
+
         <activity
             android:name=".AddFood"
-            android:label="Hinzufügen"></activity>
+            android:label="Lebensmittel Hinzufügen">
+
+        </activity>
     </application>
 
 </manifest>
