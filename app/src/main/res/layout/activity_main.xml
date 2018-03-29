@@ -225,16 +225,46 @@
         <LinearLayout
             android:id="@+id/Layout6"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingTop="16dp"
             android:orientation="horizontal">
 
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
+            <ImageButton
+                android:id="@+id/goToCalendar"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:layout_marginTop="4dp"
                 android:layout_marginLeft="4dp"
-                android:layout_gravity="center"
-                android:text="TEST" />
+                android:src="@drawable/calendar"/>
+
+            <Button
+                android:id="@+id/goToFoodList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:text="Lebensmittel"/>
+
+            <Button
+                android:id="@+id/goToMenuList"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:text="Menüs"/>
+
+            <ImageButton
+                android:id="@+id/goToProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
+                android:layout_marginLeft="4dp"
+                android:layout_weight="1"
+                android:src="@drawable/user"/>
+
 
         </LinearLayout>
 

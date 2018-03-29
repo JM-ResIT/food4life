@@ -1,12 +1,14 @@
 package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
+import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import database.TagebuchDataSource;
@@ -19,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addMeal;
     private Button foodList;
+    private ImageButton calendar;
     private TagebuchDataSource dataSource;
 
     @Override
@@ -26,11 +29,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        populatelistview();
-
         dataSource = new TagebuchDataSource(this);
 
-       /* addMeal = (Button) findViewById(R.id.Hinzufuegen);
+        populatelistview(); // Listview Method for Startscreen
+
+        calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
+        calendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, Calendar.class);
+                MainActivity.this.startActivity(myIntent);
+            }
+        });
+
+
+
+       /* addMeal = (Button) findViewById(R.id.AddFood);
         foodList = (Button) findViewById(R.id.goToFoodList);
 
         addMeal.setOnClickListener(new View.OnClickListener() {
@@ -80,4 +94,6 @@ public class MainActivity extends AppCompatActivity {
         ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
         list.setAdapter(adapter);
     }
+
+
 }
