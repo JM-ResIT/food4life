@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
 
 import database.TagebuchDataSource;
 
@@ -23,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        populatelistview();
 
         dataSource = new TagebuchDataSource(this);
 
@@ -63,5 +67,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         dataSource.close();
+    }
+
+    private void populatelistview() {
+        //Create list of items
+        String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
+
+        //Build Adapter
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.items, myItems);
+
+        //Configure List View
+        ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
+        list.setAdapter(adapter);
     }
 }
