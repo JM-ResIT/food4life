@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import database.TagebuchDataSource;
 
@@ -16,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Button addMeal;
     private Button foodList;
+    //private Button calendar;
     private TagebuchDataSource dataSource;
 
     @Override
@@ -24,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataSource = new TagebuchDataSource(this);
+
+        ImageButton calendar =  findViewById(R.id.gotocalendar); //New ImageButton for opening Calender Activity
 
        /* addMeal = (Button) findViewById(R.id.Hinzufuegen);
         foodList = (Button) findViewById(R.id.goToFoodList);
@@ -45,7 +49,16 @@ public class MainActivity extends AppCompatActivity {
                 myIntent.putExtra("key", "test"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
             }
-        })*/
+        });
+
+         calendar.setOnClickListener(new View.OnClickListener() {
+             @Override
+            public void onClick(View v) {
+                Intent myIntent = new Intent(MainActivity.this, Calendar.class);
+                //myIntent.putExtra("key", "test"); //Optional parameters
+                MainActivity.this.startActivity(myIntent);
+            }
+        });*/
 
         dataSource.open();
 
@@ -63,4 +76,9 @@ public class MainActivity extends AppCompatActivity {
         super.onPause();
         dataSource.close();
     }
+
+    public void calendargo (View view){
+        Intent intent = new Intent (this, Calendar.class);
+        startActivity(intent);
+    }//class to open Calendar Activity
 }

@@ -108,6 +108,16 @@
             android:textSize="20dp" />
     </LinearLayout>
 
+    <ImageButton
+        android:id="@+id/gotocalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:onClick="calendargo"
+        android:layout_alignParentLeft="true"
+        app:srcCompat="@android:drawable/ic_menu_my_calendar"/>
 
 
-    </RelativeLayout>
+
+
+</RelativeLayout>

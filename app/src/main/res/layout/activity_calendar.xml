@@ -45,13 +45,12 @@
         <LinearLayout
             android:id="@+id/LinearLayout6"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="82dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
             android:background="@color/white">
 
             <TextView
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="35dp"
                 android:text="Frühstück"
                 android:textStyle="bold"
@@ -74,15 +73,15 @@
         <LinearLayout
             android:id="@+id/LinearLayout7"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="172dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:background="@color/white">
 
             <TextView
-                android:layout_width="120dp"
+                android:layout_width="125dp"
                 android:layout_height="35dp"
-                android:text="Frühstück"
+                android:text="Mittagesssen"
                 android:textStyle="bold"
                 android:textSize="20dp"
                 android:layout_marginLeft="4dp"/>
@@ -103,10 +102,18 @@
         <LinearLayout
             android:id="@+id/LinearLayout8"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="262dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:background="@color/white">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="35dp"
+                android:text="Abendessen"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="4dp"/>
 
             <Button
                 android:id="@+id/Hinzufuegen7"
@@ -124,10 +131,18 @@
         <LinearLayout
             android:id="@+id/LinearLayout9"
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:layout_marginTop="352dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:orientation="vertical"
             android:background="@color/white">
+
+            <TextView
+                android:layout_width="125dp"
+                android:layout_height="35dp"
+                android:text="Snack"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:layout_marginLeft="4dp"/>
 
             <Button
                 android:id="@+id/Hinzufuegen8"
