@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
 
-        populatelistview(); // Listview Method for Startscreen
+        // populatelistview(); // Listview Method for Startscreen
 
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -121,11 +121,11 @@ public class MainActivity extends AppCompatActivity {
         String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
 
         //Build Adapter
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.items, myItems);
+        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.items, myItems);
 
         //Configure List View
         ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
-        list.setAdapter(adapter);
+        // list.setAdapter(adapter);
     }
 
 
