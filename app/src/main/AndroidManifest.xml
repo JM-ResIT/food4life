@@ -33,11 +33,13 @@
             android:label="Mein Profil" />
         <activity
             android:name=".Calendar"
-            android:label="Kalender"></activity>
+            android:label="Kalender" />
         <activity
             android:name=".AddFood"
-            android:label="Lebensmittel Hinzufügen"></activity>
-        <activity android:name=".EditOrDeleteFood"></activity>
+            android:label="Lebensmittel Hinzufügen" />
+        <activity
+            android:name=".EditOrDeleteFood"
+            android:label="Bearbeiten/ Löschen" />
     </application>
 
 </manifest>

@@ -62,12 +62,31 @@
         android:hint="kcal"
         android:inputType="number" />
 
-    <Button
-        android:id="@+id/addFood"
+
+
+    <LinearLayout
+        android:id="@+id/buttons"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/equivalent"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/equivalent"
-        android:text="Hinzufügen" />
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/equivalent"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/deleteFood"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Löschen" />
+
+        <Button
+            android:id="@+id/editFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speichern" />
+
+
+    </LinearLayout>
 </RelativeLayout>
