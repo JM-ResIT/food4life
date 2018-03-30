@@ -47,14 +47,22 @@ public class AddFood extends AppCompatActivity {
                 foodDescription = (EditText) findViewById(R.id.foodDescription);
                 unit = units.getSelectedItem().toString();
 
-                dataSource.addFoodEntry(foodName.getText().toString(), foodDescription.getText().toString(), Integer.parseInt(foodAmount.getText().toString()), unit, Integer.parseInt(equivalent.getText().toString()));
 
-                dataSource.listFood();
+                String foodNameText= foodName.getText().toString();
+                String foodDescriptionText =  foodDescription.getText().toString();
+                String foodAmountText = foodAmount.getText().toString();
+                String equivalentText = equivalent.getText().toString();
 
-                Intent myIntent = new Intent(AddFood.this, FoodList.class);
-                AddFood.this.startActivity(myIntent);
+                if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
+                    dataSource.addFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText));
 
+                    dataSource.listFood();
 
+                    Intent myIntent = new Intent(AddFood.this, FoodList.class);
+                    AddFood.this.startActivity(myIntent);
+                } else {
+                    Log.d(LOG_TAG, "Please fill all text fields!");
+                }
             }
         });
 
