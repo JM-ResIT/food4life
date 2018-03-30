@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".AddFood"
+            android:name=".MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -24,13 +24,26 @@
         <activity
             android:name=".FoodList"
             android:label="Lebensmittel" />
-        <activity android:name=".MenuList" />
+
+        <activity android:name=".MenuList"
+                    android:label="Menü-Übersicht"/>
+
         <activity android:name=".UnitList" />
-        <activity android:name=".Profile" />
-        <activity android:name=".Calendar" />
+        <activity android:name=".Profile"
+                   android:label="Mein Profil"/>
+
         <activity
-            android:name=".MainActivity"
-            android:label="Lebensmittel Hinzufügen"></activity>
+            android:name=".Calendar"
+            android:label="Kalender">
+        </activity>
+
+
+
+        <activity
+            android:name=".AddFood"
+            android:label="Lebensmittel Hinzufügen">
+
+        </activity>
     </application>
 
 </manifest>
