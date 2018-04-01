@@ -84,6 +84,19 @@ public class TagebuchDataSource {
         return labels;
     }
 
+    public int getRealIdFromLM(int position){
+        int pos;
+        // Select Query
+        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1" + " ORDER BY " + TagebuchHelper.LEBENSMITTEL_ID + " ASC LIMIT 1 OFFSET " + position + ";" ;
+
+        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+        pos =  Integer.parseInt(cursor.getString(0));
+
+        return pos;
+    }
+
     public void addFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent) {
         if(!name.isEmpty()){
             ContentValues lmValues = new ContentValues();
