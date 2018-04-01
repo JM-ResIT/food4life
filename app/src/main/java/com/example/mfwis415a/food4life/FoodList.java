@@ -40,7 +40,6 @@ public class FoodList extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(FoodList.this, AddFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
                 FoodList.this.startActivity(myIntent);
 
             }
