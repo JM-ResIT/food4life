@@ -65,8 +65,8 @@ public class TagebuchDataSource {
     public List<String> getAllFoods(){
         List<String> labels = new ArrayList<String>();
 
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE;
+        // Select Query
+        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1";
 
         Cursor cursor = databaseRead.rawQuery(selectQuery, null);
 
