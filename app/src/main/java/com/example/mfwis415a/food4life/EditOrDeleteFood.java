@@ -37,11 +37,9 @@ public class EditOrDeleteFood extends AppCompatActivity {
         deleteFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                dataSource.updateStatusOfLM(lm_id, 0);
                 Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
                 EditOrDeleteFood.this.startActivity(myIntent);
-
-                //TODO change is_active to 0 where lmid = lm_id
-
             }
         });
     }

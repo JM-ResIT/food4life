@@ -97,6 +97,11 @@ public class TagebuchDataSource {
         return pos;
     }
 
+    public void updateStatusOfLM(int id, int status){
+        String updateQuery = "UPDATE " + TagebuchHelper.DATABASE_LMTABLE + " SET " + TagebuchHelper.IS_ACTIVE + " = " + status + " WHERE " + TagebuchHelper.LEBENSMITTEL_ID + " = " + id + ";";
+        database.execSQL(updateQuery);
+    }
+
     public void addFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent) {
         if(!name.isEmpty()){
             ContentValues lmValues = new ContentValues();
