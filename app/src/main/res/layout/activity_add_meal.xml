@@ -33,13 +33,47 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
-    <Spinner
-        android:id="@+id/MenuSpinner"
+    <LinearLayout
+        android:id="@+id/Layout2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/white"
         android:layout_below="@id/MenuName"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingRight="4dp"
+        android:paddingLeft="4dp">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Menübestandteile"
+            android:textStyle="bold"
+            android:textSize="@dimen/textsize_display"/>
+
+        <ListView
+            android:id="@+id/ListViewMenu"
+            android:layout_width="match_parent"
+            android:layout_height="85dp"
+            android:layout_marginTop="4dp">
+        </ListView>
+
+        <Button
+            android:id="@+id/AddFoodToMenu"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/button_bg_round"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/red"
+            android:textSize="@dimen/textsize_button" />
+
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/MenuAdd"
@@ -47,7 +81,7 @@
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/ProfileCalories"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@id/MenuSpinner"
+        android:layout_alignRight="@id/Layout2"
         android:text="Hinzufügen" />
 
 </RelativeLayout>
