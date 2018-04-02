@@ -27,7 +27,7 @@
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/ProfileName"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Größe in cm"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
@@ -40,7 +40,7 @@
         android:layout_alignStart="@+id/ProfileHeight"
         android:layout_below="@+id/ProfileHeight"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Gewicht in kg"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
@@ -67,7 +67,7 @@
         android:layout_below="@+id/ProfileBday"
         android:ems="10"
         android:hint="Kalorienbedarf in kcal"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
