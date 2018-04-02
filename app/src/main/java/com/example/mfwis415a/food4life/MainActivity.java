@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private Button addMeal;
+    private Button addBreakfast;
     private Button foodList;
     private Button menuList;
     private ImageButton calendar;
@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
 
-        // populatelistview(); // Listview Method for Startscreen
+        populatelistview(); // Listview Method for Startscreen
 
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -51,18 +51,17 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-       /* addMeal = (Button) findViewById(R.id.AddFood);
+        addBreakfast = (Button) findViewById(R.id.AddBreakfast);
 
 
-        addMeal.setOnClickListener(new View.OnClickListener() {
+        addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
-                myIntent.putExtra("key", "test"); //Optional parameters
                 MainActivity.this.startActivity(myIntent);
 
             }
-        }); */
+        });
 
         foodList =  findViewById(R.id.goToFoodList);
         foodList.setOnClickListener(new View.OnClickListener() {
@@ -120,12 +119,12 @@ public class MainActivity extends AppCompatActivity {
         //Create list of items
         String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
 
-        //Build Adapter
-        // ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, R.layout.items, myItems);
 
-        //Configure List View
+        // Get a handle to the list view
         ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
-        // list.setAdapter(adapter);
+
+        list.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, myItems));
     }
 
 
