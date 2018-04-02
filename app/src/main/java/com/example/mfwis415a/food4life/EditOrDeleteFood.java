@@ -39,6 +39,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
         foodAmount = (EditText) findViewById(R.id.foodAmount);
         equivalent = (EditText) findViewById(R.id.equivalent);
         foodDescription = (EditText) findViewById(R.id.foodDescription);
+        units = (Spinner) findViewById(R.id.foodUnit);
 
         dataSource = new TagebuchDataSource(this);
 
@@ -62,14 +63,39 @@ public class EditOrDeleteFood extends AppCompatActivity {
         editFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // TODO change values in database!
-                Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
-                EditOrDeleteFood.this.startActivity(myIntent);
+                editFood();
             }
         });
     }
 
+    private void editFood(){
+        unit = units.getSelectedItem().toString();
+        String foodNameText= foodName.getText().toString();
+        String foodDescriptionText =  foodDescription.getText().toString();
+        String foodAmountText = foodAmount.getText().toString();
+        String equivalentText = equivalent.getText().toString();
+
+        if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
+            dataSource.editFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText), lm_id);
+
+
+            Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
+            EditOrDeleteFood.this.startActivity(myIntent);
+        } else {
+            Log.d(LOG_TAG, "Please fill all text fields!");
+        }
+    }
+
+    //set preselected values
     private void loadFoodData() {
+        //TODO set unit
+        // dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT,  TagebuchHelper.LEBENSMITTEL_ID, lm_id
+
+        foodName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
+        foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
+        foodAmount.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
+        equivalent.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG,  TagebuchHelper.LEBENSMITTEL_ID, lm_id));
+
         // Spinner Drop down elements
         List<String> labels = dataSource.getAllUnits();
 
@@ -83,16 +109,17 @@ public class EditOrDeleteFood extends AppCompatActivity {
 
         // attaching data adapter to spinner
         units.setAdapter(dataAdapter);
-
-        //TODO set unit
-        // dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT,  TagebuchHelper.LEBENSMITTEL_ID, lm_id
-
-        //set preselected values
-
-        foodName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
-        foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
-        foodAmount.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
-        equivalent.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG,  TagebuchHelper.LEBENSMITTEL_ID, lm_id));
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataSource.open();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dataSource.close();
+    }
 }

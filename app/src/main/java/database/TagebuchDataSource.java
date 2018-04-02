@@ -103,7 +103,6 @@ public class TagebuchDataSource {
     }
 
     public void addFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent) {
-        if(!name.isEmpty()){
             ContentValues lmValues = new ContentValues();
             lmValues.put(TagebuchHelper.TITEL, name);
             lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
@@ -117,10 +116,23 @@ public class TagebuchDataSource {
             entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
 
             database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
-        } else {
-            Log.d(LOG_TAG, "Error inserting food entry, name is empty!");
-        }
+    }
 
+    public void editFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent, int id){
+
+        ContentValues lmValues = new ContentValues();
+        lmValues.put(TagebuchHelper.TITEL, name);
+        lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
+
+        database.update(TagebuchHelper.DATABASE_LMTABLE, lmValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
+
+        ContentValues entspValues = new ContentValues();
+        entspValues.put(TagebuchHelper.LEBENSMITTEL_ID, id);
+        entspValues.put(TagebuchHelper.ANZAHL, amount);
+        entspValues.put(TagebuchHelper.EINHEIT, unit);
+        entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
+
+        database.update(TagebuchHelper.DATABASE_ENTSPTABLE, entspValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
     }
 
     public void insertSampleData(){

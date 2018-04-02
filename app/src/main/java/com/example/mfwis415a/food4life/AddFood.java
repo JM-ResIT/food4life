@@ -37,33 +37,35 @@ public class AddFood extends AppCompatActivity {
         dataSource.open();
         loadSpinnerData();
 
-        //TODO Fertigstellung
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                foodName = (EditText) findViewById(R.id.foodName);
-                foodAmount = (EditText) findViewById(R.id.foodAmount);
-                equivalent = (EditText) findViewById(R.id.equivalent);
-                foodDescription = (EditText) findViewById(R.id.foodDescription);
-                unit = units.getSelectedItem().toString();
-
-
-                String foodNameText= foodName.getText().toString();
-                String foodDescriptionText =  foodDescription.getText().toString();
-                String foodAmountText = foodAmount.getText().toString();
-                String equivalentText = equivalent.getText().toString();
-
-                if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
-                    dataSource.addFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText));
-
-                    Intent myIntent = new Intent(AddFood.this, FoodList.class);
-                    AddFood.this.startActivity(myIntent);
-                } else {
-                    Log.d(LOG_TAG, "Please fill all text fields!");
-                }
+                addFood();
             }
         });
 
+    }
+
+    private void addFood(){
+        foodName = (EditText) findViewById(R.id.foodName);
+        foodAmount = (EditText) findViewById(R.id.foodAmount);
+        equivalent = (EditText) findViewById(R.id.equivalent);
+        foodDescription = (EditText) findViewById(R.id.foodDescription);
+
+        String foodNameText= foodName.getText().toString();
+        String foodDescriptionText =  foodDescription.getText().toString();
+        String foodAmountText = foodAmount.getText().toString();
+        String equivalentText = equivalent.getText().toString();
+        unit = units.getSelectedItem().toString();
+
+        if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
+            dataSource.addFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText));
+
+            Intent myIntent = new Intent(AddFood.this, FoodList.class);
+            AddFood.this.startActivity(myIntent);
+        } else {
+            Log.d(LOG_TAG, "Please fill all text fields!");
+        }
     }
 
     private void loadSpinnerData() {
