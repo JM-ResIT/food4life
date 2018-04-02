@@ -123,19 +123,6 @@ public class TagebuchDataSource {
 
     }
 
-    public void listFood() {
-        Cursor cursor = databaseRead.rawQuery("SELECT * FROM " + TagebuchHelper.DATABASE_ENTSPTABLE, null);
-
-        while (cursor.moveToNext()) {
-            Log.d(LOG_TAG, "Lebensmittel ID:" + cursor.getString(1));
-            Log.d(LOG_TAG, "Anzahl: " + cursor.getString(2));
-            Log.d(LOG_TAG, "Einheit:" + cursor.getString(3));
-            Log.d(LOG_TAG, "ENTSPRECHUNG:" + cursor.getString(4));
-        }
-
-        cursor.close();
-    }
-
     public void insertSampleData(){
         ContentValues contentValues = new ContentValues();
 
@@ -161,6 +148,20 @@ public class TagebuchDataSource {
         } else {
             insertSampleData();
         }
+    }
+
+    public String getEntryFromDBTable(String table, String column, String key, int id){
+        String entry;
+        // Select Query
+        String selectQuery = "SELECT " + column + " FROM " + table + " WHERE " + key + " = " + id + ";";
+
+        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+        entry  =  cursor.getString(0);
+        Log.d(LOG_TAG, "TEST:        " + entry);
+
+        return entry;
     }
 
 }
