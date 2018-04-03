@@ -72,7 +72,7 @@ public class TagebuchDataSource {
         // looping through all rows and adding to list
 
         while (cursor.moveToNext()) {
-            labels.add(cursor.getString(1));
+            labels.add(cursor.getString(1) + " ("+ cursor.getString(2) +")");
         }
 
         // closing connection
