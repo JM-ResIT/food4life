@@ -54,10 +54,18 @@ public class MainActivity extends AppCompatActivity {
         addBreakfast = (Button) findViewById(R.id.AddBreakfast);
 
 
+        long date = System.currentTimeMillis();
+        tv = findViewById(R.id.Date);
+        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+        final String dateString = showDate.format(date);
+        tv.setText(dateString);
+
         addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
+                myIntent.putExtra("date", dateString);
+                myIntent.putExtra("category", 1);
                 MainActivity.this.startActivity(myIntent);
 
             }
@@ -93,14 +101,6 @@ public class MainActivity extends AppCompatActivity {
         dataSource.open();
 
         dataSource.insertSampleDataIfEmpty();
-
-
-        long date = System.currentTimeMillis();
-
-        tv = findViewById(R.id.Date);
-        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
-        String dateString = showDate.format(date);
-        tv.setText(dateString);
     }
 
     @Override
