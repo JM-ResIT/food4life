@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:text="Lebensmittel hinzufügen"
         android:layout_below="@id/foodList"
-        android:gravity="bottom"
         />
 
 </RelativeLayout>

@@ -19,7 +19,6 @@
         android:layout_height="wrap_content"
         android:text="Einheit hinzufügen"
         android:layout_below="@id/UnitList"
-        android:gravity="bottom"
         />
 
 </RelativeLayout>
