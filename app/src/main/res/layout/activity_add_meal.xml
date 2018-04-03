@@ -21,18 +21,12 @@
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
-    <EditText
+    <Spinner
         android:id="@+id/MealName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/MealDate"
-        android:layout_alignStart="@+id/MealDate"
-        android:layout_below="@id/MealDate"
-        android:ems="10"
-        android:hint="Name des Lebensmittels/ Menüs"
-        android:inputType="textPersonName"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/MealDate" />
 
     <EditText
         android:id="@+id/MealAmount"
