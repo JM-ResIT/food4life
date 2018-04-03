@@ -10,19 +10,22 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 
 import database.TagebuchDataSource;
 
-// List View: http://www.programmierenlernenhq.de/tutorial-android-listview-verwenden/
 
 public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private Button addBreakfast;
+    private Button addLunch;
+    private Button addDinner;
+    private Button addSnack;
     private Button foodList;
     private Button menuList;
     private ImageButton calendar;
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private SimpleDateFormat showDate;
     private TextView tv;
     private TagebuchDataSource dataSource;
+    private ProgressBar calorieProgress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +55,7 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        addBreakfast = (Button) findViewById(R.id.AddBreakfast);
-
-
+        addBreakfast = findViewById(R.id.AddBreakfast);
         addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +64,37 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        addLunch = findViewById(R.id.AddLunch);
+        addLunch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
+                MainActivity.this.startActivity(myIntent);
+
+            }
+        });
+
+        addDinner = findViewById(R.id.AddDinner);
+        addDinner.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
+                MainActivity.this.startActivity(myIntent);
+
+            }
+        });
+
+        addSnack = findViewById(R.id.AddSnacks);
+        addSnack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
+                MainActivity.this.startActivity(myIntent);
+
+            }
+        });
+
 
         foodList =  findViewById(R.id.goToFoodList);
         foodList.setOnClickListener(new View.OnClickListener() {
@@ -101,7 +134,16 @@ public class MainActivity extends AppCompatActivity {
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         String dateString = showDate.format(date);
         tv.setText(dateString);
+
+        calorieProgress = findViewById(R.id.progressBar);
+        calorieProgress.setScaleY(2f);
+
+        calorieProgress.setMax(dataSource.getLimitFromProfile());
+        calorieProgress.setProgress(500);
+
     }
+
+
 
     @Override
     protected void onResume() {
