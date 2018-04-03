@@ -40,6 +40,7 @@
         <activity
             android:name=".EditOrDeleteFood"
             android:label="Bearbeiten/ Löschen" />
+        <activity android:name=".AddMenu"></activity>
     </application>
 
 </manifest>
