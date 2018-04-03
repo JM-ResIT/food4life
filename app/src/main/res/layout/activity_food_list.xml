@@ -13,12 +13,20 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true"/>
 
-    <Button
-        android:id="@+id/addFood"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Lebensmittel hinzufügen"
-        android:layout_below="@id/foodList"
-        />
+        android:layout_below="@id/foodList">
+
+        <Button
+            android:id="@+id/addFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Lebensmittel hinzufügen"
+            />
+
+    </LinearLayout>
+
+
 
 </RelativeLayout>
