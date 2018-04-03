@@ -27,7 +27,7 @@
         android:layout_below="@+id/MealDate" />
 
     <Spinner
-        android:id="@+id/MealName"
+        android:id="@+id/FoodsAndMenus"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -38,9 +38,9 @@
         android:id="@+id/MealAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/MealName"
-        android:layout_alignStart="@+id/MealName"
-        android:layout_below="@id/MealName"
+        android:layout_alignLeft="@+id/FoodsAndMenus"
+        android:layout_alignStart="@+id/FoodsAndMenus"
+        android:layout_below="@id/FoodsAndMenus"
         android:hint="Menge"
         android:inputType="number"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -76,9 +76,9 @@
         android:id="@+id/MealAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/MealName"
-        android:layout_alignRight="@id/MealName"
+        android:layout_alignEnd="@id/FoodsAndMenus"
         android:layout_alignParentBottom="true"
+        android:layout_alignRight="@id/FoodsAndMenus"
         android:text="Hinzufügen" />
 
 
