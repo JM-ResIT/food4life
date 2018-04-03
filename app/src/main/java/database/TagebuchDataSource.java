@@ -118,8 +118,8 @@ public class TagebuchDataSource {
             database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
     }
 
+    //FIXME old one is active = 0 --> persistance
     public void editFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent, int id){
-
         ContentValues lmValues = new ContentValues();
         lmValues.put(TagebuchHelper.TITEL, name);
         lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
@@ -174,6 +174,12 @@ public class TagebuchDataSource {
         Log.d(LOG_TAG, "TEST:        " + entry);
 
         return entry;
+    }
+
+    public void updateProfile(int limit){
+        // TODO update or create new profile
+
+
     }
 
 }

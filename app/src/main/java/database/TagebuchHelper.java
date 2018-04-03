@@ -100,7 +100,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             "CREATE TABLE " +
                     DATABASE_PROFIL_TABLE + "(" +
                     PROFIL_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    LIMIT + " INTEGER); ";
+                    LIMIT + " INTEGER);";
 
 
     public TagebuchHelper(Context context) {
