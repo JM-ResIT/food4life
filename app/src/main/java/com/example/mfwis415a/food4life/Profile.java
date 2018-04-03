@@ -33,6 +33,8 @@ public class Profile extends AppCompatActivity {
 
         dataSource.open();
 
+        loadData();
+
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,5 +44,9 @@ public class Profile extends AppCompatActivity {
                 Profile.this.startActivity(myIntent);
             }
         });
+    }
+
+    public void loadData(){
+        limit.setText(String.valueOf(dataSource.getLimitFromProfile()));
     }
 }

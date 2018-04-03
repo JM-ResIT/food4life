@@ -23,6 +23,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String MENU_ID = "MENU_ID";
     public static final String ZEIT = "ZEIT";
     public static final String LIMIT = "TAGESLIMIT";
+    public static final String KATEGORIE = "KATEGORIE";
 
     public static final String DATABASE_LMTABLE = "LEBENSMITTEL";
     public static final String TITEL = "TITEL";
@@ -58,7 +59,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     MENU_ID + " INTEGER, " +
                     LEBENSMITTEL_ID + " INTEGER, " +
                     LIMIT + " INTEGER, " +
-                    ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP); ";
+                    ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                    KATEGORIE + " INTEGER);";
 
     private static final String SQL_CREATE_LMTABLE =
             "CREATE TABLE " +
