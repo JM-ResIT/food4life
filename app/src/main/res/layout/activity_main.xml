@@ -234,7 +234,8 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:layout_marginTop="4dp"
-                android:layout_marginLeft="4dp" />
+                android:layout_marginLeft="4dp"
+                android:src="@drawable/calendar"/>
 
             <Button
                 android:id="@+id/goToFoodList"
@@ -261,7 +262,8 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginLeft="4dp"
                 android:layout_marginRight="4dp"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:src="@drawable/user"/>
 
 
         </LinearLayout>
