@@ -7,8 +7,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.mfwis415a.food4life.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,7 +17,7 @@ public class AddMeal extends AppCompatActivity {
     private TextView dateView;
     private String date;
     private int category;
-    private Spinner categories;
+    private Spinner categories, foodsandmenus;
 
     private TagebuchDataSource dataSource;
 
@@ -36,6 +34,7 @@ public class AddMeal extends AppCompatActivity {
 
         dateView = (TextView) findViewById(R.id.MealDate);
         categories = (Spinner) findViewById(R.id.MealCategory);
+        foodsandmenus = (Spinner) findViewById(R.id.FoodsAndMenus);
 
         dataSource.open();
 
@@ -48,6 +47,7 @@ public class AddMeal extends AppCompatActivity {
             dateView.setText(date);
         }
         loadCategorySpinnerData();
+        loadFoodsAndMenus();
     }
 
     public void loadCategorySpinnerData(){
@@ -73,8 +73,27 @@ public class AddMeal extends AppCompatActivity {
         categories.setSelection(category);
     }
 
+    public void loadFoodsAndMenus(){
+        // Spinner Drop down elements#
+        List<String> labels = dataSource.getAllFoods();
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, labels);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        foodsandmenus.setAdapter(dataAdapter);
+
+    }
+
     public void loadFoodUnitData(){
 
     }
+
+
 
 }
