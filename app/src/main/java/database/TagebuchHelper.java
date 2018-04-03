@@ -43,6 +43,13 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String BESCHREIBUNG = "BESCHREIBUNG";
     public static final String IS_ACTIVE = "IS_ACTIVE";
 
+    public static final String DATABASE_PROFIL_TABLE = "PROFIL";
+    public static final String PROFIL_ID = "PROFIL_ID";
+    public static final String NAME = "NAME";
+    public static final String GROEßE = "GROEßE";
+    public static final String GEWICHT = "GEWICHT";
+    public static final String GEBURTSDATUM = "GEBURTSDATUM";
+
     //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
             "CREATE TABLE " +
@@ -59,7 +66,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     TITEL + " STRING, " +
                     BESCHREIBUNG + " STRING, " +
-                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);"; //flag=cursor.getString(0).equals("1")
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_EINTABLE =
             "CREATE TABLE " +
@@ -71,7 +78,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             "CREATE TABLE " +
                     DATABASE_MENUTABLE + "(" +
                     MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    TITEL + " STRING);";
+                    TITEL + " STRING, " +
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_ENTSPTABLE =
             "CREATE TABLE " +
@@ -88,6 +96,13 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     LEBENSMITTEL_ID + " INTEGER, " +
                     MENU_ID + " INTEGER);";
 
+    private static final String SQL_CREATE_PROFIL_TABLE =
+            "CREATE TABLE " +
+                    DATABASE_PROFIL_TABLE + "(" +
+                    PROFIL_ID  + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                    LIMIT + " INTEGER); ";
+
+
     public TagebuchHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
@@ -102,6 +117,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             db.execSQL(SQL_CREATE_ENTSPTABLE);
             db.execSQL(SQL_CREATE_MENUTABLE);
             db.execSQL(SQL_CREATE_MENU_LM_TABLE);
+            db.execSQL(SQL_CREATE_PROFIL_TABLE);
         } catch (Exception ex) {
             Log.e(LOG_TAG, "Error creating tables: " + ex.getMessage());
         }
