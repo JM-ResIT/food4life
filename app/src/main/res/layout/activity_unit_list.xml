@@ -6,6 +6,12 @@
     android:layout_height="match_parent"
     tools:context="com.example.mfwis415a.food4life.UnitList">
 
+    <ListView
+        android:id="@+id/UnitList"
+        android:layout_below="@+id/AddUnit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/AddUnit"
         android:layout_width="match_parent"
@@ -13,11 +19,5 @@
         android:text="Einheit hinzufügen"
         android:layout_centerHorizontal="true"
         android:layout_alignParentTop="true" />
-
-    <ListView
-        android:id="@+id/UnitList"
-        android:layout_below="@+id/AddUnit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
 
 </RelativeLayout>
