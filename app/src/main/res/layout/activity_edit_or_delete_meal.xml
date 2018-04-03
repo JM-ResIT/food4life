@@ -1,9 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditOrDeleteMeal">
+    tools:context="com.example.mfwis415a.food4life.AddMeal">
 
-</android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/MealDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:text="Datum"
+        android:textSize="18dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+    <Spinner
+        android:id="@+id/MealCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/MealDate" />
+
+    <Spinner
+        android:id="@+id/MealName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/MealCategory" />
+
+    <EditText
+        android:id="@+id/MealAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MealName"
+        android:layout_alignStart="@+id/MealName"
+        android:layout_below="@id/MealName"
+        android:hint="Menge"
+        android:inputType="number"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+    <TextView
+        android:id="@+id/MealUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MealAmount"
+        android:layout_alignStart="@+id/MealAmount"
+        android:layout_below="@id/MealAmount"
+        android:text="Einheit"
+        android:textSize="18dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"  />
+
+    <TextView
+        android:id="@+id/MealCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/MealUnit"
+        android:layout_alignStart="@+id/MealUnit"
+        android:layout_below="@id/MealUnit"
+        android:text="Kalorien"
+        android:textSize="18dp"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"  />
+
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="16dp"
+        android:orientation="horizontal"
+        android:layout_below="@+id/MealCalories"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/deleteFood"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="Löschen" />
+
+        <Button
+            android:id="@+id/editFood"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speichern" />
+
+
+    </LinearLayout>
+
+</RelativeLayout>
