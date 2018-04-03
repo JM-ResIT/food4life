@@ -65,8 +65,8 @@ public class TagebuchDataSource {
     public List<String> getAllFoods(){
         List<String> labels = new ArrayList<String>();
 
-        // Select All Query
-        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE;
+        // Select Query
+        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1";
 
         Cursor cursor = databaseRead.rawQuery(selectQuery, null);
 
@@ -84,8 +84,25 @@ public class TagebuchDataSource {
         return labels;
     }
 
+    public int getRealIdFromLM(int position){
+        int pos;
+        // Select Query
+        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1" + " ORDER BY " + TagebuchHelper.LEBENSMITTEL_ID + " ASC LIMIT 1 OFFSET " + position + ";" ;
+
+        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+        pos =  Integer.parseInt(cursor.getString(0));
+
+        return pos;
+    }
+
+    public void updateStatusOfLM(int id, int status){
+        String updateQuery = "UPDATE " + TagebuchHelper.DATABASE_LMTABLE + " SET " + TagebuchHelper.IS_ACTIVE + " = " + status + " WHERE " + TagebuchHelper.LEBENSMITTEL_ID + " = " + id + ";";
+        database.execSQL(updateQuery);
+    }
+
     public void addFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent) {
-        if(!name.isEmpty()){
             ContentValues lmValues = new ContentValues();
             lmValues.put(TagebuchHelper.TITEL, name);
             lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
@@ -99,23 +116,23 @@ public class TagebuchDataSource {
             entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
 
             database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
-        } else {
-            Log.d(LOG_TAG, "Error inserting food entry, name is empty!");
-        }
-
     }
 
-    public void listFood() {
-        Cursor cursor = databaseRead.rawQuery("SELECT * FROM " + TagebuchHelper.DATABASE_ENTSPTABLE, null);
+    public void editFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent, int id){
 
-        while (cursor.moveToNext()) {
-            Log.d(LOG_TAG, "Lebensmittel ID:" + cursor.getString(1));
-            Log.d(LOG_TAG, "Anzahl: " + cursor.getString(2));
-            Log.d(LOG_TAG, "Einheit:" + cursor.getString(3));
-            Log.d(LOG_TAG, "ENTSPRECHUNG:" + cursor.getString(4));
-        }
+        ContentValues lmValues = new ContentValues();
+        lmValues.put(TagebuchHelper.TITEL, name);
+        lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
 
-        cursor.close();
+        database.update(TagebuchHelper.DATABASE_LMTABLE, lmValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
+
+        ContentValues entspValues = new ContentValues();
+        entspValues.put(TagebuchHelper.LEBENSMITTEL_ID, id);
+        entspValues.put(TagebuchHelper.ANZAHL, amount);
+        entspValues.put(TagebuchHelper.EINHEIT, unit);
+        entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
+
+        database.update(TagebuchHelper.DATABASE_ENTSPTABLE, entspValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
     }
 
     public void insertSampleData(){
@@ -143,6 +160,20 @@ public class TagebuchDataSource {
         } else {
             insertSampleData();
         }
+    }
+
+    public String getEntryFromDBTable(String table, String column, String key, int id){
+        String entry;
+        // Select Query
+        String selectQuery = "SELECT " + column + " FROM " + table + " WHERE " + key + " = " + id + ";";
+
+        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+
+        cursor.moveToFirst();
+        entry  =  cursor.getString(0);
+        Log.d(LOG_TAG, "TEST:        " + entry);
+
+        return entry;
     }
 
 }

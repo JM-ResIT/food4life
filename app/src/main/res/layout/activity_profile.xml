@@ -1,12 +1,83 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
     tools:context="com.example.mfwis415a.food4life.Profile">
 
+    <EditText
+        android:id="@+id/ProfileName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:hint="Name"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
+    <EditText
+        android:id="@+id/ProfileHeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ProfileName"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Größe in cm"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
+    <EditText
+        android:id="@+id/ProfileWeight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProfileHeight"
+        android:layout_alignStart="@+id/ProfileHeight"
+        android:layout_below="@+id/ProfileHeight"
+        android:ems="10"
+        android:inputType="number"
+        android:hint="Gewicht in kg"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+    <EditText
+        android:id="@+id/ProfileBday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProfileWeight"
+        android:layout_alignStart="@+id/ProfileWeight"
+        android:layout_below="@+id/ProfileWeight"
+        android:ems="10"
+        android:hint="Geburtsdatum (TT/MM/JJ)"
+        android:inputType="date"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+
+    <EditText
+        android:id="@+id/ProfileCalories"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProfileBday"
+        android:layout_alignStart="@+id/ProfileBday"
+        android:layout_below="@+id/ProfileBday"
+        android:ems="10"
+        android:hint="Kalorienbedarf in kcal"
+        android:inputType="number"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
+
+    <Button
+        android:id="@+id/UpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/ProfileCalories"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@id/ProfileCalories"
+        android:text="Aktualisieren" />
 </RelativeLayout>

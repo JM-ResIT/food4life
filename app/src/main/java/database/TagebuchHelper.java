@@ -41,6 +41,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
 
     public static final String EINHEIT = "EINHEIT";
     public static final String BESCHREIBUNG = "BESCHREIBUNG";
+    public static final String IS_ACTIVE = "IS_ACTIVE";
 
     //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
@@ -57,7 +58,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     DATABASE_LMTABLE + "(" +
                     LEBENSMITTEL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     TITEL + " STRING, " +
-                    BESCHREIBUNG + " STRING);";
+                    BESCHREIBUNG + " STRING, " +
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);"; //flag=cursor.getString(0).equals("1")
 
     private static final String SQL_CREATE_EINTABLE =
             "CREATE TABLE " +

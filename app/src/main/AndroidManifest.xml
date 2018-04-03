@@ -24,26 +24,22 @@
         <activity
             android:name=".FoodList"
             android:label="Lebensmittel" />
-
-        <activity android:name=".MenuList"
-                    android:label="Menü-Übersicht"/>
-
+        <activity
+            android:name=".MenuList"
+            android:label="Menü-Übersicht" />
         <activity android:name=".UnitList" />
-        <activity android:name=".Profile"
-                   android:label="Mein Profil"/>
-
+        <activity
+            android:name=".Profile"
+            android:label="Mein Profil" />
         <activity
             android:name=".Calendar"
-            android:label="Kalender">
-        </activity>
-
-
-
+            android:label="Kalender" />
         <activity
             android:name=".AddFood"
-            android:label="Lebensmittel Hinzufügen">
-
-        </activity>
+            android:label="Lebensmittel Hinzufügen" />
+        <activity
+            android:name=".EditOrDeleteFood"
+            android:label="Bearbeiten/ Löschen" />
     </application>
 
 </manifest>
