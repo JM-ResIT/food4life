@@ -42,120 +42,182 @@
                 android:orientation="vertical">
 
 
-        <LinearLayout
-            android:id="@+id/LinearLayout6"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@color/white">
+                <LinearLayout
+                    android:id="@+id/Layout2C"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp">
 
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="35dp"
-                android:text="Frühstück"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="4dp"/>
 
-            <Button
-                android:id="@+id/Hinzufuegen5"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/button_bg_round"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/red"
-                android:textSize="20dp" />
-        </LinearLayout>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Frühstück"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout7"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:background="@color/white">
+                    <ListView
+                        android:id="@+id/ListViewBreakfastC"
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="4dp">
+                    </ListView>
 
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="35dp"
-                android:text="Mittagesssen"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="4dp"/>
+                    <Button
+                        android:id="@+id/AddBreakfastC"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_bg_round"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/red"
+                        android:textSize="30dp" />
 
-            <Button
-                android:id="@+id/Hinzufuegen6"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/button_bg_round"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/red"
-                android:textSize="20dp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout8"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:background="@color/white">
+                </LinearLayout>
 
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="35dp"
-                android:text="Abendessen"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="4dp"/>
 
-            <Button
-                android:id="@+id/Hinzufuegen7"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/button_bg_round"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/red"
-                android:textSize="20dp" />
-        </LinearLayout>
 
-        <LinearLayout
-            android:id="@+id/LinearLayout9"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical"
-            android:background="@color/white">
 
-            <TextView
-                android:layout_width="125dp"
-                android:layout_height="35dp"
-                android:text="Snack"
-                android:textStyle="bold"
-                android:textSize="20dp"
-                android:layout_marginLeft="4dp"/>
+                <LinearLayout
+                    android:id="@+id/Layout3C"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp">
 
-            <Button
-                android:id="@+id/Hinzufuegen8"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:layout_marginTop="45dp"
-                android:layout_marginLeft="4dp"
-                android:background="@drawable/button_bg_round"
-                android:gravity="center"
-                android:text="+"
-                android:textColor="@color/red"
-                android:textSize="20dp" />
-        </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mittagessen"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+
+                    <ListView
+                        android:id="@+id/ListViewLunchC"
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="4dp">
+                    </ListView>
+
+                    <Button
+                        android:id="@+id/AddLunchC"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_bg_round"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/red"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/Layout4C"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Abendessen"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+
+                    <ListView
+                        android:id="@+id/ListViewDinnerC"
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="4dp">
+                    </ListView>
+
+                    <Button
+                        android:id="@+id/AddDinnerC"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_bg_round"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/red"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
+
+
+
+
+                <LinearLayout
+                    android:id="@+id/Layout5C"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:background="@color/white"
+                    android:layout_marginTop="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp"
+                    android:paddingRight="4dp"
+                    android:paddingLeft="4dp">
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Snacks"
+                        android:textStyle="bold"
+                        android:textSize="20dp"/>
+
+                    <ListView
+                        android:id="@+id/ListViewSnacksC"
+                        android:layout_width="match_parent"
+                        android:layout_height="85dp"
+                        android:layout_marginTop="4dp">
+                    </ListView>
+
+                    <Button
+                        android:id="@+id/AddSnacksC"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/button_bg_round"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="@color/red"
+                        android:textSize="30dp" />
+
+
+                </LinearLayout>
 
 
             </LinearLayout>
