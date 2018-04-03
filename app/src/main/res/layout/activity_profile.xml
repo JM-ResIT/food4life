@@ -4,67 +4,80 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/activity_horizontal_margin"
     tools:context="com.example.mfwis415a.food4life.Profile">
 
     <EditText
         android:id="@+id/ProfileName"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:ems="10"
         android:inputType="textPersonName"
         android:hint="Name"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="37dp" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
     <EditText
         android:id="@+id/ProfileHeight"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/ProfileName"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Größe in cm"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="106dp" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
     <EditText
         android:id="@+id/ProfileWeight"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProfileHeight"
+        android:layout_alignStart="@+id/ProfileHeight"
+        android:layout_below="@+id/ProfileHeight"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         android:hint="Gewicht in kg"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="178dp" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
     <EditText
         android:id="@+id/ProfileBday"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:ems="13"
+        android:layout_alignLeft="@+id/ProfileWeight"
+        android:layout_alignStart="@+id/ProfileWeight"
+        android:layout_below="@+id/ProfileWeight"
+        android:ems="10"
         android:hint="Geburtsdatum (TT/MM/JJ)"
         android:inputType="date"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="252dp" />
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
     <EditText
         android:id="@+id/ProfileCalories"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/ProfileBday"
+        android:layout_alignStart="@+id/ProfileBday"
+        android:layout_below="@+id/ProfileBday"
         android:ems="10"
-        android:hint="Kalorienbedarf"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="321dp" />
+        android:hint="Kalorienbedarf in kcal"
+        android:inputType="number"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
+        android:id="@+id/UpdateProfile"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/ProfileCalories"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="13dp"
-        android:layout_marginStart="19dp"
-        android:text="Aktualisieren"
-        tools:layout_editor_absoluteX="31dp"
-        tools:layout_editor_absoluteY="446dp" />
+        android:layout_alignRight="@id/ProfileCalories"
+        android:text="Aktualisieren" />
 </RelativeLayout>

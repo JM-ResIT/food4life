@@ -29,5 +29,6 @@
     <color name="color10">#ff00ccbb</color>
     <color name="grey2">#ff888888</color>
     <color name="grey3">#ebebe0</color>
+    <color name="babyblue">#ccd9ff</color>
     <color name="colorPrimaryGreen">#7CFC00</color>
 </resources>
