@@ -44,6 +44,14 @@ public class MainActivity extends AppCompatActivity {
 
         populatelistview(); // Listview Method for Startscreen
 
+
+        final long date = System.currentTimeMillis();
+
+        tv = findViewById(R.id.Date);
+        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+        final String dateString = showDate.format(date);
+        tv.setText(dateString);
+
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,15 +61,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
         addBreakfast = findViewById(R.id.AddBreakfast);
         addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
-                MainActivity.this.startActivity(myIntent);
-
+                openFoodAcivity(dateString, 1);
             }
         });
 
@@ -69,9 +73,7 @@ public class MainActivity extends AppCompatActivity {
         addLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
-                MainActivity.this.startActivity(myIntent);
-
+                openFoodAcivity(dateString, 2);
             }
         });
 
@@ -79,8 +81,7 @@ public class MainActivity extends AppCompatActivity {
         addDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
-                MainActivity.this.startActivity(myIntent);
+                openFoodAcivity(dateString, 3);
 
             }
         });
@@ -89,8 +90,7 @@ public class MainActivity extends AppCompatActivity {
         addSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
-                MainActivity.this.startActivity(myIntent);
+                openFoodAcivity(dateString, 0);
 
             }
         });
@@ -128,12 +128,6 @@ public class MainActivity extends AppCompatActivity {
         dataSource.insertSampleDataIfEmpty();
 
 
-        long date = System.currentTimeMillis();
-
-        tv = findViewById(R.id.Date);
-        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
-        String dateString = showDate.format(date);
-        tv.setText(dateString);
 
         calorieProgress = findViewById(R.id.progressBar);
         calorieProgress.setScaleY(2f);
@@ -167,6 +161,13 @@ public class MainActivity extends AppCompatActivity {
 
         list.setAdapter(new ArrayAdapter<String>(this,
                 android.R.layout.simple_list_item_1, myItems));
+    }
+
+    private void openFoodAcivity(String date, int category){
+        Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
+        myIntent.putExtra("date", date);
+        myIntent.putExtra("category", category);
+        MainActivity.this.startActivity(myIntent);
     }
 
 
