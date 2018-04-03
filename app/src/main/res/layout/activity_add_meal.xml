@@ -4,8 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="@dimen/activity_horizontal_margin"
-    android:layout_marginStart="@dimen/activity_vertical_margin"
     tools:context="com.example.mfwis415a.food4life.AddMeal">
 
     <EditText
@@ -22,11 +20,20 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <Spinner
+        android:id="@+id/MealCategory"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/MealDate" />
+
+    <Spinner
         android:id="@+id/MealName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/MealDate" />
+        android:layout_below="@+id/MealCategory" />
 
     <EditText
         android:id="@+id/MealAmount"
@@ -35,18 +42,21 @@
         android:layout_alignLeft="@+id/MealName"
         android:layout_alignStart="@+id/MealName"
         android:layout_below="@id/MealName"
-        android:ems="10"
         android:hint="Menge"
         android:inputType="number"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
-    <Spinner
+    <TextView
         android:id="@+id/MealUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"
-        android:layout_below="@+id/MealAmount" />
+        android:layout_alignLeft="@+id/MealAmount"
+        android:layout_alignStart="@+id/MealAmount"
+        android:layout_below="@id/MealAmount"
+        android:text="Einheit"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"  />
 
 
     <EditText
