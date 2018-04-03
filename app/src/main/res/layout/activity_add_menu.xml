@@ -35,7 +35,7 @@
 
 
     <LinearLayout
-        android:id="@+id/Layout2"
+        android:id="@+id/LayoutMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
@@ -81,15 +81,13 @@
 
     </LinearLayout>
 
-
-
     <Button
         android:id="@+id/MenuAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/Layout2"
+        android:layout_alignEnd="@id/LayoutMenu"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@id/Layout2"
+        android:layout_alignRight="@id/LayoutMenu"
         android:text="Hinzufügen" />
 
 </RelativeLayout>
