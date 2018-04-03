@@ -72,11 +72,20 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
     <Button
-        android:id="@+id/UpdateProfile"
+        android:id="@+id/goToStatistics"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@id/ProfileCalories"
-        android:layout_alignParentBottom="true"
         android:layout_alignRight="@id/ProfileCalories"
+        android:layout_above="@id/UpdateProfile"
+        android:text="Statistische Auswertung" />
+
+    <Button
+        android:id="@+id/UpdateProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@id/goToStatistics"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@id/goToStatistics"
         android:text="Aktualisieren" />
 </RelativeLayout>
