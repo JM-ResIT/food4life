@@ -36,7 +36,8 @@
             android:layout_weight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
-            android:layout_gravity="center" />
+            android:layout_gravity="center"
+            android:max="@id/ProfileCalories" />
 
     </LinearLayout>
 
