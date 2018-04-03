@@ -72,22 +72,22 @@
             android:textColor="@color/red"
             android:textSize="@dimen/textsize_button" />
 
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="kcal"
+            android:textStyle="bold"
+            android:textSize="@dimen/textsize_display"/>
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/Layout2"
-        android:text="kcal"
-        android:textStyle="bold"
-        android:textSize="@dimen/textsize_display"/>
+
 
     <Button
         android:id="@+id/MenuAdd"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@id/ProfileCalories"
+        android:layout_alignEnd="@id/Layout2"
         android:layout_alignParentBottom="true"
         android:layout_alignRight="@id/Layout2"
         android:text="Hinzufügen" />
