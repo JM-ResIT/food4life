@@ -118,21 +118,10 @@ public class TagebuchDataSource {
             database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
     }
 
+
     public void editFoodEntry(String name, String foodDescription,  int amount, String unit, int equivalent, int id){
-
-        ContentValues lmValues = new ContentValues();
-        lmValues.put(TagebuchHelper.TITEL, name);
-        lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
-
-        database.update(TagebuchHelper.DATABASE_LMTABLE, lmValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
-
-        ContentValues entspValues = new ContentValues();
-        entspValues.put(TagebuchHelper.LEBENSMITTEL_ID, id);
-        entspValues.put(TagebuchHelper.ANZAHL, amount);
-        entspValues.put(TagebuchHelper.EINHEIT, unit);
-        entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
-
-        database.update(TagebuchHelper.DATABASE_ENTSPTABLE, entspValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[] {String.valueOf(id)});
+        updateStatusOfLM(id, 0);
+        addFoodEntry(name, foodDescription, amount, unit, equivalent);
     }
 
     public void insertSampleData(){
@@ -174,6 +163,12 @@ public class TagebuchDataSource {
         Log.d(LOG_TAG, "TEST:        " + entry);
 
         return entry;
+    }
+
+    public void updateProfile(int limit){
+        // TODO update or create new profile
+
+
     }
 
 }

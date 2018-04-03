@@ -78,7 +78,6 @@ public class EditOrDeleteFood extends AppCompatActivity {
         if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
             dataSource.editFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText), lm_id);
 
-
             Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
             EditOrDeleteFood.this.startActivity(myIntent);
         } else {
