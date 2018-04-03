@@ -27,7 +27,9 @@
         <activity
             android:name=".MenuList"
             android:label="Menü-Übersicht" />
-        <activity android:name=".UnitList" />
+        <activity
+            android:name=".UnitList"
+            android:label="Einheiten - Übersicht"/>
         <activity
             android:name=".Profile"
             android:label="Mein Profil" />
@@ -40,7 +42,14 @@
         <activity
             android:name=".EditOrDeleteFood"
             android:label="Bearbeiten/ Löschen" />
-        <activity android:name=".AddMenu"></activity>
+        <activity
+            android:name=".AddMenu"
+            android:label="Menü hinzufügen"/>
+        <activity
+            android:name=".Statistics"
+            android:label="Ststistische Auswertungen">
+
+        </activity>
     </application>
 
 </manifest>
