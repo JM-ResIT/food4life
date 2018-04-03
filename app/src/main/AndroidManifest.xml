@@ -29,7 +29,7 @@
             android:label="Menü-Übersicht" />
         <activity
             android:name=".UnitList"
-            android:label="Einheiten - Übersicht"/>
+            android:label="Einheiten-Übersicht" />
         <activity
             android:name=".Profile"
             android:label="Mein Profil" />
@@ -44,12 +44,14 @@
             android:label="Bearbeiten/ Löschen" />
         <activity
             android:name=".AddMenu"
-            android:label="Menü hinzufügen"/>
+            android:label="Menü hinzufügen" />
         <activity
             android:name=".Statistics"
-            android:label="Ststistische Auswertungen">
-
-        </activity>
+            android:label="Ststistische Auswertungen" />
+        <activity android:name=".EditOrDeleteMeal" />
+        <activity android:name=".EditOrDeleteMenu" />
+        <activity android:name=".AddUnit" />
+        <activity android:name=".EditOrDeleteUnit"></activity>
     </application>
 
 </manifest>
