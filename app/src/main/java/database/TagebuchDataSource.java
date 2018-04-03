@@ -169,11 +169,7 @@ public class TagebuchDataSource {
     }
 
     public void updateProfile(int limit) {
-        String selectQuery = "SELECT * FROM " + TagebuchHelper.DATABASE_PROFIL_TABLE + ";";
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
-
-        ContentValues contentValues = new ContentValues();
+                ContentValues contentValues = new ContentValues();
         contentValues.put(TagebuchHelper.LIMIT, limit);
         database.update(TagebuchHelper.DATABASE_PROFIL_TABLE, contentValues, TagebuchHelper.PROFIL_ID + "= ?", new String[]{String.valueOf(1)});
     }
