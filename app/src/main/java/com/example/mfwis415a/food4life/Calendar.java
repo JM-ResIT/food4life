@@ -11,9 +11,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.example.mfwis415a.food4life.R;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import database.TagebuchDataSource;
@@ -36,22 +39,33 @@ public class Calendar extends AppCompatActivity {
     private ListView mittagessen;
     private ListView abendessen;
     private ListView snacks;
+    private SimpleDateFormat showDate;
+    private String dateC;
+    private TextView tv;
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+        //populatelistview(); // Listview Method for Startscreen
+
         mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
 
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String date = i2 + "." + (i1 + 1) + "." + i;
-                Log.d(TAG, "onSelectedDayChange: date: " + date);
+                dateC = i2 + "." + (i1 + 1) + "." + i;
+                Log.d(TAG, "onSelectedDayChange: date: " + dateC);
 
             }
         });
+
+        /*tv = findViewById(R.id.Date);
+        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+        final String dateString = showDate.format(dateC);
+        tv.setText(dateString);*/
 
         dataSource = new TagebuchDataSource(this);
 
@@ -69,7 +83,7 @@ public class Calendar extends AppCompatActivity {
 
         loadFoods();
 
-        addBreakfastC.setOnClickListener(new View.OnClickListener() {
+        /*addBreakfastC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Calendar.this, AddFood.class);
@@ -77,8 +91,34 @@ public class Calendar extends AppCompatActivity {
                 Calendar.this.startActivity(myIntent);
 
             }
+        });*/
+        addBreakfastC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFoodAcivity(dateC, 1);
+            }
         });
         addLunchC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFoodAcivity(dateC, 2);
+            }
+        });
+        addDinnerC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFoodAcivity(dateC, 3);
+
+            }
+        });
+        addSnacksC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openFoodAcivity(dateC, 0);
+
+            }
+        });
+        /*addLunchC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent myIntent = new Intent(Calendar.this, AddFood.class);
@@ -104,7 +144,7 @@ public class Calendar extends AppCompatActivity {
                 Calendar.this.startActivity(myIntent);
 
             }
-        });
+        });*/
 
         fruehstueck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -138,6 +178,13 @@ public class Calendar extends AppCompatActivity {
                 Calendar.this.startActivity(myIntent);
             }
         });
+
+
+        //dataSource.insertSampleDataIfEmpty();
+
+
+
+
     }
 
 
@@ -163,5 +210,24 @@ public class Calendar extends AppCompatActivity {
                     android.R.layout.simple_list_item_1, lables));
         }
 
+    }
+
+    /*private void populatelistview() {
+        //Create list of items
+        String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
+
+
+        // Get a handle to the list view
+        ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
+
+        list.setAdapter(new ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, myItems));
+    }*/
+
+    private void openFoodAcivity(String date, int category){
+        Intent myIntent = new Intent(Calendar.this, AddMeal.class);
+        myIntent.putExtra("date", date);
+        myIntent.putExtra("category", category);
+        Calendar.this.startActivity(myIntent);
     }
 }
