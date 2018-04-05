@@ -39,9 +39,7 @@ public class Calendar extends AppCompatActivity {
     private ListView mittagessen;
     private ListView abendessen;
     private ListView snacks;
-    private SimpleDateFormat showDate;
     private String dateC;
-    private TextView tv;
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
     @Override
@@ -49,7 +47,7 @@ public class Calendar extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
-        //populatelistview(); // Listview Method for Startscreen
+
 
         mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
 
@@ -62,10 +60,7 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
-        /*tv = findViewById(R.id.Date);
-        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
-        final String dateString = showDate.format(dateC);
-        tv.setText(dateString);*/
+
 
         dataSource = new TagebuchDataSource(this);
 
@@ -212,17 +207,7 @@ public class Calendar extends AppCompatActivity {
 
     }
 
-    /*private void populatelistview() {
-        //Create list of items
-        String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
 
-
-        // Get a handle to the list view
-        ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
-
-        list.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, myItems));
-    }*/
 
     private void openFoodAcivity(String date, int category){
         Intent myIntent = new Intent(Calendar.this, AddMeal.class);
