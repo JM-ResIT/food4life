@@ -59,7 +59,7 @@ public class AddFood extends AppCompatActivity {
         unit = units.getSelectedItem().toString();
 
         if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
-            dataSource.addFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText));
+            dataSource.addFoodEntry(foodNameText, foodDescriptionText , Float.parseFloat(foodAmountText) , unit, Integer.parseInt(equivalentText));
 
             Intent myIntent = new Intent(AddFood.this, FoodList.class);
             AddFood.this.startActivity(myIntent);

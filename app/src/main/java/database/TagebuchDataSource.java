@@ -53,9 +53,8 @@ public class TagebuchDataSource {
             labels.add(cursor.getString(1));
         }
 
-        // closing connection
+        // closing cursor
         cursor.close();
-        databaseRead.close();
 
         // returning lables
         return labels;
@@ -75,9 +74,8 @@ public class TagebuchDataSource {
             labels.add(cursor.getString(1) + " ("+ cursor.getString(2) +")");
         }
 
-        // closing connection
+        // closing cursor
         cursor.close();
-        databaseRead.close();
 
         // returning lables
         return labels;
@@ -101,7 +99,7 @@ public class TagebuchDataSource {
         database.execSQL(updateQuery);
     }
 
-    public void addFoodEntry(String name, String foodDescription, int amount, String unit, int equivalent) {
+    public void addFoodEntry(String name, String foodDescription, float amount, String unit, int equivalent) {
         ContentValues lmValues = new ContentValues();
         lmValues.put(TagebuchHelper.TITEL, name);
         lmValues.put(TagebuchHelper.BESCHREIBUNG, foodDescription);
@@ -155,7 +153,7 @@ public class TagebuchDataSource {
 
 
     public String getEntryFromDBTable(String table, String column, String key, int id) {
-        String entry;
+        String entry = "";
         // Select Query
         String selectQuery = "SELECT " + column + " FROM " + table + " WHERE " + key + " = " + id + ";";
 
@@ -163,7 +161,6 @@ public class TagebuchDataSource {
 
         cursor.moveToFirst();
         entry = cursor.getString(0);
-        Log.d(LOG_TAG, "TEST:        " + entry);
 
         return entry;
     }
