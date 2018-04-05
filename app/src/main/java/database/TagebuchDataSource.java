@@ -8,6 +8,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.nfc.Tag;
 import android.util.Log;
 
 import java.util.ArrayList;
@@ -113,6 +114,18 @@ public class TagebuchDataSource {
         entspValues.put(TagebuchHelper.ENTSPRECHUNG, equivalent);
 
         database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
+    }
+
+    public void addMealEntry(int is_lm, int id, String date, int category, int calories){
+        ContentValues mealValues = new ContentValues();
+        mealValues.put(TagebuchHelper.IS_LM, is_lm);
+        mealValues.put(TagebuchHelper.MENU_LM_ID, id);
+        mealValues.put(TagebuchHelper.ZEIT, date);
+        mealValues.put(TagebuchHelper.KATEGORIE, category);
+        mealValues.put(TagebuchHelper.KALORIEN, calories);
+
+        database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, mealValues);
+
     }
 
 

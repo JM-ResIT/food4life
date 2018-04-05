@@ -5,9 +5,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -25,12 +27,15 @@ public class AddMeal extends AppCompatActivity {
     private String date = "";
     private int category;
     private Spinner categories, foods;
-    private int lm_id;
+    private int menu_lm_id;
     private String originAmount, originUnit, originCalories;
+    private String selecteditem;
+    private Button addMeal;
+    private int is_lm = 1;
 
     private TagebuchDataSource dataSource;
 
-    private String selecteditem;
+
     public static final String LOG_TAG = AddMeal.class.getSimpleName();
 
     @Override
@@ -50,13 +55,14 @@ public class AddMeal extends AppCompatActivity {
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
+        addMeal = (Button) findViewById(R.id.MealAdd);
 
         dataSource.open();
 
         foods.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
-                lm_id = dataSource.getRealIdFromLM(i);
+                menu_lm_id = dataSource.getRealIdFromLM(i);
                 setSelectedFood();
             }
 
@@ -81,7 +87,7 @@ public class AddMeal extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if (s.length() > 0) {
+                if (s.length() > 0 && calories.getText().toString().length() < 1) {
                     changeCaloriesOnUpdate(s.toString());
                 } else {
                     calories.setText("");
@@ -89,9 +95,27 @@ public class AddMeal extends AppCompatActivity {
             }
         });
 
+        addMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                addMeal();
+            }
+        });
+
 
         loadData();
 
+    }
+
+    private void addMeal(){
+       String foodAmountText = amount.getText().toString();
+        if(foodAmountText.length() > 0){
+            dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
+            Intent myIntent = new Intent(AddMeal.this, MainActivity.class);
+            AddMeal.this.startActivity(myIntent);
+        } else {
+            Log.d(LOG_TAG, "Please fill all text fields!");
+        }
     }
 
     private void changeCaloriesOnUpdate(String text) {
@@ -108,13 +132,18 @@ public class AddMeal extends AppCompatActivity {
     }
 
     private void setSelectedFood() {
-        originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, lm_id);
-        originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, lm_id);
-        originCalories = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id);
+        is_lm = 1;
+        originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
+        originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
+        originCalories = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
 
         amount.setText(originAmount);
         unit.setText(originUnit);
         calories.setText(originCalories);
+    }
+
+    private void setSelectedMenu(){
+        is_lm = 0;
     }
 
     private void deleteSelectedFood() {
