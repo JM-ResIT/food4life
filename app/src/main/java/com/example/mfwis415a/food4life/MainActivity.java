@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
 
 
         final long date = System.currentTimeMillis();
-
         tv = findViewById(R.id.Date);
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         final String dateString = showDate.format(date);

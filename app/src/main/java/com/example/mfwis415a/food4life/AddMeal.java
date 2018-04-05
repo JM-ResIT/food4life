@@ -18,7 +18,7 @@ import database.TagebuchDataSource;
 public class AddMeal extends AppCompatActivity {
 
     private TextView dateView;
-    private String date;
+    private String date = "";
     private int category;
     private Spinner categories, foodsandmenus;
 
@@ -64,9 +64,7 @@ public class AddMeal extends AppCompatActivity {
     }
 
     public void loadData() {
-        if (date.length() > 0) {
-            dateView.setText(date);
-        }
+        dateView.setText(date);
         loadCategorySpinnerData();
         loadFoodsAndMenus();
     }
