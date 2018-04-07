@@ -12,14 +12,11 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 
-import com.example.mfwis415a.food4life.R;
-
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import database.TagebuchDataSource;
 import database.TagebuchHelper;
-
-
 
 
 public class Calendar extends AppCompatActivity {
@@ -36,24 +33,16 @@ public class Calendar extends AppCompatActivity {
     private ListView mittagessen;
     private ListView abendessen;
     private ListView snacks;
+    private String dateC;
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
+
+
         mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
-
-        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-            @Override
-            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                String date = i2 + "." + (i1 + 1) + "." + i;
-                Log.d(TAG, "onSelectedDayChange: date: " + date);
-
-            }
-        });
-
-        dataSource = new TagebuchDataSource(this);
 
         addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
         addLunchC = (Button) findViewById(R.id.AddLunchC);
@@ -62,9 +51,23 @@ public class Calendar extends AppCompatActivity {
 
         fruehstueck = (ListView) findViewById(R.id.ListViewBreakfastC);
         mittagessen = (ListView) findViewById(R.id.ListViewLunchC);
-        abendessen= (ListView) findViewById(R.id.ListViewDinnerC);
+        abendessen = (ListView) findViewById(R.id.ListViewDinnerC);
         snacks = (ListView) findViewById(R.id.ListViewSnacksC);
 
+        final long date = System.currentTimeMillis();
+        SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+        final String dateString = showDate.format(date);
+
+        dateC = dateString;
+        mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
+            @Override
+            public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
+                dateC = i2 + "." + (i1 + 1) + "." + i;
+                Log.d(TAG, "onSelectedDayChange: date: " + dateC);
+            }
+        });
+
+        dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
         loadFoods();
@@ -72,36 +75,26 @@ public class Calendar extends AppCompatActivity {
         addBreakfastC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Calendar.this, AddFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
-
+                openMealActivity(dateC, 1);
             }
         });
         addLunchC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Calendar.this, AddFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
-
+                openMealActivity(dateC, 2);
             }
         });
         addDinnerC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Calendar.this, AddFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openMealActivity(dateC, 3);
 
             }
         });
         addSnacksC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(Calendar.this, AddFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openMealActivity(dateC, 0);
 
             }
         });
@@ -109,38 +102,29 @@ public class Calendar extends AppCompatActivity {
         fruehstueck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + fruehstueck.getItemAtPosition(position));
-                Intent myIntent = new Intent(Calendar.this, EditOrDeleteFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openEditOrDeleteMealActivity();
             }
         });
         mittagessen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + mittagessen.getItemAtPosition(position));
-                Intent myIntent = new Intent(Calendar.this, EditOrDeleteFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openEditOrDeleteMealActivity();
             }
         });
         abendessen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + abendessen.getItemAtPosition(position));
-                Intent myIntent = new Intent(Calendar.this, EditOrDeleteFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openEditOrDeleteMealActivity();
             }
         });
         snacks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + snacks.getItemAtPosition(position));
-                Intent myIntent = new Intent(Calendar.this, EditOrDeleteFood.class);
-                // myIntent.putExtra("key", "test"); //Optional parameters
-                Calendar.this.startActivity(myIntent);
+                openEditOrDeleteMealActivity();
             }
         });
+
     }
-
-
 
 
     public void loadFoods() {
@@ -163,5 +147,18 @@ public class Calendar extends AppCompatActivity {
                     android.R.layout.simple_list_item_1, lables));
         }
 
+    }
+
+
+    private void openMealActivity(String date, int category) {
+        Intent myIntent = new Intent(Calendar.this, AddMeal.class);
+        myIntent.putExtra("date", date);
+        myIntent.putExtra("category", category);
+        Calendar.this.startActivity(myIntent);
+    }
+
+    public void openEditOrDeleteMealActivity(){
+        Intent myIntent = new Intent(Calendar.this, EditOrDeleteMeal.class);
+        Calendar.this.startActivity(myIntent);
     }
 }

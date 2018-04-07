@@ -18,7 +18,7 @@ public class AddFood extends AppCompatActivity {
 
     private Button addFood;
     private Spinner units;
-    private EditText foodName, foodAmount, equivalent, foodDescription;
+    private EditText foodName, foodAmount, calories, foodDescription;
     private String unit;
 
     private TagebuchDataSource dataSource;
@@ -49,17 +49,17 @@ public class AddFood extends AppCompatActivity {
     private void addFood(){
         foodName = (EditText) findViewById(R.id.foodName);
         foodAmount = (EditText) findViewById(R.id.foodAmount);
-        equivalent = (EditText) findViewById(R.id.equivalent);
+        calories = (EditText) findViewById(R.id.equivalent);
         foodDescription = (EditText) findViewById(R.id.foodDescription);
 
         String foodNameText= foodName.getText().toString();
         String foodDescriptionText =  foodDescription.getText().toString();
         String foodAmountText = foodAmount.getText().toString();
-        String equivalentText = equivalent.getText().toString();
+        String caloriesText = calories.getText().toString();
         unit = units.getSelectedItem().toString();
 
-        if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
-            dataSource.addFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText));
+        if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  caloriesText.length() > 0){
+            dataSource.addFoodEntry(foodNameText, foodDescriptionText , Float.parseFloat(foodAmountText) , unit, Integer.parseInt(caloriesText));
 
             Intent myIntent = new Intent(AddFood.this, FoodList.class);
             AddFood.this.startActivity(myIntent);

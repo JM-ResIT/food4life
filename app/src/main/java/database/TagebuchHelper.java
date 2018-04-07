@@ -19,19 +19,21 @@ public class TagebuchHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_TBTABLE = "TAGEBUCHEINTRAG";
     public static final String TAGEBUCHEINTRAG_ID = "TB_ID";
-    public static final String LEBENSMITTEL_ID = "LM_ID";
-    public static final String MENU_ID = "MENU_ID";
     public static final String ZEIT = "ZEIT";
     public static final String LIMIT = "TAGESLIMIT";
     public static final String KATEGORIE = "KATEGORIE";
+    public static final String IS_LM = "IS_LM";
+    public static final String MENU_LM_ID = "MENU_LM_ID";
+    public static final String KALORIEN = "KALORIEN";
 
     public static final String DATABASE_LMTABLE = "LEBENSMITTEL";
+    public static final String LEBENSMITTEL_ID = "LM_ID";
     public static final String TITEL = "TITEL";
-
     public static final String DATABASE_EINTABLE = "EINHEIT";
     public static final String EINHEIT_ID = "EN_ID";
 
     public static final String DATABASE_MENUTABLE = "MENU";
+    public static final String MENU_ID = "MENU_ID";
 
     public static final String DATABASE_ENTSPTABLE = "ENTSPRECHUNG";
     public static final String ENTSPRECHUNG_ID = "ENTSP_ID";
@@ -39,7 +41,6 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String ENTSPRECHUNG = "ENTSPRECHUNG";
 
     public static final String DATABASE_MENU_LM_TABLE = "MENU_LM";
-
     public static final String EINHEIT = "EINHEIT";
     public static final String BESCHREIBUNG = "BESCHREIBUNG";
     public static final String IS_ACTIVE = "IS_ACTIVE";
@@ -51,16 +52,18 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String GEWICHT = "GEWICHT";
     public static final String GEBURTSDATUM = "GEBURTSDATUM";
 
+
+
     //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
             "CREATE TABLE " +
                     DATABASE_TBTABLE + "(" +
                     TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    MENU_ID + " INTEGER, " +
-                    LEBENSMITTEL_ID + " INTEGER, " +
-                    LIMIT + " INTEGER, " +
+                    IS_LM + " BOOLEAN NOT NULL default 1, " +
+                    MENU_LM_ID + " INTEGER, " +
                     ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
-                    KATEGORIE + " INTEGER);";
+                    KATEGORIE + " INTEGER, " +
+                    KALORIEN + " INTEGER); ";
 
     private static final String SQL_CREATE_LMTABLE =
             "CREATE TABLE " +
