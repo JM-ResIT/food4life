@@ -62,7 +62,17 @@ public class Calendar extends AppCompatActivity {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                dateC = i2 + "." + (i1 + 1) + "." + i;
+                if (i1 + 1 <= 10 && i2 <= 10){
+                    dateC = "0" + i2 + ".0" + (i1 + 1) + "." + i;}
+                else if (i1 + 1 <= 10){
+                    dateC = i2 + ".0" + (i1 + 1) + "." + i;
+                }
+                else{
+                    dateC = i2 + "." + (i1 + 1) + "." + i;
+                }
+
+
+
                 Log.d(TAG, "onSelectedDayChange: date: " + dateC);
             }
         });
