@@ -135,7 +135,7 @@ public class TagebuchDataSource {
         while (cursor.moveToNext()) {
             //(String table, String column, String key, int id)
             String mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
-            meals.add(mealName + " (" + cursor.getString(5) + ")");
+            meals.add(mealName + " (" + cursor.getString(5) + " kcal)");
         }
 
         // closing cursor

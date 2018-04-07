@@ -14,7 +14,6 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
-import java.util.Locale;
 
 import database.TagebuchDataSource;
 
@@ -64,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
         addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFoodAcivity(dateString, 1);
+                openMealActivity(dateString, 1);
             }
         });
 
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         addLunch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFoodAcivity(dateString, 2);
+                openMealActivity(dateString, 2);
             }
         });
 
@@ -80,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
         addDinner.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFoodAcivity(dateString, 3);
+                openMealActivity(dateString, 3);
 
             }
         });
@@ -89,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         addSnack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                openFoodAcivity(dateString, 0);
+                openMealActivity(dateString, 0);
 
             }
         });
@@ -156,22 +155,23 @@ public class MainActivity extends AppCompatActivity {
 
     private void populateListView(@IdRes int id, int category) {
         //Create list of items
-        List<String> breakfastMeals = dataSource.getMealEntries(dateString, category);
+        List<String> meals = dataSource.getMealEntries(dateString, category);
 
 
-        if (!breakfastMeals.isEmpty()) {
+        if (!meals.isEmpty()) {
             // Get a handle to the list view
             ListView list = (ListView) findViewById(id);
 
             list.setAdapter(new ArrayAdapter<String>(this,
-                    android.R.layout.simple_list_item_1, breakfastMeals));
+                    android.R.layout.simple_list_item_1, meals));
         }
     }
 
-    private void openFoodAcivity(String date, int category) {
+    private void openMealActivity(String date, int category) {
         Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
         myIntent.putExtra("date", date);
         myIntent.putExtra("category", category);
+        myIntent.putExtra("fromMain", true);
         MainActivity.this.startActivity(myIntent);
     }
 

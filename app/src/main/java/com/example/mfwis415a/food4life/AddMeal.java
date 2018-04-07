@@ -32,6 +32,7 @@ public class AddMeal extends AppCompatActivity {
     private String selecteditem;
     private Button addMeal;
     private int is_lm = 1;
+    private boolean fromMain;
 
     private TagebuchDataSource dataSource;
 
@@ -48,6 +49,8 @@ public class AddMeal extends AppCompatActivity {
         Intent intent = getIntent();
         date = intent.getStringExtra("date");
         category = intent.getIntExtra("category", 0);
+        fromMain = intent.getBooleanExtra("fromMain", true);
+
 
         dateView = (TextView) findViewById(R.id.MealDate);
         categories = (Spinner) findViewById(R.id.MealCategory);
@@ -107,12 +110,13 @@ public class AddMeal extends AppCompatActivity {
 
     }
 
-    private void addMeal(){
-       String foodAmountText = amount.getText().toString();
-        if(foodAmountText.length() > 0){
+    private void addMeal() {
+        String foodAmountText = amount.getText().toString();
+        if (foodAmountText.length() > 0) {
             dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
-            Intent myIntent = new Intent(AddMeal.this, MainActivity.class);
-            AddMeal.this.startActivity(myIntent);
+            Intent goBack;
+            goBack = fromMain ? new Intent(AddMeal.this, MainActivity.class) : new Intent(AddMeal.this, Calendar.class);
+            AddMeal.this.startActivity(goBack);
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");
         }
@@ -142,7 +146,7 @@ public class AddMeal extends AppCompatActivity {
         calories.setText(originCalories);
     }
 
-    private void setSelectedMenu(){
+    private void setSelectedMenu() {
         is_lm = 0;
     }
 
