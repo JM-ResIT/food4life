@@ -1,6 +1,7 @@
 package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
+import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import database.TagebuchDataSource;
 
@@ -93,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
-        foodList =  findViewById(R.id.goToFoodList);
+        foodList = findViewById(R.id.goToFoodList);
         foodList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -133,7 +135,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-
     @Override
     protected void onResume() {
         super.onResume();
@@ -147,25 +148,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateListViews() {
+        populateListView(R.id.ListViewBreakfast,1);
+        populateListView(R.id.ListViewLunch,2);
+        populateListView(R.id.ListViewDinner,3);
+        populateListView(R.id.ListViewSnacks,0);
+    }
+
+    private void populateListView(@IdRes int id, int category) {
         //Create list of items
-        List<String> breakfastMeals = dataSource.getMealEntries(dateString, 1);
+        List<String> breakfastMeals = dataSource.getMealEntries(dateString, category);
 
 
         if (!breakfastMeals.isEmpty()) {
             // Get a handle to the list view
-            ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
+            ListView list = (ListView) findViewById(id);
 
             list.setAdapter(new ArrayAdapter<String>(this,
                     android.R.layout.simple_list_item_1, breakfastMeals));
         }
-
     }
 
-    private void populateListView(int category){
-
-    }
-
-    private void openFoodAcivity(String date, int category){
+    private void openFoodAcivity(String date, int category) {
         Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
         myIntent.putExtra("date", date);
         myIntent.putExtra("category", category);

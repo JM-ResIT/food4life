@@ -133,7 +133,9 @@ public class TagebuchDataSource {
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.ZEIT + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
 
         while (cursor.moveToNext()) {
-            meals.add(cursor.getString(2) + " (" + cursor.getString(5) + ")");
+            //(String table, String column, String key, int id)
+            String mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
+            meals.add(mealName + " (" + cursor.getString(5) + ")");
         }
 
         // closing cursor
