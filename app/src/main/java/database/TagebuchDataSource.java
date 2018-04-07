@@ -12,6 +12,7 @@ import android.nfc.Tag;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TagebuchDataSource {
@@ -72,7 +73,7 @@ public class TagebuchDataSource {
         // looping through all rows and adding to list
 
         while (cursor.moveToNext()) {
-            labels.add(cursor.getString(1) + " ("+ cursor.getString(2) +")");
+            labels.add(cursor.getString(1) + " (" + cursor.getString(2) + ")");
         }
 
         // closing cursor
@@ -116,7 +117,7 @@ public class TagebuchDataSource {
         database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
     }
 
-    public void addMealEntry(int is_lm, int id, String date, int category, int calories){
+    public void addMealEntry(int is_lm, int id, String date, int category, int calories) {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
         mealValues.put(TagebuchHelper.MENU_LM_ID, id);
@@ -124,7 +125,21 @@ public class TagebuchDataSource {
         mealValues.put(TagebuchHelper.KATEGORIE, category);
         mealValues.put(TagebuchHelper.KALORIEN, calories);
 
-        database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, mealValues);
+        database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
+    }
+
+    public List<String> getMealEntries(String date, int category) {
+        List<String> meals = new ArrayList<String>();
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.ZEIT + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
+
+        while (cursor.moveToNext()) {
+            meals.add(cursor.getString(2) + " (" + cursor.getString(5) + ")");
+        }
+
+        // closing cursor
+        cursor.close();
+
+        return meals;
 
     }
 
@@ -179,12 +194,12 @@ public class TagebuchDataSource {
     }
 
     public void updateProfile(int limit) {
-                ContentValues contentValues = new ContentValues();
+        ContentValues contentValues = new ContentValues();
         contentValues.put(TagebuchHelper.LIMIT, limit);
         database.update(TagebuchHelper.DATABASE_PROFIL_TABLE, contentValues, TagebuchHelper.PROFIL_ID + "= ?", new String[]{String.valueOf(1)});
     }
 
-    public int getLimitFromProfile(){
+    public int getLimitFromProfile() {
         String selectQuery = "SELECT " + TagebuchHelper.LIMIT + " FROM " + TagebuchHelper.DATABASE_PROFIL_TABLE + " WHERE " + TagebuchHelper.PROFIL_ID + " = " + 1 + ";";
 
         Cursor cursor = databaseRead.rawQuery(selectQuery, null);

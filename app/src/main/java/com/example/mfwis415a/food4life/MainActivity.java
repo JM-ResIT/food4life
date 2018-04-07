@@ -1,10 +1,8 @@
 package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
-import android.media.Image;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -14,6 +12,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import database.TagebuchDataSource;
 
@@ -34,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv;
     private TagebuchDataSource dataSource;
     private ProgressBar calorieProgress;
+    private String dateString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +41,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         dataSource = new TagebuchDataSource(this);
-
-        populatelistview(); // Listview Method for Startscreen
-
+        dataSource.open();
 
         final long date = System.currentTimeMillis();
         tv = findViewById(R.id.Date);
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
-        final String dateString = showDate.format(date);
+        dateString = showDate.format(date);
         tv.setText(dateString);
 
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
@@ -122,11 +120,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dataSource.open();
-
         dataSource.insertSampleDataIfEmpty();
 
-
+        populateListViews(); // Listview Method for Startscreen
 
         calorieProgress = findViewById(R.id.progressBar);
         calorieProgress.setScaleY(2f);
@@ -150,16 +146,23 @@ public class MainActivity extends AppCompatActivity {
         dataSource.close();
     }
 
-    private void populatelistview() {
+    private void populateListViews() {
         //Create list of items
-        String[] myItems ={"Banane 150 kcal","Apfel", "Müsli", "Knäckebrot", "Toast", "Salami", "Käse"};
+        List<String> breakfastMeals = dataSource.getMealEntries(dateString, 1);
 
 
-        // Get a handle to the list view
-        ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
+        if (!breakfastMeals.isEmpty()) {
+            // Get a handle to the list view
+            ListView list = (ListView) findViewById(R.id.ListViewBreakfast);
 
-        list.setAdapter(new ArrayAdapter<String>(this,
-                android.R.layout.simple_list_item_1, myItems));
+            list.setAdapter(new ArrayAdapter<String>(this,
+                    android.R.layout.simple_list_item_1, breakfastMeals));
+        }
+
+    }
+
+    private void populateListView(int category){
+
     }
 
     private void openFoodAcivity(String date, int category){
