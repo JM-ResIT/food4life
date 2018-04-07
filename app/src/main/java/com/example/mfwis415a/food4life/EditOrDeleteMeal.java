@@ -26,7 +26,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_meal);
+        setContentView(R.layout.activity_edit_or_delete_meal);
 
         dataSource = new TagebuchDataSource(this);
 
