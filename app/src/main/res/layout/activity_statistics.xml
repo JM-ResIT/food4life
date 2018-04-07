@@ -4,8 +4,81 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="@dimen/textsize_button"
+    android:layout_marginRight="@dimen/textsize_button"
     tools:context=".Statistics">
 
 
+    <TextView
+        android:id="@+id/Überschrift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:textSize="@dimen/textsize_header"
+        android:textStyle="bold"
+        android:text="Durchschnittlich aufgenommene Kalorien" />
+
+    <TextView
+        android:id="@+id/ersteSpanne"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Überschrift"
+        android:textSize="@dimen/listrow_textsize"
+        android:layout_marginTop="@dimen/textsize_header"
+        android:text="7 Tage:" />
+
+    <TextView
+        android:id="@+id/ersterDurchschnitt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/Überschrift"
+        android:textSize="@dimen/listrow_textsize"
+        android:layout_toEndOf="@id/ersteSpanne"
+        android:layout_toRightOf="@id/ersteSpanne"
+        android:layout_marginTop="@dimen/textsize_header"
+        android:text="Platzhalter 1" />
+
+    <TextView
+        android:id="@+id/zweiteSpanne"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@id/ersteSpanne"
+        android:textSize="@dimen/listrow_textsize"
+        android:text="14 Tage:" />
+
+    <TextView
+        android:id="@+id/zweiterDurchschnitt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ersterDurchschnitt"
+        android:textSize="@dimen/listrow_textsize"
+        android:layout_toEndOf="@id/zweiteSpanne"
+        android:layout_toRightOf="@id/zweiteSpanne"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Platzhalter 2" />
+
+    <TextView
+        android:id="@+id/dritteSpanne"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_below="@id/zweiteSpanne"
+        android:textSize="@dimen/listrow_textsize"
+        android:text="30 Tage:" />
+
+    <TextView
+        android:id="@+id/dritterDurchschnitt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/zweiterDurchschnitt"
+        android:textSize="@dimen/listrow_textsize"
+        android:layout_toEndOf="@id/dritteSpanne"
+        android:layout_toRightOf="@id/dritteSpanne"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:text="Platzhalter 3" />
 
 </RelativeLayout>
