@@ -89,14 +89,14 @@
             android:layout_alignParentBottom="true">
 
             <Button
-                android:id="@+id/deleteFood"
+                android:id="@+id/deleteMenu"
                 android:layout_width="match_parent"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
                 android:text="Löschen" />
 
             <Button
-                android:id="@+id/editFood"
+                android:id="@+id/editMenu"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
