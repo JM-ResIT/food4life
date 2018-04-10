@@ -64,7 +64,7 @@ public class TagebuchDataSource {
         List<String> labels = new ArrayList<String>();
 
         // Select Query
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
 
         // looping through all rows and adding to list
 
@@ -81,7 +81,7 @@ public class TagebuchDataSource {
 
     public int getRealIdFromLM(int position) {
         int pos;
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.LEBENSMITTEL_ID, position + ",1");
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
 
         cursor.moveToFirst();
         pos = Integer.parseInt(cursor.getString(0));
