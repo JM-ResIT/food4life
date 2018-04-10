@@ -114,9 +114,7 @@ public class AddMeal extends AppCompatActivity {
         int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
             dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
-            Intent goBack;
-            goBack = fromMain ? new Intent(AddMeal.this, MainActivity.class) : new Intent(AddMeal.this, Calendar.class);
-            AddMeal.this.startActivity(goBack);
+            goBack();
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");
         }
@@ -202,8 +200,9 @@ public class AddMeal extends AppCompatActivity {
     }
 
     private void goBack() {
-        Intent myIntent = new Intent(AddMeal.this, MainActivity.class);
-        AddMeal.this.startActivity(myIntent);
+        Intent goBack;
+        goBack = fromMain ? new Intent(AddMeal.this, MainActivity.class) : new Intent(AddMeal.this, Calendar.class);
+        AddMeal.this.startActivity(goBack);
     }
 
     @Override
