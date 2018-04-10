@@ -13,15 +13,15 @@ public class EditOrDeleteMenu extends AppCompatActivity {
         setContentView(R.layout.activity_edit_or_delete_menu);
     }
 
-    private void goToMain() {
-        Intent myIntent = new Intent(EditOrDeleteMenu.this, MainActivity.class);
+    private void goBack() {
+        Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
         EditOrDeleteMenu.this.startActivity(myIntent);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

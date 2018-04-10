@@ -86,15 +86,15 @@ public class AddFood extends AppCompatActivity {
         units.setAdapter(dataAdapter);
     }
 
-    private void goToMain() {
-        Intent myIntent = new Intent(AddFood.this, MainActivity.class);
+    private void goBack() {
+        Intent myIntent = new Intent(AddFood.this, FoodList.class);
         AddFood.this.startActivity(myIntent);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

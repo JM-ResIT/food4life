@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 
-import com.example.mfwis415a.food4life.R;
-
 public class MenuList extends AppCompatActivity {
 
     @Override
@@ -15,7 +13,7 @@ public class MenuList extends AppCompatActivity {
         setContentView(R.layout.activity_menu_list);
     }
 
-    private void goToMain() {
+    private void goBack() {
         Intent myIntent = new Intent(MenuList.this, MainActivity.class);
         MenuList.this.startActivity(myIntent);
     }
@@ -23,7 +21,7 @@ public class MenuList extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

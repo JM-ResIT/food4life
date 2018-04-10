@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -200,6 +201,21 @@ public class AddMeal extends AppCompatActivity {
 
     private void loadFoodUnitData() {
 
+    }
+
+    private void goBack() {
+        Intent myIntent = new Intent(AddMeal.this, MainActivity.class);
+        AddMeal.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 

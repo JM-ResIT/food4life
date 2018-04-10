@@ -7,9 +7,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
-
-import com.example.mfwis415a.food4life.R;
 
 import database.TagebuchDataSource;
 import database.TagebuchHelper;
@@ -51,7 +48,7 @@ public class Profile extends AppCompatActivity {
         limit.setText(String.valueOf(dataSource.getLimitFromProfile()));
     }
 
-    private void goToMain() {
+    private void goBack() {
         Intent myIntent = new Intent(Profile.this, MainActivity.class);
         Profile.this.startActivity(myIntent);
     }
@@ -59,7 +56,7 @@ public class Profile extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

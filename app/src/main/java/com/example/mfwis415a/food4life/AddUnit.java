@@ -13,15 +13,15 @@ public class AddUnit extends AppCompatActivity {
         setContentView(R.layout.activity_add_unit);
     }
 
-    private void goToMain() {
-        Intent myIntent = new Intent(AddUnit.this, MainActivity.class);
+    private void goBack() {
+        Intent myIntent = new Intent(AddUnit.this, UnitList.class);
         AddUnit.this.startActivity(myIntent);
     }
 
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

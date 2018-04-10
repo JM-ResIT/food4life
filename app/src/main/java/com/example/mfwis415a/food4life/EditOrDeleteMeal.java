@@ -8,8 +8,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import com.example.mfwis415a.food4life.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -76,7 +74,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
 
     }
 
-    private void goToMain() {
+    private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteMeal.this, MainActivity.class);
         EditOrDeleteMeal.this.startActivity(myIntent);
     }
@@ -84,7 +82,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 

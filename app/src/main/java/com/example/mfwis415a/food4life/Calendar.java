@@ -181,7 +181,7 @@ public class Calendar extends AppCompatActivity {
         Calendar.this.startActivity(myIntent);
     }
 
-    private void goToMain() {
+    private void goBack() {
         Intent myIntent = new Intent(Calendar.this, MainActivity.class);
         Calendar.this.startActivity(myIntent);
     }
@@ -189,7 +189,7 @@ public class Calendar extends AppCompatActivity {
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
-            goToMain();
+            goBack();
             return true;
         }
 
