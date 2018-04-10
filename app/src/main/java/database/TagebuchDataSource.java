@@ -122,7 +122,16 @@ public class TagebuchDataSource {
         mealValues.put(TagebuchHelper.KALORIEN, calories);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
+
     }
+
+    public void addUnitEntry(String titel) {
+        ContentValues unitValues = new ContentValues();
+        unitValues.put(TagebuchHelper.TITEL, titel);
+
+        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, unitValues);
+    }
+
 
     public List<String> getMealEntries(String date, int category) {
         List<String> meals = new ArrayList<String>();

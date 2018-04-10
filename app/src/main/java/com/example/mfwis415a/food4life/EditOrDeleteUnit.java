@@ -4,8 +4,17 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
+import android.widget.EditText;
+import android.widget.Spinner;
+
+import database.TagebuchDataSource;
 
 public class EditOrDeleteUnit extends AppCompatActivity {
+
+    private TagebuchDataSource dataSource;
+    private EditText UnitName;
+
+    private static final String LOG_TAG = EditOrDeleteFood.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

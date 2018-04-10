@@ -15,7 +15,6 @@ public class AddUnit extends AppCompatActivity {
 
     private TagebuchDataSource dataSource;
 
-
     public static final String LOG_TAG = AddUnit.class.getSimpleName();
 
     @Override
@@ -41,8 +40,8 @@ public class AddUnit extends AppCompatActivity {
 
         String unitNameText = unitName.getText().toString();
 
-        if (unitNameText.length() > 0{
-            dataSource.addFoodEntry(unitNameText);
+        if (unitNameText.length() > 0) {
+            dataSource.addUnitEntry(unitNameText);
 
             Intent myIntent = new Intent(AddUnit.this, UnitList.class);
             AddUnit.this.startActivity(myIntent);
@@ -64,5 +63,16 @@ public class AddUnit extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        dataSource.open();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        dataSource.close();
     }
 }
