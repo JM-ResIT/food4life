@@ -112,6 +112,7 @@ public class AddMeal extends AppCompatActivity {
 
     private void addMeal() {
         String foodAmountText = amount.getText().toString();
+        int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
             dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
             Intent goBack;

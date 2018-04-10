@@ -70,7 +70,7 @@ public class Calendar extends AppCompatActivity {
                 } else {
                     dateC = i2 + "." + (i1 + 1) + "." + i;
                 }
-                clearListViews(); //FIXME
+                clearListViews();
                 populateListViews();
 
                 Log.d(TAG, "onSelectedDayChange: date: " + dateC);
