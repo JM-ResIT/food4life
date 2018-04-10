@@ -25,18 +25,11 @@ public class Calendar extends AppCompatActivity {
 
     public static final String TAG = "Calendaractivity";
 
-    private CalendarView mCalendarView;
     private TagebuchDataSource dataSource;
-    private Button addBreakfastC;
-    private Button addDinnerC;
-    private Button addLunchC;
-    private Button addSnacksC;
-    private ListView fruehstueck;
-    private ListView mittagessen;
-    private ListView abendessen;
-    private ListView snacks;
+    private ListView fruehstueck, mittagessen, abendessen, snacks;
     private String dateC;
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
+
+    private static final String LOG_TAG = Calendar.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,12 +37,12 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
 
-        mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
+        CalendarView mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
 
-        addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
-        addLunchC = (Button) findViewById(R.id.AddLunchC);
-        addDinnerC = (Button) findViewById(R.id.AddDinnerC);
-        addSnacksC = (Button) findViewById(R.id.AddSnacksC);
+        Button addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
+        Button addLunchC = (Button) findViewById(R.id.AddLunchC);
+        Button addDinnerC = (Button) findViewById(R.id.AddDinnerC);
+        Button addSnacksC = (Button) findViewById(R.id.AddSnacksC);
 
         fruehstueck = (ListView) findViewById(R.id.ListViewBreakfastC);
         mittagessen = (ListView) findViewById(R.id.ListViewLunchC);

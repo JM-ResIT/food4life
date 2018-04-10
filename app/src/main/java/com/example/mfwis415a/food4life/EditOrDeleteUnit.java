@@ -13,7 +13,6 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         setContentView(R.layout.activity_edit_or_delete_unit);
     }
 
-
     private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
         EditOrDeleteUnit.this.startActivity(myIntent);

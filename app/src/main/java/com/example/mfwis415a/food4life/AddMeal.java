@@ -26,12 +26,10 @@ public class AddMeal extends AppCompatActivity {
     private TextView dateView, unit, calories;
     private EditText amount;
     private String date = "";
+    private String originAmount, originCalories;
     private int category;
     private Spinner categories, foods;
     private int menu_lm_id;
-    private String originAmount, originUnit, originCalories;
-    private String selecteditem;
-    private Button addMeal;
     private int is_lm = 1;
     private boolean fromMain;
 
@@ -59,7 +57,7 @@ public class AddMeal extends AppCompatActivity {
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
-        addMeal = (Button) findViewById(R.id.MealAdd);
+        Button addMeal = (Button) findViewById(R.id.MealAdd);
 
         dataSource.open();
 
@@ -140,7 +138,7 @@ public class AddMeal extends AppCompatActivity {
     private void setSelectedFood() {
         is_lm = 1;
         originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
-        originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
+        String originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
         originCalories = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
 
         amount.setText(originAmount);

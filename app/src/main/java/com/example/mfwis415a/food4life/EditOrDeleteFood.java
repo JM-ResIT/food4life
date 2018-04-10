@@ -18,24 +18,20 @@ import database.TagebuchHelper;
 
 public class EditOrDeleteFood extends AppCompatActivity {
 
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
-
     private TagebuchDataSource dataSource;
-    private Button deleteFood;
-    private Button editFood;
     private Integer lm_id;
-
     private Spinner units;
     private EditText foodName, foodAmount, equivalent, foodDescription;
-    private String unit;
+
+    private static final String LOG_TAG = EditOrDeleteFood.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_delete_food);
 
-        deleteFood = (Button) findViewById(R.id.deleteFood);
-        editFood = (Button) findViewById(R.id.editFood);
+        Button deleteFood = (Button) findViewById(R.id.deleteFood);
+        Button editFood = (Button) findViewById(R.id.editFood);
         foodName = (EditText) findViewById(R.id.foodName);
         foodAmount = (EditText) findViewById(R.id.foodAmount);
         equivalent = (EditText) findViewById(R.id.equivalent);
@@ -70,7 +66,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
     }
 
     private void editFood(){
-        unit = units.getSelectedItem().toString();
+        String unit = units.getSelectedItem().toString();
         String foodNameText= foodName.getText().toString();
         String foodDescriptionText =  foodDescription.getText().toString();
         String foodAmountText = foodAmount.getText().toString();

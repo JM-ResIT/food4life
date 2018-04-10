@@ -16,13 +16,9 @@ import database.TagebuchDataSource;
 import database.TagebuchHelper;
 
 public class FoodList extends AppCompatActivity {
-
-    private Button addFood;
-    private ListView foodList;
-
     private TagebuchDataSource dataSource;
 
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
+    private static final String LOG_TAG = FoodList.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +26,8 @@ public class FoodList extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
 
         dataSource = new TagebuchDataSource(this);
-        addFood = (Button) findViewById(R.id.addFood);
-        foodList = (ListView) findViewById(R.id.foodList);
+        Button addFood = (Button) findViewById(R.id.addFood);
+        ListView foodList = (ListView) findViewById(R.id.foodList);
 
         dataSource.open();
 
