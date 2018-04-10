@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.util.List;
-
 import database.TagebuchDataSource;
 
 public class AddFood extends AppCompatActivity {
