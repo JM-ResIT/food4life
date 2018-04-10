@@ -160,6 +160,12 @@ public class TagebuchDataSource {
         ContentValues limit = new ContentValues();
         limit.put(TagebuchHelper.LIMIT, 2000);
         database.insert(TagebuchHelper.DATABASE_PROFIL_TABLE, null, limit);
+
+        addFoodEntry("Banane", "1 Stück", 1, "Stück", 80);
+        addFoodEntry("Schokolade", "100g", 100, "g", 456);
+        addFoodEntry("Pizza Dr. Oetker", "1 Stück", 1, "Stück", 750);
+        addFoodEntry("Reis", "100g", 100, "g", 400);
+        addFoodEntry("Milch", "100ml", 100, "ml", 40);
     }
 
     public void insertSampleDataIfEmpty() {

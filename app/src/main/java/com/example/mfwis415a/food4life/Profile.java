@@ -15,7 +15,7 @@ public class Profile extends AppCompatActivity {
 
     private TagebuchDataSource dataSource;
     private EditText limit;
-    private Button updateProfile;
+    private Button updateProfile, statistics;
 
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
@@ -28,10 +28,20 @@ public class Profile extends AppCompatActivity {
         dataSource = new TagebuchDataSource(this);
         limit = (EditText) findViewById(R.id.ProfileCalories);
         updateProfile = (Button) findViewById(R.id.UpdateProfile);
+        statistics = (Button) findViewById(R.id.goToStatistics);
 
         dataSource.open();
 
         loadData();
+
+        statistics.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent myIntent = new Intent(Profile.this, Statistics.class);
+                Profile.this.startActivity(myIntent);
+            }
+        });
+
 
         updateProfile.setOnClickListener(new View.OnClickListener() {
             @Override

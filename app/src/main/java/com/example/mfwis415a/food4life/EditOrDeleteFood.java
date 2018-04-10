@@ -85,7 +85,6 @@ public class EditOrDeleteFood extends AppCompatActivity {
     //set preselected values
     private void loadFoodData() {
         //TODO set unit
-        // dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT,  TagebuchHelper.LEBENSMITTEL_ID, lm_id
 
         foodName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
