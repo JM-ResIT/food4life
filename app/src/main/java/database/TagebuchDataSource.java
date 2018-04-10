@@ -117,6 +117,7 @@ public class TagebuchDataSource {
         database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
     }
 
+
     public void addMealEntry(int is_lm, int id, String date, int category, int calories) {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
@@ -137,10 +138,8 @@ public class TagebuchDataSource {
             String mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
             meals.add(mealName + " (" + cursor.getString(5) + " kcal)");
         }
-
         // closing cursor
         cursor.close();
-
         return meals;
 
     }
@@ -186,9 +185,7 @@ public class TagebuchDataSource {
         String entry = "";
         // Select Query
         String selectQuery = "SELECT " + column + " FROM " + table + " WHERE " + key + " = " + id + ";";
-
         Cursor cursor = databaseRead.rawQuery(selectQuery, null);
-
         cursor.moveToFirst();
         entry = cursor.getString(0);
 

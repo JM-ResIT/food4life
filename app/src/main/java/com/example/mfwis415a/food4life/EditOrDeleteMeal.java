@@ -3,6 +3,7 @@ package com.example.mfwis415a.food4life;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -73,6 +74,21 @@ public class EditOrDeleteMeal extends AppCompatActivity {
 
     public void loadFoodUnitData(){
 
+    }
+
+    private void goToMain() {
+        Intent myIntent = new Intent(EditOrDeleteMeal.this, MainActivity.class);
+        EditOrDeleteMeal.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goToMain();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 }

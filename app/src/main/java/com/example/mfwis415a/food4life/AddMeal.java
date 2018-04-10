@@ -90,7 +90,7 @@ public class AddMeal extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if (s.length() > 0 && calories.getText().toString().length() < 1) {
+                if (s.length() > 0) {
                     changeCaloriesOnUpdate(s.toString());
                 } else {
                     calories.setText("");

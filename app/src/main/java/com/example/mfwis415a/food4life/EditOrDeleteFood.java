@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -108,6 +109,21 @@ public class EditOrDeleteFood extends AppCompatActivity {
 
         // attaching data adapter to spinner
         units.setAdapter(dataAdapter);
+    }
+
+    private void goToMain() {
+        Intent myIntent = new Intent(EditOrDeleteFood.this, MainActivity.class);
+        EditOrDeleteFood.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goToMain();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

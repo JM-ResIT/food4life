@@ -3,6 +3,7 @@ package com.example.mfwis415a.food4life;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,5 +49,20 @@ public class Profile extends AppCompatActivity {
 
     public void loadData(){
         limit.setText(String.valueOf(dataSource.getLimitFromProfile()));
+    }
+
+    private void goToMain() {
+        Intent myIntent = new Intent(Profile.this, MainActivity.class);
+        Profile.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goToMain();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }
