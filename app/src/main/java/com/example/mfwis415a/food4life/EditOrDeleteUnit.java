@@ -23,7 +23,7 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_delete_unit);
 
-        Button deleteUnit = (Button) findViewById(R.id.deleteUnit;
+        Button deleteUnit = (Button) findViewById(R.id.deleteUnit);
         Button editUnit = (Button) findViewById(R.id.editUnit);
 
         dataSource = new TagebuchDataSource(this);
@@ -32,15 +32,14 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         int position = mIntent.getIntExtra("position", 0);
 
         dataSource.open();
-        lm_id = dataSource.getRealIdFromLM(position);
+    /*    lm_id = dataSource.getRealIdFromLM(position);
 
         loadUnitData();
 
-        deleteUnit.setOnClickListener(new View.OnClickListener() {
+       deleteUnit.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                dataSource.updateStatusOfLM(lm_id, 0);
-                Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
+           public void onClick(View view) { dataSource.updateStatusOfLM(lm_id, 0);
+               Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
                 EditOrDeleteUnit.this.startActivity(myIntent);
             }
         });
@@ -52,6 +51,7 @@ public class EditOrDeleteUnit extends AppCompatActivity {
             }
         });
     }
+
 
     private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
@@ -66,5 +66,7 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         }
 
         return super.onKeyDown(keyCode, event);
+    */
     }
-}
+
+ }
