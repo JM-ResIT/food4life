@@ -54,7 +54,8 @@
         android:layout_below="@+id/ProfileWeight"
         android:ems="10"
         android:hint="Geburtsdatum (TT/MM/JJ)"
-        android:inputType="date"
+        android:clickable="true"
+        android:focusable="false"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
 
