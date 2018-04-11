@@ -8,9 +8,11 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.nfc.Tag;
 import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class TagebuchDataSource {
@@ -38,27 +40,38 @@ public class TagebuchDataSource {
         }
     }
 
-    public List<String> getAllUnits() {
-        List<String> labels = new ArrayList<String>();
-
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, null, null, null, null, null);
-        while (cursor.moveToNext()) {
-            labels.add(cursor.getString(1));
-        }
-
-        cursor.close();
-        return labels;
-    }
 
     public List<String> getAllFoods() {
         List<String> labels = new ArrayList<String>();
 
+        // Select Query
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
+
+        // looping through all rows and adding to list
+
         while (cursor.moveToNext()) {
             labels.add(cursor.getString(1) + " (" + cursor.getString(2) + ")");
         }
 
+        // closing cursor
         cursor.close();
+
+        // returning lables
+        return labels;
+    }
+
+    public List<String> getAllUnits() {
+        List<String> labels = new ArrayList<String>();
+
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
+        while (cursor.moveToNext()) {
+            labels.add(cursor.getString(1));
+        }
+
+        // closing cursor
+        cursor.close();
+
+        // returning lables
         return labels;
     }
 
@@ -82,11 +95,26 @@ public class TagebuchDataSource {
         return pos;
     }
 
+    public int getRealIdFromUnit(int position) {
+        int pos;
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
+
+        cursor.moveToFirst();
+        pos = Integer.parseInt(cursor.getString(0));
+
+        return pos;
+    }
 
     public void updateStatusOfLM(int id, int status) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TagebuchHelper.IS_ACTIVE, status);
         database.update(TagebuchHelper.DATABASE_LMTABLE, contentValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[]{String.valueOf(id)});
+    }
+
+    public void updateStatusOfUnit(int id, int status) {
+        ContentValues unitValues = new ContentValues();
+        unitValues.put(TagebuchHelper.IS_ACTIVE, status);
+        database.update(TagebuchHelper.DATABASE_EINTABLE, unitValues, TagebuchHelper.EINHEIT_ID + "= ?", new String[]{String.valueOf(id)});
     }
 
     public void addFoodEntry(String name, String foodDescription, float amount, String unit, int equivalent) {
@@ -117,6 +145,14 @@ public class TagebuchDataSource {
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
     }
 
+    public void addUnitEntry(String titel) {
+        ContentValues unitValues = new ContentValues();
+        unitValues.put(TagebuchHelper.TITEL, titel);
+
+        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, unitValues);
+    }
+
+
     public List<String> getMealEntries(String date, int category) {
         List<String> meals = new ArrayList<String>();
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.ZEIT + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
@@ -129,11 +165,18 @@ public class TagebuchDataSource {
         // closing cursor
         cursor.close();
         return meals;
+
     }
+
 
     public void editFoodEntry(String name, String foodDescription, int amount, String unit, int equivalent, int id) {
         updateStatusOfLM(id, 0);
         addFoodEntry(name, foodDescription, amount, unit, equivalent);
+    }
+
+    public void editUnitEntry(String titel, int id) {
+        updateStatusOfUnit(id, 0);
+        addUnitEntry(titel);
     }
 
     public void insertSampleData() {

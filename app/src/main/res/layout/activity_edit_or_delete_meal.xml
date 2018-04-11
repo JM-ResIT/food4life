@@ -85,20 +85,23 @@
         android:paddingTop="16dp"
         android:orientation="horizontal"
         android:layout_below="@+id/MealCalories"
+        android:gravity="bottom"
         android:layout_alignParentBottom="true">
 
         <Button
-            android:id="@+id/deleteFood"
+            android:id="@+id/deleteMeal"
             android:layout_width="match_parent"
             android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
             android:text="Löschen" />
 
         <Button
-            android:id="@+id/editFood"
+            android:id="@+id/editMeal"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:layout_gravity="bottom"
             android:text="Speichern" />
 
 

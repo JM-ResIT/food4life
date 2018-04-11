@@ -75,7 +75,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             "CREATE TABLE " +
                     DATABASE_EINTABLE + "(" +
                     EINHEIT_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    TITEL + " STRING);";
+                    TITEL + " STRING, " +
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_MENUTABLE =
             "CREATE TABLE " +
