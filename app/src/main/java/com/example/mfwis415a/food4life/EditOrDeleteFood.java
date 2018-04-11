@@ -10,6 +10,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 import java.util.List;
 
@@ -20,7 +23,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
 
     private TagebuchDataSource dataSource;
     private Integer lm_id;
-    private Spinner units;
+    private TextView unit;
     private EditText foodName, foodAmount, equivalent, foodDescription;
 
     private static final String LOG_TAG = EditOrDeleteFood.class.getSimpleName();
@@ -36,7 +39,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
         foodAmount = (EditText) findViewById(R.id.foodAmount);
         equivalent = (EditText) findViewById(R.id.equivalent);
         foodDescription = (EditText) findViewById(R.id.foodDescription);
-        units = (Spinner) findViewById(R.id.foodUnit);
+        unit = (TextView) findViewById(R.id.foodUnit);
 
         dataSource = new TagebuchDataSource(this);
 
@@ -65,15 +68,15 @@ public class EditOrDeleteFood extends AppCompatActivity {
         });
     }
 
-    private void editFood(){
-        String unit = units.getSelectedItem().toString();
-        String foodNameText= foodName.getText().toString();
-        String foodDescriptionText =  foodDescription.getText().toString();
+    private void editFood() {
+        String foodNameText = foodName.getText().toString();
+        String foodDescriptionText = foodDescription.getText().toString();
         String foodAmountText = foodAmount.getText().toString();
         String equivalentText = equivalent.getText().toString();
+        String unitText = unit.getText().toString();
 
-        if(foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 &&  equivalentText.length() > 0){
-            dataSource.editFoodEntry(foodNameText, foodDescriptionText , Integer.parseInt(foodAmountText) , unit, Integer.parseInt(equivalentText), lm_id);
+        if (foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unitText.length() > 0 && equivalentText.length() > 0) {
+            dataSource.editFoodEntry(foodNameText, foodDescriptionText, Integer.parseInt(foodAmountText), unitText, Integer.parseInt(equivalentText), lm_id);
 
             Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
             EditOrDeleteFood.this.startActivity(myIntent);
@@ -84,26 +87,12 @@ public class EditOrDeleteFood extends AppCompatActivity {
 
     //set preselected values
     private void loadFoodData() {
-        //TODO set unit
-
+        unit.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodAmount.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
-        equivalent.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG,  TagebuchHelper.LEBENSMITTEL_ID, lm_id));
+        equivalent.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
 
-        // Spinner Drop down elements
-        List<String> labels = dataSource.getAllUnits();
-
-        // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, labels);
-
-        // Drop down layout style - list view with radio button
-        dataAdapter
-                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
-        // attaching data adapter to spinner
-        units.setAdapter(dataAdapter);
     }
 
     private void goBack() {

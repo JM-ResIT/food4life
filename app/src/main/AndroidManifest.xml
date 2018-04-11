@@ -11,8 +11,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name"
-            >
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -21,10 +20,10 @@
         </activity>
         <activity
             android:name=".AddMeal"
-            android:label="Tagebucheintrag Hinzufügen" />
+            android:label="Hinzufügen" />
         <activity
             android:name=".FoodList"
-            android:label="Lebensmittel-Übersicht" />
+            android:label="Lebensmittel" />
         <activity
             android:name=".MenuList"
             android:label="Menü-Übersicht" />
@@ -48,18 +47,19 @@
             android:label="Menü hinzufügen" />
         <activity
             android:name=".Statistics"
-            android:label="Ststistische Auswertungen" />
-        <activity android:name=".EditOrDeleteMeal" />
-        <activity android:name=".EditOrDeleteMenu" />
+            android:label="Statistische Auswertungen" />
+        <activity
+            android:name=".EditOrDeleteMeal"
+            android:label="Eintrag bearbeiten" />
+        <activity
+            android:name=".EditOrDeleteMenu"
+            android:label="Menü bearbeiten" />
         <activity
             android:name=".AddUnit"
-            android:label="Einheiten Hinzufügen"/>
+            android:label="Einheit hinzufügen" />
         <activity
             android:name=".EditOrDeleteUnit"
-            android:label="Bearbeiten/ Löschen"
-            />
-
-
+            android:label="Einheit bearbeiten" />
     </application>
 
 </manifest>

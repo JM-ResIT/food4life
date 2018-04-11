@@ -44,7 +44,7 @@ public class FoodList extends AppCompatActivity {
         foodList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(FoodList.this, EditOrDeleteFood.class);
-                myIntent.putExtra("position", position); //Optional parameters
+                myIntent.putExtra("position", position);
                 FoodList.this.startActivity(myIntent);
             }
         });

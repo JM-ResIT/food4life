@@ -1,8 +1,8 @@
 package com.example.mfwis415a.food4life;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
@@ -10,7 +10,6 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -30,24 +29,27 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     private int category;
     private Spinner categories, foods;
     private int menu_lm_id;
+    private int meal_id;
     private int is_lm = 1;
     private boolean fromMain;
 
     private TagebuchDataSource dataSource;
 
 
-    public static final String LOG_TAG = AddMeal.class.getSimpleName();
+    public static final String LOG_TAG = EditOrDeleteMeal.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_meal);
+        setContentView(R.layout.activity_edit_or_delete_meal);
 
         dataSource = new TagebuchDataSource(this);
-
+        dataSource.open();
         Intent intent = getIntent();
         date = intent.getStringExtra("date");
         category = intent.getIntExtra("category", 0);
+        int position = intent.getIntExtra("position", 0);
+        meal_id = dataSource.getRealIdFromMeal(date, category, position);
         fromMain = intent.getBooleanExtra("fromMain", true);
 
 
@@ -57,9 +59,8 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
-        Button addMeal = (Button) findViewById(R.id.MealAdd);
 
-        dataSource.open();
+
 
         foods.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -97,19 +98,12 @@ public class EditOrDeleteMeal extends AppCompatActivity {
             }
         });
 
-        addMeal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                addMeal();
-            }
-        });
-
 
         loadData();
 
     }
 
-    private void addMeal() {
+    private void changeMeal() {
         String foodAmountText = amount.getText().toString();
         int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
@@ -153,7 +147,6 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         unit.setText("");
         calories.setText("");
     }
-
 
     private void loadCategorySpinnerData() {
         // Spinner Drop down elements#

@@ -85,6 +85,7 @@
             android:layout_height="match_parent"
             android:paddingTop="16dp"
             android:orientation="horizontal"
+            android:gravity="bottom"
             android:layout_below="@+id/MealCalories"
             android:layout_alignParentBottom="true">
 

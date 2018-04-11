@@ -27,6 +27,7 @@
         android:paddingTop="16dp"
         android:orientation="horizontal"
         android:layout_below="@+id/UnitName"
+        android:gravity="bottom"
         android:layout_alignParentBottom="true">
 
     <Button

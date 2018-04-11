@@ -44,7 +44,7 @@
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:inputType="number" />
 
-    <Spinner
+    <TextView
         android:id="@+id/foodUnit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -70,6 +70,7 @@
         android:paddingTop="16dp"
         android:orientation="horizontal"
         android:layout_below="@+id/equivalent"
+        android:gravity="bottom"
         android:layout_alignParentBottom="true">
 
         <Button

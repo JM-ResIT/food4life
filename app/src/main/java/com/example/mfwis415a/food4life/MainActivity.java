@@ -5,6 +5,7 @@ import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -23,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private Button addBreakfast, addLunch, addDinner, addSnack, foodList, menuList;
+    private ListView breakfast, lunch, dinner, snacks;
     private ImageButton calendar, profile;
     private SimpleDateFormat showDate;
     private TextView tv;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
 
         final long date = System.currentTimeMillis();
         tv = findViewById(R.id.Date);
+        breakfast = (ListView) findViewById(R.id.ListViewBreakfast);
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         dateString = showDate.format(date);
         tv.setText(dateString);
@@ -60,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, Calendar.class);
-                MainActivity.this.startActivity(myIntent);
+                openNewActivity(Calendar.class);
             }
         });
 
@@ -104,8 +106,7 @@ public class MainActivity extends AppCompatActivity {
         foodList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, FoodList.class);
-                MainActivity.this.startActivity(myIntent);
+                openNewActivity(FoodList.class);
             }
         });
 
@@ -113,8 +114,7 @@ public class MainActivity extends AppCompatActivity {
         menuList.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, MenuList.class);
-                MainActivity.this.startActivity(myIntent);
+                openNewActivity(MenuList.class);
             }
         });
 
@@ -122,7 +122,17 @@ public class MainActivity extends AppCompatActivity {
         profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent myIntent = new Intent(MainActivity.this, Profile.class);
+                openNewActivity(Profile.class);
+            }
+        });
+
+        breakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MainActivity.this, EditOrDeleteMeal.class);
+                myIntent.putExtra("date", dateString);
+                myIntent.putExtra("category", 1);
+                myIntent.putExtra("position", position);
+                myIntent.putExtra("fromMain", true);
                 MainActivity.this.startActivity(myIntent);
             }
         });
@@ -150,6 +160,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         dataSource.close();
+    }
+
+    private void openNewActivity(Class<?> activity){
+        Intent myIntent = new Intent(MainActivity.this,activity);
+        MainActivity.this.startActivity(myIntent);
     }
 
     private void populateListViews() {

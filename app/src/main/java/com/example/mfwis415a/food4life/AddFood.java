@@ -16,18 +16,23 @@ import database.TagebuchDataSource;
 
 public class AddFood extends AppCompatActivity {
 
+    // Buttons for this java class
     private Spinner units;
     private TagebuchDataSource dataSource;
 
     public static final String LOG_TAG = AddFood.class.getSimpleName();
 
+
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
+        // Database is opened
         dataSource = new TagebuchDataSource(this);
-
+        // Button to add food to database
         Button addFood = (Button) findViewById(R.id.addFood);
+
         units = (Spinner) findViewById(R.id.foodUnit);
 
         dataSource.open();
@@ -39,7 +44,6 @@ public class AddFood extends AppCompatActivity {
                 addFood();
             }
         });
-
     }
 
     private void addFood() {
