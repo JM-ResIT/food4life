@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mfwis415a.food4life.AddMeal">
-
+    tools:context="com.example.mfwis415a.food4life.EditOrDeleteMeal">
     <TextView
         android:id="@+id/MealDate"
         android:layout_width="match_parent"
@@ -27,20 +26,28 @@
         android:layout_below="@+id/MealDate" />
 
     <Spinner
-        android:id="@+id/MealName"
+        android:id="@+id/Foods"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"
         android:layout_below="@+id/MealCategory" />
 
+    <Spinner
+        android:id="@+id/Menus"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_below="@+id/Foods" />
+
     <EditText
         android:id="@+id/MealAmount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/MealName"
-        android:layout_alignStart="@+id/MealName"
-        android:layout_below="@id/MealName"
+        android:layout_alignLeft="@+id/Menus"
+        android:layout_alignStart="@+id/Menus"
+        android:layout_below="@id/Menus"
         android:hint="Menge"
         android:inputType="number"
         android:layout_marginTop="@dimen/activity_vertical_margin"
@@ -57,6 +64,7 @@
         android:textSize="18dp"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"  />
+
 
     <TextView
         android:id="@+id/MealCalories"

@@ -40,7 +40,6 @@ public class AddFood extends AppCompatActivity {
                 addFood();
             }
         });
-
     }
 
     private void addFood() {

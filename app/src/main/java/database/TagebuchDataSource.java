@@ -8,11 +8,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.nfc.Tag;
 import android.util.Log;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class TagebuchDataSource {
@@ -40,48 +38,43 @@ public class TagebuchDataSource {
         }
     }
 
-
     public List<String> getAllUnits() {
         List<String> labels = new ArrayList<String>();
 
-        // Select All Query
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, null, null, null, null, null);
-
-        // looping through all rows and adding to list
-
         while (cursor.moveToNext()) {
             labels.add(cursor.getString(1));
         }
 
-        // closing cursor
         cursor.close();
-
-        // returning lables
         return labels;
     }
 
     public List<String> getAllFoods() {
         List<String> labels = new ArrayList<String>();
 
-        // Select Query
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
-
-        // looping through all rows and adding to list
-
         while (cursor.moveToNext()) {
             labels.add(cursor.getString(1) + " (" + cursor.getString(2) + ")");
         }
 
-        // closing cursor
         cursor.close();
-
-        // returning lables
         return labels;
     }
 
     public int getRealIdFromLM(int position) {
         int pos;
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
+
+        cursor.moveToFirst();
+        pos = Integer.parseInt(cursor.getString(0));
+
+        return pos;
+    }
+
+    public int getRealIdFromMeal(String date, int category, int position){
+        int pos;
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.IS_ACTIVE + "=? and " + TagebuchHelper.ZEIT + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{String.valueOf(1), date, String.valueOf(category)}, null, null, TagebuchHelper.TAGEBUCHEINTRAG_ID, position + ",1");
 
         cursor.moveToFirst();
         pos = Integer.parseInt(cursor.getString(0));
@@ -136,9 +129,7 @@ public class TagebuchDataSource {
         // closing cursor
         cursor.close();
         return meals;
-
     }
-
 
     public void editFoodEntry(String name, String foodDescription, int amount, String unit, int equivalent, int id) {
         updateStatusOfLM(id, 0);

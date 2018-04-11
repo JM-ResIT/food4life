@@ -52,9 +52,6 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     public static final String GEWICHT = "GEWICHT";
     public static final String GEBURTSDATUM = "GEBURTSDATUM";
 
-
-
-    //TODO create missing tables
     private static final String SQL_CREATE_TBTABLE =
             "CREATE TABLE " +
                     DATABASE_TBTABLE + "(" +
@@ -63,7 +60,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     MENU_LM_ID + " INTEGER, " +
                     ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                     KATEGORIE + " INTEGER, " +
-                    KALORIEN + " INTEGER); ";
+                    KALORIEN + " INTEGER, " +
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_LMTABLE =
             "CREATE TABLE " +
