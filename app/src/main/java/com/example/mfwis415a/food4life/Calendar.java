@@ -6,6 +6,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -24,18 +25,11 @@ public class Calendar extends AppCompatActivity {
 
     public static final String TAG = "Calendaractivity";
 
-    private CalendarView mCalendarView;
     private TagebuchDataSource dataSource;
-    private Button addBreakfastC;
-    private Button addDinnerC;
-    private Button addLunchC;
-    private Button addSnacksC;
-    private ListView fruehstueck;
-    private ListView mittagessen;
-    private ListView abendessen;
-    private ListView snacks;
+    private ListView fruehstueck, mittagessen, abendessen, snacks;
     private String dateC;
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
+
+    private static final String LOG_TAG = Calendar.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +37,12 @@ public class Calendar extends AppCompatActivity {
         setContentView(R.layout.activity_calendar);
 
 
-        mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
+        CalendarView mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
 
-        addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
-        addLunchC = (Button) findViewById(R.id.AddLunchC);
-        addDinnerC = (Button) findViewById(R.id.AddDinnerC);
-        addSnacksC = (Button) findViewById(R.id.AddSnacksC);
+        Button addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
+        Button addLunchC = (Button) findViewById(R.id.AddLunchC);
+        Button addDinnerC = (Button) findViewById(R.id.AddDinnerC);
+        Button addSnacksC = (Button) findViewById(R.id.AddSnacksC);
 
         fruehstueck = (ListView) findViewById(R.id.ListViewBreakfastC);
         mittagessen = (ListView) findViewById(R.id.ListViewLunchC);
@@ -63,9 +57,9 @@ public class Calendar extends AppCompatActivity {
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
-                if (i1 + 1 <= 10 && i2 <= 10) {
+                if (i1 + 1 < 10 && i2 < 10) {
                     dateC = "0" + i2 + ".0" + (i1 + 1) + "." + i;
-                } else if (i1 + 1 <= 10) {
+                } else if (i1 + 1 < 10) {
                     dateC = i2 + ".0" + (i1 + 1) + "." + i;
                 } else {
                     dateC = i2 + "." + (i1 + 1) + "." + i;
@@ -178,5 +172,20 @@ public class Calendar extends AppCompatActivity {
     public void openEditOrDeleteMealActivity() {
         Intent myIntent = new Intent(Calendar.this, EditOrDeleteMeal.class);
         Calendar.this.startActivity(myIntent);
+    }
+
+    private void goBack() {
+        Intent myIntent = new Intent(Calendar.this, MainActivity.class);
+        Calendar.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 }

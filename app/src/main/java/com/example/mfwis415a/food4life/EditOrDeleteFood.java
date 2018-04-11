@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -17,24 +18,20 @@ import database.TagebuchHelper;
 
 public class EditOrDeleteFood extends AppCompatActivity {
 
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
-
     private TagebuchDataSource dataSource;
-    private Button deleteFood;
-    private Button editFood;
     private Integer lm_id;
-
     private Spinner units;
     private EditText foodName, foodAmount, equivalent, foodDescription;
-    private String unit;
+
+    private static final String LOG_TAG = EditOrDeleteFood.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_delete_food);
 
-        deleteFood = (Button) findViewById(R.id.deleteFood);
-        editFood = (Button) findViewById(R.id.editFood);
+        Button deleteFood = (Button) findViewById(R.id.deleteFood);
+        Button editFood = (Button) findViewById(R.id.editFood);
         foodName = (EditText) findViewById(R.id.foodName);
         foodAmount = (EditText) findViewById(R.id.foodAmount);
         equivalent = (EditText) findViewById(R.id.equivalent);
@@ -69,7 +66,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
     }
 
     private void editFood(){
-        unit = units.getSelectedItem().toString();
+        String unit = units.getSelectedItem().toString();
         String foodNameText= foodName.getText().toString();
         String foodDescriptionText =  foodDescription.getText().toString();
         String foodAmountText = foodAmount.getText().toString();
@@ -88,7 +85,6 @@ public class EditOrDeleteFood extends AppCompatActivity {
     //set preselected values
     private void loadFoodData() {
         //TODO set unit
-        // dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT,  TagebuchHelper.LEBENSMITTEL_ID, lm_id
 
         foodName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
@@ -108,6 +104,21 @@ public class EditOrDeleteFood extends AppCompatActivity {
 
         // attaching data adapter to spinner
         units.setAdapter(dataAdapter);
+    }
+
+    private void goBack() {
+        Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
+        EditOrDeleteFood.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
     @Override

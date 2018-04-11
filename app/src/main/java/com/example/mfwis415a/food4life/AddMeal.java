@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,12 +26,10 @@ public class AddMeal extends AppCompatActivity {
     private TextView dateView, unit, calories;
     private EditText amount;
     private String date = "";
+    private String originAmount, originCalories;
     private int category;
     private Spinner categories, foods;
     private int menu_lm_id;
-    private String originAmount, originUnit, originCalories;
-    private String selecteditem;
-    private Button addMeal;
     private int is_lm = 1;
     private boolean fromMain;
 
@@ -58,7 +57,7 @@ public class AddMeal extends AppCompatActivity {
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
-        addMeal = (Button) findViewById(R.id.MealAdd);
+        Button addMeal = (Button) findViewById(R.id.MealAdd);
 
         dataSource.open();
 
@@ -90,7 +89,7 @@ public class AddMeal extends AppCompatActivity {
             @Override
             public void onTextChanged(CharSequence s, int start,
                                       int before, int count) {
-                if (s.length() > 0 && calories.getText().toString().length() < 1) {
+                if (s.length() > 0) {
                     changeCaloriesOnUpdate(s.toString());
                 } else {
                     calories.setText("");
@@ -112,11 +111,10 @@ public class AddMeal extends AppCompatActivity {
 
     private void addMeal() {
         String foodAmountText = amount.getText().toString();
+        int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
             dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
-            Intent goBack;
-            goBack = fromMain ? new Intent(AddMeal.this, MainActivity.class) : new Intent(AddMeal.this, Calendar.class);
-            AddMeal.this.startActivity(goBack);
+            goBack();
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");
         }
@@ -138,7 +136,7 @@ public class AddMeal extends AppCompatActivity {
     private void setSelectedFood() {
         is_lm = 1;
         originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
-        originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
+        String originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
         originCalories = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
 
         amount.setText(originAmount);
@@ -199,6 +197,22 @@ public class AddMeal extends AppCompatActivity {
 
     private void loadFoodUnitData() {
 
+    }
+
+    private void goBack() {
+        Intent goBack;
+        goBack = fromMain ? new Intent(AddMeal.this, MainActivity.class) : new Intent(AddMeal.this, Calendar.class);
+        AddMeal.this.startActivity(goBack);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 

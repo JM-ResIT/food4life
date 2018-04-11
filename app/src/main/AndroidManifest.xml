@@ -21,10 +21,10 @@
         </activity>
         <activity
             android:name=".AddMeal"
-            android:label="Hinzufügen" />
+            android:label="Tagebucheintrag Hinzufügen" />
         <activity
             android:name=".FoodList"
-            android:label="Lebensmittel" />
+            android:label="Lebensmittel-Übersicht" />
         <activity
             android:name=".MenuList"
             android:label="Menü-Übersicht" />
@@ -51,8 +51,15 @@
             android:label="Ststistische Auswertungen" />
         <activity android:name=".EditOrDeleteMeal" />
         <activity android:name=".EditOrDeleteMenu" />
-        <activity android:name=".AddUnit" />
-        <activity android:name=".EditOrDeleteUnit"></activity>
+        <activity
+            android:name=".AddUnit"
+            android:label="Einheiten Hinzufügen"/>
+        <activity
+            android:name=".EditOrDeleteUnit"
+            android:label="Bearbeiten/ Löschen"
+            />
+
+
     </application>
 
 </manifest>

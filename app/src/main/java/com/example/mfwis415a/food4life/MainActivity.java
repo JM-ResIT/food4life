@@ -22,14 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
-    private Button addBreakfast;
-    private Button addLunch;
-    private Button addDinner;
-    private Button addSnack;
-    private Button foodList;
-    private Button menuList;
-    private ImageButton calendar;
-    private ImageButton profile;
+    private Button addBreakfast, addLunch, addDinner, addSnack, foodList, menuList;
+    private ImageButton calendar, profile;
     private SimpleDateFormat showDate;
     private TextView tv;
     private TagebuchDataSource dataSource;
@@ -147,10 +141,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void populateListViews() {
-        populateListView(R.id.ListViewBreakfast,1);
-        populateListView(R.id.ListViewLunch,2);
-        populateListView(R.id.ListViewDinner,3);
-        populateListView(R.id.ListViewSnacks,0);
+        populateListView(R.id.ListViewBreakfast, 1);
+        populateListView(R.id.ListViewLunch, 2);
+        populateListView(R.id.ListViewDinner, 3);
+        populateListView(R.id.ListViewSnacks, 0);
     }
 
     private void populateListView(@IdRes int id, int category) {

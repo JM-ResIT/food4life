@@ -3,7 +3,7 @@ package com.example.mfwis415a.food4life;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -16,13 +16,9 @@ import database.TagebuchDataSource;
 import database.TagebuchHelper;
 
 public class FoodList extends AppCompatActivity {
-
-    private Button addFood;
-    private ListView foodList;
-
     private TagebuchDataSource dataSource;
 
-    private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
+    private static final String LOG_TAG = FoodList.class.getSimpleName();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,8 +26,8 @@ public class FoodList extends AppCompatActivity {
         setContentView(R.layout.activity_food_list);
 
         dataSource = new TagebuchDataSource(this);
-        addFood = (Button) findViewById(R.id.addFood);
-        foodList = (ListView) findViewById(R.id.foodList);
+        Button addFood = (Button) findViewById(R.id.addFood);
+        ListView foodList = (ListView) findViewById(R.id.foodList);
 
         dataSource.open();
 
@@ -67,6 +63,21 @@ public class FoodList extends AppCompatActivity {
                     android.R.layout.simple_list_item_1, lables));
         }
 
+    }
+
+    private void goBack() {
+        Intent myIntent = new Intent(FoodList.this, MainActivity.class);
+        FoodList.this.startActivity(myIntent);
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
+            goBack();
+            return true;
+        }
+
+        return super.onKeyDown(keyCode, event);
     }
 
 

@@ -45,9 +45,7 @@ public class TagebuchDataSource {
         List<String> labels = new ArrayList<String>();
 
         // Select All Query
-        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_EINTABLE;
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, null, null, null, null, null);
 
         // looping through all rows and adding to list
 
@@ -66,9 +64,7 @@ public class TagebuchDataSource {
         List<String> labels = new ArrayList<String>();
 
         // Select Query
-        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1";
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
 
         // looping through all rows and adding to list
 
@@ -85,10 +81,7 @@ public class TagebuchDataSource {
 
     public int getRealIdFromLM(int position) {
         int pos;
-        // Select Query
-        String selectQuery = "SELECT  * FROM " + TagebuchHelper.DATABASE_LMTABLE + " WHERE " + TagebuchHelper.IS_ACTIVE + " = 1" + " ORDER BY " + TagebuchHelper.LEBENSMITTEL_ID + " ASC LIMIT 1 OFFSET " + position + ";";
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
 
         cursor.moveToFirst();
         pos = Integer.parseInt(cursor.getString(0));
@@ -96,9 +89,11 @@ public class TagebuchDataSource {
         return pos;
     }
 
+
     public void updateStatusOfLM(int id, int status) {
-        String updateQuery = "UPDATE " + TagebuchHelper.DATABASE_LMTABLE + " SET " + TagebuchHelper.IS_ACTIVE + " = " + status + " WHERE " + TagebuchHelper.LEBENSMITTEL_ID + " = " + id + ";";
-        database.execSQL(updateQuery);
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(TagebuchHelper.IS_ACTIVE, status);
+        database.update(TagebuchHelper.DATABASE_LMTABLE, contentValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[]{String.valueOf(id)});
     }
 
     public void addFoodEntry(String name, String foodDescription, float amount, String unit, int equivalent) {
@@ -117,6 +112,7 @@ public class TagebuchDataSource {
         database.insert(TagebuchHelper.DATABASE_ENTSPTABLE, null, entspValues);
     }
 
+
     public void addMealEntry(int is_lm, int id, String date, int category, int calories) {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
@@ -126,7 +122,16 @@ public class TagebuchDataSource {
         mealValues.put(TagebuchHelper.KALORIEN, calories);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
+
     }
+
+    public void addUnitEntry(String titel) {
+        ContentValues unitValues = new ContentValues();
+        unitValues.put(TagebuchHelper.TITEL, titel);
+
+        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, unitValues);
+    }
+
 
     public List<String> getMealEntries(String date, int category) {
         List<String> meals = new ArrayList<String>();
@@ -137,10 +142,8 @@ public class TagebuchDataSource {
             String mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
             meals.add(mealName + " (" + cursor.getString(5) + " kcal)");
         }
-
         // closing cursor
         cursor.close();
-
         return meals;
 
     }
@@ -166,14 +169,19 @@ public class TagebuchDataSource {
         ContentValues limit = new ContentValues();
         limit.put(TagebuchHelper.LIMIT, 2000);
         database.insert(TagebuchHelper.DATABASE_PROFIL_TABLE, null, limit);
+
+        addFoodEntry("Banane", "1 Stück", 1, "Stück", 80);
+        addFoodEntry("Schokolade", "100g", 100, "g", 456);
+        addFoodEntry("Pizza Dr. Oetker", "1 Stück", 1, "Stück", 750);
+        addFoodEntry("Reis", "100g", 100, "g", 400);
+        addFoodEntry("Milch", "100ml", 100, "ml", 40);
     }
 
     public void insertSampleDataIfEmpty() {
-        String count = "SELECT count(*) FROM " + TagebuchHelper.DATABASE_EINTABLE;
-        Cursor mcursor = database.rawQuery(count, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, new String[]{"count(*)"}, null, null, null, null, null);
 
-        mcursor.moveToFirst();
-        int icount = mcursor.getInt(0);
+        cursor.moveToFirst();
+        int icount = cursor.getInt(0);
         if (icount > 0) {
             Log.d(LOG_TAG, "Data already inserted, proceeding...");
         } else {
@@ -185,10 +193,7 @@ public class TagebuchDataSource {
     public String getEntryFromDBTable(String table, String column, String key, int id) {
         String entry = "";
         // Select Query
-        String selectQuery = "SELECT " + column + " FROM " + table + " WHERE " + key + " = " + id + ";";
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
-
+        Cursor cursor = databaseRead.query(table, new String[]{column}, key + "=?", new String[]{String.valueOf(id)}, null, null, null);
         cursor.moveToFirst();
         entry = cursor.getString(0);
 
@@ -202,9 +207,7 @@ public class TagebuchDataSource {
     }
 
     public int getLimitFromProfile() {
-        String selectQuery = "SELECT " + TagebuchHelper.LIMIT + " FROM " + TagebuchHelper.DATABASE_PROFIL_TABLE + " WHERE " + TagebuchHelper.PROFIL_ID + " = " + 1 + ";";
-
-        Cursor cursor = databaseRead.rawQuery(selectQuery, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_PROFIL_TABLE, new String[]{TagebuchHelper.LIMIT}, TagebuchHelper.PROFIL_ID + "=?", new String[]{String.valueOf(1)}, null, null, null);
 
         cursor.moveToFirst();
         return Integer.parseInt(cursor.getString(0));
