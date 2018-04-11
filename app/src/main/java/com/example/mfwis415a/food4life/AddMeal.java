@@ -113,7 +113,7 @@ public class AddMeal extends AppCompatActivity {
         String foodAmountText = amount.getText().toString();
         int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
-            dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
+            dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()), Float.parseFloat(foodAmountText));
             goBack();
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");

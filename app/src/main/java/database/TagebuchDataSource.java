@@ -95,6 +95,20 @@ public class TagebuchDataSource {
         return pos;
     }
 
+    public int getPositionFromFood(int id){
+        int pos = 0;
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_LMTABLE, new String[]{TagebuchHelper.LEBENSMITTEL_ID}, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
+
+        while(cursor.moveToNext()){
+            int lm_id = Integer.parseInt(cursor.getString(0));
+            if( lm_id == id){
+                return pos;
+            }
+            pos += 1;
+        }
+        return pos;
+    }
+
     public int getRealIdFromUnit(int position) {
         int pos;
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_EINTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
@@ -108,13 +122,17 @@ public class TagebuchDataSource {
     public void updateStatusOfLM(int id, int status) {
         ContentValues contentValues = new ContentValues();
         contentValues.put(TagebuchHelper.IS_ACTIVE, status);
-        database.update(TagebuchHelper.DATABASE_LMTABLE, contentValues, TagebuchHelper.LEBENSMITTEL_ID + "= ?", new String[]{String.valueOf(id)});
+        database.update(TagebuchHelper.DATABASE_LMTABLE, contentValues, TagebuchHelper.LEBENSMITTEL_ID + "=?", new String[]{String.valueOf(id)});
     }
 
     public void updateStatusOfUnit(int id, int status) {
         ContentValues unitValues = new ContentValues();
         unitValues.put(TagebuchHelper.IS_ACTIVE, status);
-        database.update(TagebuchHelper.DATABASE_EINTABLE, unitValues, TagebuchHelper.EINHEIT_ID + "= ?", new String[]{String.valueOf(id)});
+        database.update(TagebuchHelper.DATABASE_EINTABLE, unitValues, TagebuchHelper.EINHEIT_ID + "=?", new String[]{String.valueOf(id)});
+    }
+
+    public void deleteMeal(int id){
+        database.delete(TagebuchHelper.DATABASE_TBTABLE, TagebuchHelper.TAGEBUCHEINTRAG_ID + "=?", new String[]{String.valueOf(id)});
     }
 
     public void addFoodEntry(String name, String foodDescription, float amount, String unit, int equivalent) {
@@ -134,15 +152,28 @@ public class TagebuchDataSource {
     }
 
 
-    public void addMealEntry(int is_lm, int id, String date, int category, int calories) {
+    public void addMealEntry(int is_lm, int id, String date, int category, int calories, float amount) {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
         mealValues.put(TagebuchHelper.MENU_LM_ID, id);
         mealValues.put(TagebuchHelper.ZEIT, date);
         mealValues.put(TagebuchHelper.KATEGORIE, category);
         mealValues.put(TagebuchHelper.KALORIEN, calories);
+        mealValues.put(TagebuchHelper.ANZAHL, amount);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
+    }
+
+    public void editMealEntry(int meal_id, int is_lm, int id, String date, int category, int calories, float amount){
+        ContentValues mealValues = new ContentValues();
+        mealValues.put(TagebuchHelper.IS_LM, is_lm);
+        mealValues.put(TagebuchHelper.MENU_LM_ID, id);
+        mealValues.put(TagebuchHelper.ZEIT, date);
+        mealValues.put(TagebuchHelper.KATEGORIE, category);
+        mealValues.put(TagebuchHelper.KALORIEN, calories);
+        mealValues.put(TagebuchHelper.ANZAHL, amount);
+
+        database.update(TagebuchHelper.DATABASE_TBTABLE, mealValues, TagebuchHelper.TAGEBUCHEINTRAG_ID + "= ?", new String[]{String.valueOf(meal_id)});
     }
 
     public void addUnitEntry(String titel) {
@@ -169,7 +200,7 @@ public class TagebuchDataSource {
     }
 
 
-    public void editFoodEntry(String name, String foodDescription, int amount, String unit, int equivalent, int id) {
+    public void editFoodEntry(String name, String foodDescription, float amount, String unit, int equivalent, int id) {
         updateStatusOfLM(id, 0);
         addFoodEntry(name, foodDescription, amount, unit, equivalent);
     }

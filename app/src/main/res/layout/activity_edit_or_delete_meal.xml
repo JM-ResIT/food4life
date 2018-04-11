@@ -49,7 +49,7 @@
         android:layout_alignStart="@+id/Menus"
         android:layout_below="@id/Menus"
         android:hint="Menge"
-        android:inputType="number"
+        android:inputType="numberDecimal"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin" />
 

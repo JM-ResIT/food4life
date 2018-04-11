@@ -10,6 +10,7 @@ import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import database.TagebuchHelper;
 public class EditOrDeleteMeal extends AppCompatActivity {
 
     private TextView dateView, unit, calories;
+    private Button deleteMeal, editMeal;
     private EditText amount;
     private String date = "";
     private String originAmount, originCalories;
@@ -32,6 +34,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     private int meal_id;
     private int is_lm = 1;
     private boolean fromMain;
+    private boolean spinnerAlreadyClicked = false;
 
     private TagebuchDataSource dataSource;
 
@@ -45,6 +48,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
+
         Intent intent = getIntent();
         date = intent.getStringExtra("date");
         category = intent.getIntExtra("category", 0);
@@ -59,14 +63,35 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
+        deleteMeal = (Button) findViewById(R.id.deleteMeal);
+        editMeal = (Button) findViewById(R.id.editMeal);
 
+        deleteMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dataSource.deleteMeal(meal_id);
+                goBack();
+            }
+        });
+
+        editMeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeMeal();
+            }
+        });
 
 
         foods.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
                 menu_lm_id = dataSource.getRealIdFromLM(i);
-                setSelectedFood();
+                if(!spinnerAlreadyClicked){
+                    setPreSelectedFood();
+                } else {
+                    setSelectedFood();
+                }
+                spinnerAlreadyClicked = true;
             }
 
             @Override
@@ -107,7 +132,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         String foodAmountText = amount.getText().toString();
         int category = categories.getSelectedItemPosition();
         if (foodAmountText.length() > 0) {
-            dataSource.addMealEntry(is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()));
+            dataSource.editMealEntry(meal_id, is_lm, menu_lm_id, date, category, Integer.parseInt(calories.getText().toString()), Float.parseFloat(foodAmountText));
             goBack();
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");
@@ -125,6 +150,17 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         dateView.setText(date);
         loadCategorySpinnerData();
         loadFoodsAndMenus();
+    }
+
+    private void setPreSelectedFood() {
+        is_lm = 1;
+        originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_TBTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.TAGEBUCHEINTRAG_ID, meal_id);
+        String originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
+        originCalories = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_TBTABLE, TagebuchHelper.KALORIEN, TagebuchHelper.TAGEBUCHEINTRAG_ID, meal_id);
+
+        amount.setText(originAmount);
+        unit.setText(originUnit);
+        calories.setText(originCalories);
     }
 
     private void setSelectedFood() {
@@ -185,7 +221,12 @@ public class EditOrDeleteMeal extends AppCompatActivity {
 
         // attaching data adapter to spinner
         foods.setAdapter(dataAdapter);
+        foods.setSelection(getIdPos());
+    }
 
+    private int getIdPos() {
+        int menu_lm_id = Integer.parseInt(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_TBTABLE, TagebuchHelper.MENU_LM_ID, TagebuchHelper.TAGEBUCHEINTRAG_ID, meal_id));
+        return dataSource.getPositionFromFood(menu_lm_id);
     }
 
     private void loadFoodUnitData() {

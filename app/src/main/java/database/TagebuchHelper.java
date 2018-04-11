@@ -61,6 +61,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                     KATEGORIE + " INTEGER, " +
                     KALORIEN + " INTEGER, " +
+                    ANZAHL + " FLOAT, " +
                     IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_LMTABLE =

@@ -106,25 +106,22 @@ public class Calendar extends AppCompatActivity {
         fruehstueck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + fruehstueck.getItemAtPosition(position));
-                openEditOrDeleteMealActivity();
+                openEditOrDeleteMealActivity(dateC, 1, position);
             }
         });
         mittagessen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(LOG_TAG, "Selected Item: " + mittagessen.getItemAtPosition(position));
-                openEditOrDeleteMealActivity();
+                openEditOrDeleteMealActivity(dateC, 2, position);
             }
         });
         abendessen.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(LOG_TAG, "Selected Item: " + abendessen.getItemAtPosition(position));
-                openEditOrDeleteMealActivity();
+                openEditOrDeleteMealActivity(dateC, 3, position);
             }
         });
         snacks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Log.d(LOG_TAG, "Selected Item: " + snacks.getItemAtPosition(position));
-                openEditOrDeleteMealActivity();
+                openEditOrDeleteMealActivity(dateC, 0, position);
             }
         });
 
@@ -169,10 +166,15 @@ public class Calendar extends AppCompatActivity {
         Calendar.this.startActivity(myIntent);
     }
 
-    public void openEditOrDeleteMealActivity() {
+    private void openEditOrDeleteMealActivity(String date, int category, int position){
         Intent myIntent = new Intent(Calendar.this, EditOrDeleteMeal.class);
+        myIntent.putExtra("date", date);
+        myIntent.putExtra("category", category);
+        myIntent.putExtra("position", position);
+        myIntent.putExtra("fromMain", false);
         Calendar.this.startActivity(myIntent);
     }
+
 
     private void goBack() {
         Intent myIntent = new Intent(Calendar.this, MainActivity.class);

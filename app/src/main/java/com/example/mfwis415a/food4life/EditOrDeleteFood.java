@@ -76,7 +76,7 @@ public class EditOrDeleteFood extends AppCompatActivity {
         String unitText = unit.getText().toString();
 
         if (foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unitText.length() > 0 && equivalentText.length() > 0) {
-            dataSource.editFoodEntry(foodNameText, foodDescriptionText, Integer.parseInt(foodAmountText), unitText, Integer.parseInt(equivalentText), lm_id);
+            dataSource.editFoodEntry(foodNameText, foodDescriptionText, Float.parseFloat(foodAmountText), unitText, Integer.parseInt(equivalentText), lm_id);
 
             Intent myIntent = new Intent(EditOrDeleteFood.this, FoodList.class);
             EditOrDeleteFood.this.startActivity(myIntent);
@@ -92,7 +92,6 @@ public class EditOrDeleteFood extends AppCompatActivity {
         foodDescription.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         foodAmount.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
         equivalent.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, lm_id));
-
     }
 
     private void goBack() {

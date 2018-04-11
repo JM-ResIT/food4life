@@ -48,6 +48,10 @@ public class MainActivity extends AppCompatActivity {
         final long date = System.currentTimeMillis();
         tv = findViewById(R.id.Date);
         breakfast = (ListView) findViewById(R.id.ListViewBreakfast);
+        lunch = (ListView) findViewById(R.id.ListViewLunch);
+        dinner = (ListView) findViewById(R.id.ListViewDinner);
+        snacks = (ListView) findViewById(R.id.ListViewSnacks);
+
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         dateString = showDate.format(date);
         tv.setText(dateString);
@@ -128,16 +132,28 @@ public class MainActivity extends AppCompatActivity {
 
         breakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent myIntent = new Intent(MainActivity.this, EditOrDeleteMeal.class);
-                myIntent.putExtra("date", dateString);
-                myIntent.putExtra("category", 1);
-                myIntent.putExtra("position", position);
-                myIntent.putExtra("fromMain", true);
-                MainActivity.this.startActivity(myIntent);
+                openEditOrDeleteMealActivity(dateString, 1, position);
             }
         });
 
 
+        lunch.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openEditOrDeleteMealActivity(dateString, 2, position);
+            }
+        });
+
+        dinner.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openEditOrDeleteMealActivity(dateString, 3, position);
+            }
+        });
+
+        snacks.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                openEditOrDeleteMealActivity(dateString, 0, position);
+            }
+        });
 
         populateListViews(); // Listview Method for Startscreen
 
@@ -192,6 +208,15 @@ public class MainActivity extends AppCompatActivity {
         Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
         myIntent.putExtra("date", date);
         myIntent.putExtra("category", category);
+        myIntent.putExtra("fromMain", true);
+        MainActivity.this.startActivity(myIntent);
+    }
+
+    private void openEditOrDeleteMealActivity(String date, int category, int position){
+        Intent myIntent = new Intent(MainActivity.this, EditOrDeleteMeal.class);
+        myIntent.putExtra("date", date);
+        myIntent.putExtra("category", category);
+        myIntent.putExtra("position", position);
         myIntent.putExtra("fromMain", true);
         MainActivity.this.startActivity(myIntent);
     }
