@@ -171,7 +171,7 @@ public class TagebuchDataSource {
     }
 
     public void editUnitEntry(String titel, int id) {
-        updateStatusOfLM(id, 0);
+        updateStatusOfUnit(id, 0);
         addUnitEntry(titel);
     }
 

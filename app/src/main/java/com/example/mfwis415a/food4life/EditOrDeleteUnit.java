@@ -78,7 +78,6 @@ public class EditOrDeleteUnit extends AppCompatActivity {
     }
 
 
-
     private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
         EditOrDeleteUnit.this.startActivity(myIntent);
