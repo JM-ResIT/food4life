@@ -1,6 +1,9 @@
 package com.example.mfwis415a.food4life;
 
+import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -11,6 +14,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -23,7 +27,8 @@ import database.TagebuchHelper;
 
 public class EditOrDeleteMeal extends AppCompatActivity {
 
-    private TextView dateView, unit, calories;
+    private TextView unit, calories;
+    private EditText dateView;
     private Button deleteMeal, editMeal;
     private EditText amount;
     private String date = "";
@@ -35,6 +40,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     private int is_lm = 1;
     private boolean fromMain;
     private boolean spinnerAlreadyClicked = false;
+    private DatePickerDialog.OnDateSetListener DateSetListener;
 
     private TagebuchDataSource dataSource;
 
@@ -57,7 +63,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         fromMain = intent.getBooleanExtra("fromMain", true);
 
 
-        dateView = (TextView) findViewById(R.id.MealDate);
+        dateView = (EditText) findViewById(R.id.MealDate);
         categories = (Spinner) findViewById(R.id.MealCategory);
         foods = (Spinner) findViewById(R.id.Foods);
         unit = (TextView) findViewById(R.id.MealUnit);
@@ -122,6 +128,39 @@ public class EditOrDeleteMeal extends AppCompatActivity {
                 }
             }
         });
+
+        dateView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                java.util.Calendar cal = java.util.Calendar.getInstance();
+                int year = cal.get(java.util.Calendar.YEAR);
+                int month = cal.get(java.util.Calendar.MONTH);
+                int day = cal.get(java.util.Calendar.DAY_OF_MONTH);
+
+                DatePickerDialog dialog = new DatePickerDialog(
+                        EditOrDeleteMeal.this,
+                        android.R.style.Theme_Holo_Light_Dialog_MinWidth,
+                        DateSetListener,
+                        year,month,day);
+                dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+                dialog.show();
+            }
+        });
+
+        DateSetListener = new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker datePicker, int year, int month, int day) {
+                month = month + 1;
+                if (month < 10 && day < 10) {
+                    date = "0" + day + "." + "0" + month + "." + year;
+                }else if (day < 10 && month > 10) {
+                    date = "0" + day + "." + month +"." + year;
+                }else if (month < 10 && day > 10){
+                    date = day + ".0" + month + "." + year;
+                }else date = day + "." + month + "." + year;
+                dateView.setText(date);
+            }
+        };
 
 
         loadData();
