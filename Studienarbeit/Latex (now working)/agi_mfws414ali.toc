@@ -1,0 +1,50 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\contentsline {section}{\nonumberline Abbildungsverzeichnis}{II}{section*.2}
+\contentsline {section}{\nonumberline Tabellenverzeichnis}{III}{section*.3}
+\contentsline {section}{\nonumberline Listingverzeichnis}{IV}{section*.4}
+\contentsline {section}{\numberline {1}Das Team}{1}{section.1}
+\contentsline {subsection}{\numberline {1.1}Teamfoto}{1}{subsection.1.1}
+\contentsline {section}{\numberline {2}Ziel des Projekts}{2}{section.2}
+\contentsline {subsection}{\numberline {2.1}Zielsetzung}{2}{subsection.2.1}
+\contentsline {subsection}{\numberline {2.2}Vorgehensweise}{2}{subsection.2.2}
+\contentsline {subsection}{\numberline {2.3}AntMe!}{2}{subsection.2.3}
+\contentsline {section}{\numberline {3}Benutzerhandbuch}{3}{section.3}
+\contentsline {section}{\numberline {4}Projektplanung}{4}{section.4}
+\contentsline {subsection}{\numberline {4.1}Pflichtenheft}{4}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Projektablaufplan}{4}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Planung der Software}{4}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Planung der Mockups}{4}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Planung der Datenstrukturen und Schnittstellen}{4}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Planung der Activities und Layouts}{4}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Planung der Navigation und des Datenaustausches zwischen den Activities}{4}{subsubsection.4.3.4}
+\contentsline {subsection}{\numberline {4.4}Geplante Aufgabenverteilung im Team}{4}{subsection.4.4}
+\contentsline {section}{\numberline {5}Beschreibung des Projektverlaufs}{5}{section.5}
+\contentsline {subsection}{\numberline {5.1}Tats\IeC {\"a}chliche Aufgabenverteilung im Team}{5}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Teammeetingprotokolle}{5}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Projekttageb\IeC {\"u}cher aller Teammitglieder}{5}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Beschreibung von Problemen}{5}{subsection.5.4}
+\contentsline {section}{\numberline {6}Dokumentation der Software}{6}{section.6}
+\contentsline {subsection}{\numberline {6.1}Dokumentation der Paketstruktur des Android-Projektes}{6}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Dokumentation der Activities}{6}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Activity 1}{6}{subsubsection.6.2.1}
+\contentsline {subsubsection}{\numberline {6.2.2}Activity 2}{6}{subsubsection.6.2.2}
+\contentsline {subsubsection}{\numberline {6.2.3}Activity 3}{6}{subsubsection.6.2.3}
+\contentsline {subsubsection}{\numberline {6.2.4}Activity 4}{6}{subsubsection.6.2.4}
+\contentsline {subsubsection}{\numberline {6.2.5}Activity 5}{6}{subsubsection.6.2.5}
+\contentsline {subsubsection}{\numberline {6.2.6}Activity 6}{6}{subsubsection.6.2.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Activity 7}{6}{subsubsection.6.2.7}
+\contentsline {subsubsection}{\numberline {6.2.8}Activity etc.}{6}{subsubsection.6.2.8}
+\contentsline {subsection}{\numberline {6.3}Dokumentation der Navigation und des Datenaustauschs zwischen Activities}{6}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Dokumentation der Activity-u\GenericError {(inputenc) }{Package inputenc Error: Unicode char ̈ (U+308)\MessageBreak not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}bergreifenden, persistenten Datenhaltung}{6}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Dokumentation der Activity-u\GenericError {(inputenc) }{Package inputenc Error: Unicode char ̈ (U+308)\MessageBreak not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}bergreifenden Klassen}{6}{subsection.6.5}
+\contentsline {section}{\numberline {7}Fazits aller Teammitglieder}{7}{section.7}
+\contentsline {subsection}{\numberline {7.1}Jannik Maes}{7}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Sven Kuczera}{7}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Henryk Schaffrath}{7}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Benedikt Burczek}{7}{subsection.7.4}
+\contentsline {section}{Anhang}{8}{section*.5}
+\contentsline {xsect}{}{8}{section*.5}
+\contentsline {section}{Quellenverzeichnis}{51}{section*.29}
+\contentsline {section}{Ehrenw\IeC {\"o}rtliche Erkl\IeC {\"a}rung}{52}{section*.30}
