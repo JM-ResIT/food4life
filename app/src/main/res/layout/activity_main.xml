@@ -25,12 +25,11 @@
             android:layout_weight="1">
 
         <TextView
-            android:id="@+id/verfuegbar"
+            android:id="@+id/verbraucht"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:paddingLeft="4dp"
-            android:text="Grace"
             android:layout_gravity="bottom"/>
 
 
@@ -43,15 +42,14 @@
             android:textAlignment="center"/>
 
         <TextView
-            android:id="@+id/verbraucht"
+            android:id="@+id/verfuegbar"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:paddingRight="4dp"
             android:layout_weight="1"
             android:layout_gravity="bottom"
             android:gravity="right"
-            android:textAlignment="gravity"
-            android:text="Grace"/>
+            android:textAlignment="gravity" />
 
         </LinearLayout>
 

@@ -26,9 +26,13 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton calendar, profile;
     private SimpleDateFormat showDate;
     private TextView tv;
+    private TextView tv_verbraucht;
+    private TextView tv_verfuegbar;
     private TagebuchDataSource dataSource;
     private ProgressBar calorieProgress;
     private String dateString;
+    private int availableCal;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +41,20 @@ public class MainActivity extends AppCompatActivity {
 
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
+        dataSource.insertSampleDataIfEmpty();
 
         final long date = System.currentTimeMillis();
         tv = findViewById(R.id.Date);
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         dateString = showDate.format(date);
         tv.setText(dateString);
+
+        tv_verbraucht = findViewById(R.id.verbraucht);
+        tv_verbraucht.setText("Eingenommen: " + String.valueOf(dataSource.getConsumedCalories(dateString)) + " kcal");
+
+        tv_verfuegbar = findViewById(R.id.verfuegbar);
+        tv_verfuegbar.setText("Verfügbar: " + String.valueOf(availableCalories()) + " kcal");
+
 
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
         calendar.setOnClickListener(new View.OnClickListener() {
@@ -115,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        dataSource.insertSampleDataIfEmpty();
+
 
         populateListViews(); // Listview Method for Startscreen
 
@@ -123,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         calorieProgress.setScaleY(2f);
 
         calorieProgress.setMax(dataSource.getLimitFromProfile());
-        calorieProgress.setProgress(500);
+        calorieProgress.setProgress(dataSource.getConsumedCalories(dateString));
 
     }
 
@@ -169,5 +181,12 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    private int availableCalories(){
+       int max = dataSource.getLimitFromProfile();
+       int used = dataSource.getConsumedCalories(dateString);
+
+        availableCal = max - used;
+        return availableCal;
+    }
 
 }

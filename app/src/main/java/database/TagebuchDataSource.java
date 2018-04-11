@@ -212,4 +212,15 @@ public class TagebuchDataSource {
         cursor.moveToFirst();
         return Integer.parseInt(cursor.getString(0));
     }
+
+    public int getConsumedCalories(String date){
+        int calories = 0;
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, new String[]{TagebuchHelper.KALORIEN}, TagebuchHelper.ZEIT + "=?", new String[]{date}, null, null, null);
+
+        while(cursor.moveToNext()){
+            calories += Integer.parseInt(cursor.getString(0));
+        }
+        return calories;
+    }
+
 }
