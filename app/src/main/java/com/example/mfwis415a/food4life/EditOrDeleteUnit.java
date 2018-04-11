@@ -41,6 +41,8 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         dataSource.open();
         unit_id = dataSource.getRealIdFromUnit(position);
 
+        loadUnitData();
+
        deleteUnit.setOnClickListener(new View.OnClickListener() {
             @Override
            public void onClick(View view) { dataSource.updateStatusOfUnit(unit_id, 0);
@@ -62,12 +64,19 @@ public class EditOrDeleteUnit extends AppCompatActivity {
         if(unit.length() > 0 ) {
             dataSource.editUnitEntry(unit, unit_id);
 
-            Intent myIntent = new Intent(EditOrDeleteUnit.this, FoodList.class);
+            Intent myIntent = new Intent(EditOrDeleteUnit.this, UnitList.class);
             EditOrDeleteUnit.this.startActivity(myIntent);
         } else {
             Log.d(LOG_TAG, "Please fill all text fields!");
         }
     }
+
+    private void loadUnitData() {
+
+        UnitName.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_EINTABLE, TagebuchHelper.TITEL, TagebuchHelper.EINHEIT_ID, unit_id));
+
+    }
+
 
 
     private void goBack() {
