@@ -208,6 +208,7 @@ public class MainActivity extends AppCompatActivity {
         populateListView(R.id.ListViewSnacks, 0);
     }
 
+    // function to fill listview
     private void populateListView(@IdRes int id, int category) {
         //Create list of items
         List<String> meals = dataSource.getMealEntries(dateString, category);
@@ -222,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // function to open the meal activitiy
     private void openMealActivity(String date, int category) {
         Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
         myIntent.putExtra("date", date);
@@ -230,6 +232,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    // function to open the editordeletemeal activity
     private void openEditOrDeleteMealActivity(String date, int category, int position){
         Intent myIntent = new Intent(MainActivity.this, EditOrDeleteMeal.class);
         myIntent.putExtra("date", date);
@@ -239,6 +242,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    // function to calculate available calories
     private int availableCalories(){
        int max = dataSource.getLimitFromProfile();
        int used = dataSource.getConsumedCalories(dateString);

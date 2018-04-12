@@ -16,23 +16,31 @@ import database.TagebuchDataSource;
 
 public class UnitList extends AppCompatActivity {
 
+    // variables for this java class
     private TagebuchDataSource dataSource;
 
     private static final String LOG_TAG = FoodList.class.getSimpleName();
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_unit_list);
 
+        // database is implemented
         dataSource = new TagebuchDataSource(this);
+
+        // listview and button is now referencing Id's
         Button addUnit = (Button) findViewById(R.id.AddUnit);
         ListView unitList = (ListView) findViewById(R.id.UnitList);
 
+        // database is opened
         dataSource.open();
 
+        // function to load units is used
         loadUnits();
 
+        // function to go to add unit is used
         addUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -42,6 +50,7 @@ public class UnitList extends AppCompatActivity {
             }
         });
 
+        // function for a click on an item is used
         unitList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(UnitList.this, EditOrDeleteUnit.class);
@@ -51,6 +60,7 @@ public class UnitList extends AppCompatActivity {
         });
     }
 
+    // function to load units
     public void loadUnits() {
         List<String> lables = dataSource.getAllUnits();
 
@@ -65,11 +75,13 @@ public class UnitList extends AppCompatActivity {
     }
 
 
+    // Function for back button to go back to the previous activity
     private void goBack() {
         Intent myIntent = new Intent(UnitList.this, MainActivity.class);
         UnitList.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
