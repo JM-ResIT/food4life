@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import database.TagebuchDataSource;
+import database.TagebuchHelper;
 
 public class EditOrDeleteMenu extends AppCompatActivity {
 
@@ -23,6 +24,7 @@ public class EditOrDeleteMenu extends AppCompatActivity {
     private EditText menuTitel, menuDesc;
     private Button editMenu, deleteMenu;
     private TagebuchDataSource dataSource;
+    private int menu_id;
 
     public static final String LOG_TAG = AddMenu.class.getSimpleName();
 
@@ -34,22 +36,55 @@ public class EditOrDeleteMenu extends AppCompatActivity {
         foods = (ListView) findViewById(R.id.ListViewMenu);
         menuTitel = (EditText) findViewById(R.id.MenuTitel);
         menuDesc = (EditText) findViewById(R.id.MenuDesc);
+        editMenu = (Button) findViewById(R.id.editMenu);
+        deleteMenu = (Button) findViewById(R.id.deleteMenu);
+
+        Intent mIntent = getIntent();
+        int position = mIntent.getIntExtra("position", 0);
 
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
+        menu_id = dataSource.getRealIdFromMenu(position);
 
+        editMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                editMenu();
+
+            }
+        });
+
+        deleteMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteMenu();
+
+            }
+        });
 
         loadFoods();
+        loadMenuData();
     }
 
-    private void addMenu() {
+    private void loadMenuData(){
+        menuTitel.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_MENUTABLE, TagebuchHelper.TITEL, TagebuchHelper.MENU_ID, menu_id));
+        menuDesc.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_MENUTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.MENU_ID, menu_id));
+    }
+
+    private void deleteMenu(){
+        dataSource.updateStatusOfMenu(menu_id, 0);
+        Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
+        EditOrDeleteMenu.this.startActivity(myIntent);
+    }
+
+    private void editMenu() {
         String titel = menuTitel.getText().toString();
         String desc = menuDesc.getText().toString();
         List<Integer> items = getSelectedItems();
 
         if (titel.length() > 0 && desc.length() > 0 && items != null) {
-            dataSource.addMenu(titel, desc, getSelectedItems());
+            dataSource.editMenu(titel, desc, getSelectedItems(), menu_id);
             Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
             EditOrDeleteMenu.this.startActivity(myIntent);
         } else {
@@ -72,7 +107,7 @@ public class EditOrDeleteMenu extends AppCompatActivity {
     }
 
     private void loadFoods() {
-        List<String> lables = dataSource.getAllFoods();
+        List<String> lables = dataSource.getActiveFoods();
 
         if (!lables.isEmpty()) {
 
@@ -80,11 +115,23 @@ public class EditOrDeleteMenu extends AppCompatActivity {
                     android.R.layout.simple_list_item_multiple_choice, lables));
 
             foods.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-            foods.setItemsCanFocus(false);
+            preSelectFoods();
+
         }
-
-
     }
+
+
+    private void preSelectFoods(){
+        List<Integer> positions = dataSource.getFoodPosFromMenu(menu_id);
+
+        foods.setSelection(0);
+        /*
+        for(int pos: positions){
+            foods.setSelection(pos);
+        }
+        */
+    }
+
 
     private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);

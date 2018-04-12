@@ -56,7 +56,7 @@ public class AddMenu extends AppCompatActivity {
         List<Integer> items = getSelectedItems();
 
         if (titel.length() > 0 && desc.length() > 0 && !items.isEmpty()) {
-            dataSource.addMenu(titel, desc, getSelectedItems());
+            dataSource.addMenuEntry(titel, desc, items);
             Intent myIntent = new Intent(AddMenu.this, MenuList.class);
             AddMenu.this.startActivity(myIntent);
         } else {
@@ -79,7 +79,7 @@ public class AddMenu extends AppCompatActivity {
     }
 
     private void loadFoods() {
-        List<String> lables = dataSource.getAllFoods();
+        List<String> lables = dataSource.getActiveFoods();
 
         if (!lables.isEmpty()) {
 

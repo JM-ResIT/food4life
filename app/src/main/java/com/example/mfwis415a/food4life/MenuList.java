@@ -36,6 +36,7 @@ public class MenuList extends AppCompatActivity {
         menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent myIntent = new Intent(MenuList.this, EditOrDeleteMenu.class);
+                myIntent.putExtra("position", position);
                 MenuList.this.startActivity(myIntent);
             }
         });
@@ -52,7 +53,7 @@ public class MenuList extends AppCompatActivity {
     }
 
     private void loadMenus() {
-        List<String> lables = dataSource.getAllMenus();
+        List<String> lables = dataSource.getActiveMenus();
 
         if (!lables.isEmpty()) {
 

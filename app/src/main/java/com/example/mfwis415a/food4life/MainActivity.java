@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.annotation.IdRes;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -228,5 +229,4 @@ public class MainActivity extends AppCompatActivity {
         availableCal = max - used;
         return availableCal;
     }
-
 }

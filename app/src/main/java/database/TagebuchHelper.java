@@ -100,8 +100,8 @@ public class TagebuchHelper extends SQLiteOpenHelper {
             "CREATE TABLE " +
                     DATABASE_MENU_LM_TABLE + "(" +
                     MENU_ID + " INTEGER, " +
-                    LEBENSMITTEL_ID + " INTEGER, " +
-                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
+                    LEBENSMITTEL_ID + " INTEGER);";
+
 
     private static final String SQL_CREATE_PROFIL_TABLE =
             "CREATE TABLE " +

@@ -71,7 +71,7 @@ public class AddFood extends AppCompatActivity {
     private void loadSpinnerData() {
 
         // Spinner Drop down elements
-        List<String> labels = dataSource.getAllUnits();
+        List<String> labels = dataSource.getActiveUnits();
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,

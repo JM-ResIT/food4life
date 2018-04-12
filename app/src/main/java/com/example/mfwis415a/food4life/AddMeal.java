@@ -180,7 +180,7 @@ public class AddMeal extends AppCompatActivity {
 
     private void loadFoodsAndMenus() {
         // Spinner Drop down elements#
-        List<String> labels = dataSource.getAllFoods();
+        List<String> labels = dataSource.getActiveFoods();
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,

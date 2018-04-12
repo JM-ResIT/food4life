@@ -163,7 +163,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         };
 
 
-        loadData();
+        loadMealData();
 
     }
 
@@ -185,7 +185,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         calories.setText(String.valueOf(Math.round(newCalories)));
     }
 
-    private void loadData() {
+    private void loadMealData() {
         dateView.setText(date);
         loadCategorySpinnerData();
         loadFoodsAndMenus();
@@ -248,7 +248,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
 
     private void loadFoodsAndMenus() {
         // Spinner Drop down elements#
-        List<String> labels = dataSource.getAllFoods();
+        List<String> labels = dataSource.getActiveFoods();
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,

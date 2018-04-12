@@ -52,7 +52,7 @@ public class UnitList extends AppCompatActivity {
     }
 
     public void loadUnits() {
-        List<String> lables = dataSource.getAllUnits();
+        List<String> lables = dataSource.getActiveUnits();
 
         if (!lables.isEmpty()) {
             // Get a handle to the list view

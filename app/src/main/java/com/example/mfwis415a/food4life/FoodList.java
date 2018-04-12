@@ -13,7 +13,6 @@ import android.widget.ListView;
 import java.util.List;
 
 import database.TagebuchDataSource;
-import database.TagebuchHelper;
 
 public class FoodList extends AppCompatActivity {
     private TagebuchDataSource dataSource;
@@ -53,7 +52,7 @@ public class FoodList extends AppCompatActivity {
 
 
     private void loadFoods() {
-        List<String> lables = dataSource.getAllFoods();
+        List<String> lables = dataSource.getActiveFoods();
 
         if (!lables.isEmpty()) {
             // Get a handle to the list view
