@@ -27,6 +27,7 @@ public class Profile extends AppCompatActivity {
     private Button updateProfile, statistics, unitList;
     private EditText displayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
+    private String date;
 
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
@@ -96,7 +97,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
                 month = month + 1;
-                String date = day + "/" + month + "/" + year;
+                if (month < 10 && day < 10) {
+                     date = "0" + day + "." + "0" + month + "." + year;
+                }else if (day < 10 && month > 10) {
+                     date = "0" + day + "." + month +"." + year;
+                }else if (month < 10 && day > 10){
+                     date = day + ".0" + month + "." + year;
+                }else date = day + "." + month + "." + year;
+
                 displayDate.setText(date);
             }
         };

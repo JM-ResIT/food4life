@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.mfwis415a.food4life.EditOrDeleteMeal">
-    <TextView
+    <EditText
         android:id="@+id/MealDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:text="Datum"
-        android:textSize="18dp"
+        android:clickable="true"
+        android:focusable="false"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"/>
 
@@ -61,7 +61,7 @@
         android:layout_alignStart="@+id/MealAmount"
         android:layout_below="@id/MealAmount"
         android:text="Einheit"
-        android:textSize="18dp"
+        android:textSize="@dimen/textsize_text"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"  />
 
@@ -74,7 +74,7 @@
         android:layout_alignStart="@+id/MealUnit"
         android:layout_below="@id/MealUnit"
         android:text="Kalorien"
-        android:textSize="18dp"
+        android:textSize="@dimen/textsize_text"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"  />
 
@@ -82,7 +82,7 @@
         android:id="@+id/buttons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="16dp"
+        android:paddingTop="@dimen/button_margin"
         android:orientation="horizontal"
         android:layout_below="@+id/MealCalories"
         android:gravity="bottom"
