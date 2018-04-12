@@ -1,5 +1,6 @@
 package com.example.mfwis415a.food4life;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -32,10 +33,11 @@ public class Statistics extends AppCompatActivity {
         setValues();
     }
 
+    @SuppressLint("SetTextI18n")
     private void setValues(){
-        first.setText(String.valueOf(dataSource.getAverageCalories(7)));
-        second.setText(String.valueOf(dataSource.getAverageCalories(14)));
-        third.setText(String.valueOf(dataSource.getAverageCalories(30)));
+        first.setText(String.valueOf(dataSource.getAverageCalories(7)) + " kcal");
+        second.setText(String.valueOf(dataSource.getAverageCalories(14)) + " kcal");
+        third.setText(String.valueOf(dataSource.getAverageCalories(30)) + " kcal");
     }
 
     // Function for back button to go back to the previous activity
