@@ -6,27 +6,21 @@
     android:layout_height="match_parent"
     tools:context="com.example.mfwis415a.food4life.MenuList">
 
+
+    <Button
+        android:id="@+id/addMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:text="Menü hinzufügen" />
+
+
     <ListView
         android:id="@+id/MenuList"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"/>
-
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/MenuList">
-
-        <Button
-            android:id="@+id/addMenu"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Menü hinzufügen"
-            />
-
-    </LinearLayout>
+        android:layout_below="@id/addMenu"
+        android:layout_centerHorizontal="true" />
 
 
 </RelativeLayout>

@@ -211,6 +211,8 @@ public class AddMeal extends AppCompatActivity {
         // attaching data adapter to spinner
         foods.setAdapter(dataAdapter);
 
+
+
     }
 
     private void loadFoodUnitData() {
