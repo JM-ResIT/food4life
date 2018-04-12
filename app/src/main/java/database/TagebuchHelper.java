@@ -19,7 +19,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
 
     public static final String DATABASE_TBTABLE = "TAGEBUCHEINTRAG";
     public static final String TAGEBUCHEINTRAG_ID = "TB_ID";
-    public static final String ZEIT = "ZEIT";
+    public static final String DATUM = "ZEIT";
     public static final String LIMIT = "TAGESLIMIT";
     public static final String KATEGORIE = "KATEGORIE";
     public static final String IS_LM = "IS_LM";
@@ -58,7 +58,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     TAGEBUCHEINTRAG_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     IS_LM + " BOOLEAN NOT NULL default 1, " +
                     MENU_LM_ID + " INTEGER, " +
-                    ZEIT + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
+                    DATUM + " DATETIME DEFAULT CURRENT_TIMESTAMP, " +
                     KATEGORIE + " INTEGER, " +
                     KALORIEN + " INTEGER, " +
                     ANZAHL + " FLOAT, " +

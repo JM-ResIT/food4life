@@ -77,7 +77,7 @@ public class UnitList extends AppCompatActivity {
 
     // Function for back button to go back to the previous activity
     private void goBack() {
-        Intent myIntent = new Intent(UnitList.this, MainActivity.class);
+        Intent myIntent = new Intent(UnitList.this, Profile.class);
         UnitList.this.startActivity(myIntent);
     }
 

@@ -10,7 +10,10 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 public class TagebuchDataSource {
@@ -189,7 +192,7 @@ public class TagebuchDataSource {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
         mealValues.put(TagebuchHelper.MENU_LM_ID, id);
-        mealValues.put(TagebuchHelper.ZEIT, date);
+        mealValues.put(TagebuchHelper.DATUM, date);
         mealValues.put(TagebuchHelper.KATEGORIE, category);
         mealValues.put(TagebuchHelper.KALORIEN, calories);
         mealValues.put(TagebuchHelper.ANZAHL, amount);
@@ -237,7 +240,7 @@ public class TagebuchDataSource {
         ContentValues mealValues = new ContentValues();
         mealValues.put(TagebuchHelper.IS_LM, is_lm);
         mealValues.put(TagebuchHelper.MENU_LM_ID, id);
-        mealValues.put(TagebuchHelper.ZEIT, date);
+        mealValues.put(TagebuchHelper.DATUM, date);
         mealValues.put(TagebuchHelper.KATEGORIE, category);
         mealValues.put(TagebuchHelper.KALORIEN, calories);
         mealValues.put(TagebuchHelper.ANZAHL, amount);
@@ -255,7 +258,7 @@ public class TagebuchDataSource {
 
     public List<String> getMealEntries(String date, int category) {
         List<String> meals = new ArrayList<String>();
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.ZEIT + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.DATUM + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
 
         while (cursor.moveToNext()) {
             //(String table, String column, String key, int id)
@@ -319,6 +322,19 @@ public class TagebuchDataSource {
         }
     }
 
+    public int getAverageCalories(int days) {
+        int calories = 0;
+
+        for (int i = 0; i < days; i++) {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -i);
+            Date dateBeforeNDays = cal.getTime();
+            SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+            calories += getConsumedCalories( showDate.format(dateBeforeNDays));
+        }
+
+        return Math.round(calories / days);
+    }
 
     public String getEntryFromDBTable(String table, String column, String key, int id) {
         String entry = "";
@@ -345,7 +361,7 @@ public class TagebuchDataSource {
 
     public int getConsumedCalories(String date) {
         int calories = 0;
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, new String[]{TagebuchHelper.KALORIEN}, TagebuchHelper.ZEIT + "=?", new String[]{date}, null, null, null);
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, new String[]{TagebuchHelper.KALORIEN}, TagebuchHelper.DATUM + "=?", new String[]{date}, null, null, null);
 
         while (cursor.moveToNext()) {
             calories += Integer.parseInt(cursor.getString(0));

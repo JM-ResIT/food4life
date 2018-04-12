@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         dataSource.insertSampleDataIfEmpty();
 
         // current date is set
-        final long date = System.currentTimeMillis();
+
         tv = findViewById(R.id.Date);
         // listviews are now referencing Id's
         breakfast = (ListView) findViewById(R.id.ListViewBreakfast);
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         snacks = (ListView) findViewById(R.id.ListViewSnacks);
 
         // current date format is applied
+        final long date = System.currentTimeMillis();
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         dateString = showDate.format(date);
         tv.setText(dateString);
