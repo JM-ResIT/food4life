@@ -204,8 +204,9 @@ public class TagebuchDataSource {
 
         long menu_id = database.insert(TagebuchHelper.DATABASE_MENUTABLE, null, menuValues);
 
+        ContentValues menu_lmValues = new ContentValues();
         for (int pos : positions) {
-            ContentValues menu_lmValues = new ContentValues();
+
             menu_lmValues.put(TagebuchHelper.MENU_ID, menu_id);
             menu_lmValues.put(TagebuchHelper.LEBENSMITTEL_ID, getRealIdFromLM(pos));
             database.insert(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, menu_lmValues);
@@ -220,10 +221,14 @@ public class TagebuchDataSource {
 
         int pos = 0;
         while (allFoods.moveToNext()) {
-            positions.add(pos);
+            Cursor foodsFromMenus = databaseRead.query(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, TagebuchHelper.MENU_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
+            while (foodsFromMenus.moveToNext()) {
+                if (allFoods.getInt(0) == foodsFromMenus.getInt(1)) {
+                    positions.add(pos);
+                }
+            }
             pos += 1;
         }
-
         return positions;
     }
 

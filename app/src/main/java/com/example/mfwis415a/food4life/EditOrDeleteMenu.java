@@ -124,12 +124,9 @@ public class EditOrDeleteMenu extends AppCompatActivity {
     private void preSelectFoods(){
         List<Integer> positions = dataSource.getFoodPosFromMenu(menu_id);
 
-        foods.setSelection(0);
-        /*
         for(int pos: positions){
-            foods.setSelection(pos);
+            foods.setItemChecked(pos, true);
         }
-        */
     }
 
 
