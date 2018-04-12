@@ -19,26 +19,30 @@ import database.TagebuchDataSource;
 
 public class AddMenu extends AppCompatActivity {
 
+    // variables for this java class
     private ListView foods;
     private EditText menuTitel, menuDesc;
     private Button addMenu;
     private TagebuchDataSource dataSource;
-
     public static final String LOG_TAG = AddMenu.class.getSimpleName();
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_menu);
 
+        // Listviews Buttons and Edittexts are now referencing Id's
         foods = (ListView) findViewById(R.id.ListViewMenu);
         addMenu = (Button) findViewById(R.id.MenuAdd);
         menuTitel = (EditText) findViewById(R.id.MenuTitel);
         menuDesc = (EditText) findViewById(R.id.MenuDesc);
 
+        // database is opened and function is used
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
+        // button function to add menu is set
         addMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -47,9 +51,11 @@ public class AddMenu extends AppCompatActivity {
         });
 
 
+        // loadFoods function is used
         loadFoods();
     }
 
+    //function to add a menu
     private void addMenu() {
         String titel = menuTitel.getText().toString();
         String desc = menuDesc.getText().toString();
@@ -65,6 +71,7 @@ public class AddMenu extends AppCompatActivity {
 
     }
 
+    // function to get selected items
     private List<Integer> getSelectedItems() {
         List<Integer> positions = new ArrayList<Integer>();
         SparseBooleanArray checked = foods.getCheckedItemPositions();
@@ -78,6 +85,7 @@ public class AddMenu extends AppCompatActivity {
         return positions;
     }
 
+    // function loadfoods is declared
     private void loadFoods() {
         List<String> lables = dataSource.getActiveFoods();
 
@@ -93,11 +101,13 @@ public class AddMenu extends AppCompatActivity {
 
     }
 
+    // Function for back button to go back to the menulist
     private void goBack() {
         Intent myIntent = new Intent(AddMenu.this, MenuList.class);
         AddMenu.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {

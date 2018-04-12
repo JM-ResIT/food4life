@@ -22,6 +22,7 @@ import database.TagebuchHelper;
 
 public class Profile extends AppCompatActivity {
 
+    // variables for this java class
     private TagebuchDataSource dataSource;
     private EditText limit;
     private Button updateProfile, statistics, unitList;
@@ -32,21 +33,28 @@ public class Profile extends AppCompatActivity {
     private static final String LOG_TAG = TagebuchHelper.class.getSimpleName();
 
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
+        // database is implemented
         dataSource = new TagebuchDataSource(this);
+
+        // edittext and buttons are now referencing Id's
         limit = (EditText) findViewById(R.id.ProfileCalories);
         updateProfile = (Button) findViewById(R.id.UpdateProfile);
         statistics = (Button) findViewById(R.id.goToStatistics);
         unitList = (Button) findViewById(R.id.goToUnitList);
 
+        // database is opened
         dataSource.open();
 
+        // function to load data is used
         loadData();
 
+        // button listeners for statistics, unitlist and update
         statistics.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -73,8 +81,10 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        // date is now referencing Id
         displayDate = findViewById(R.id.ProfileBday);
 
+        // date picker for birthday
         displayDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -93,6 +103,7 @@ public class Profile extends AppCompatActivity {
             }
         });
 
+        // listener for a changed date to display said date
         DateSetListener = new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker datePicker, int year, int month, int day) {
@@ -110,15 +121,20 @@ public class Profile extends AppCompatActivity {
         };
             }
 
+
+
+    // function to load data
     public void loadData(){
         limit.setText(String.valueOf(dataSource.getLimitFromProfile()));
     }
 
+    // Function for back button to go back to the previous activity
     private void goBack() {
         Intent myIntent = new Intent(Profile.this, MainActivity.class);
         Profile.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {

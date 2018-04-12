@@ -23,6 +23,7 @@ import database.TagebuchHelper;
 
 public class Calendar extends AppCompatActivity {
 
+    // variables for this java class
     public static final String TAG = "Calendaractivity";
 
     private TagebuchDataSource dataSource;
@@ -31,29 +32,37 @@ public class Calendar extends AppCompatActivity {
 
     private static final String LOG_TAG = Calendar.class.getSimpleName();
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar);
 
 
+        // calendarview is declared and is now referencing Id
         CalendarView mCalendarView = (CalendarView) findViewById(R.id.calendarView3);
 
+        // buttons for entries are declared and are now referencing Id's
         Button addBreakfastC = (Button) findViewById(R.id.AddBreakfastC);
         Button addLunchC = (Button) findViewById(R.id.AddLunchC);
         Button addDinnerC = (Button) findViewById(R.id.AddDinnerC);
         Button addSnacksC = (Button) findViewById(R.id.AddSnacksC);
 
+        // listviews are declared and are now referencing Id's
         fruehstueck = (ListView) findViewById(R.id.ListViewBreakfastC);
         mittagessen = (ListView) findViewById(R.id.ListViewLunchC);
         abendessen = (ListView) findViewById(R.id.ListViewDinnerC);
         snacks = (ListView) findViewById(R.id.ListViewSnacksC);
 
+        // format for string "Date" is implemented
         final long date = System.currentTimeMillis();
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         final String dateString = showDate.format(date);
 
         dateC = dateString;
+
+        // datechange listener function for calendarview, give back selected date
+        // and also clears and then writes the listviews
         mCalendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int i, int i1, int i2) {
@@ -71,11 +80,14 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
+        // database is opened
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
+        // listviews are written
         populateListViews();
 
+        // buttons to add food for each field
         addBreakfastC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -103,6 +115,7 @@ public class Calendar extends AppCompatActivity {
             }
         });
 
+        // functions for clicking an item in the listview
         fruehstueck.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d(LOG_TAG, "Selected Item: " + fruehstueck.getItemAtPosition(position));
@@ -127,6 +140,7 @@ public class Calendar extends AppCompatActivity {
 
     }
 
+    // function to clear all listviews
     private void clearListViews(){
         fruehstueck.setAdapter(null);
         mittagessen.setAdapter(null);
@@ -134,6 +148,7 @@ public class Calendar extends AppCompatActivity {
         snacks.setAdapter(null);
     }
 
+    // function to fill all listviews
     private void populateListViews() {
         populateListView(R.id.ListViewBreakfastC, 1);
         populateListView(R.id.ListViewLunchC, 2);
@@ -142,6 +157,7 @@ public class Calendar extends AppCompatActivity {
     }
 
 
+    // function to fill a single listview
     private void populateListView(@IdRes int id, int category) {
         //Create list of items
         List<String> meals = dataSource.getMealEntries(dateC, category);
@@ -158,6 +174,7 @@ public class Calendar extends AppCompatActivity {
     }
 
 
+    // function to open the activity meal
     private void openMealActivity(String date, int category) {
         Intent myIntent = new Intent(Calendar.this, AddMeal.class);
         myIntent.putExtra("date", date);
@@ -166,6 +183,7 @@ public class Calendar extends AppCompatActivity {
         Calendar.this.startActivity(myIntent);
     }
 
+    // function to open the activity editordeletemeal
     private void openEditOrDeleteMealActivity(String date, int category, int position){
         Intent myIntent = new Intent(Calendar.this, EditOrDeleteMeal.class);
         myIntent.putExtra("date", date);
@@ -176,11 +194,13 @@ public class Calendar extends AppCompatActivity {
     }
 
 
+    // Function for back button to go back to the main activity
     private void goBack() {
         Intent myIntent = new Intent(Calendar.this, MainActivity.class);
         Calendar.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {

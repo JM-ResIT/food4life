@@ -22,6 +22,7 @@ import database.TagebuchDataSource;
 
 public class MainActivity extends AppCompatActivity {
 
+    // variables for this java class
     public static final String LOG_TAG = MainActivity.class.getSimpleName();
 
     private Button addBreakfast, addLunch, addDinner, addSnack, foodList, menuList;
@@ -37,26 +38,32 @@ public class MainActivity extends AppCompatActivity {
     private int availableCal;
 
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // database is opened
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
         dataSource.insertSampleDataIfEmpty();
 
+        // current date is set
         final long date = System.currentTimeMillis();
         tv = findViewById(R.id.Date);
+        // listviews are now referencing Id's
         breakfast = (ListView) findViewById(R.id.ListViewBreakfast);
         lunch = (ListView) findViewById(R.id.ListViewLunch);
         dinner = (ListView) findViewById(R.id.ListViewDinner);
         snacks = (ListView) findViewById(R.id.ListViewSnacks);
 
+        // current date format is applied
         SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
         dateString = showDate.format(date);
         tv.setText(dateString);
 
+        // texviews for used and available calories are set
         tv_verbraucht = findViewById(R.id.verbraucht);
         tv_verbraucht.setText("Eingenommen: " + String.valueOf(dataSource.getConsumedCalories(dateString)) + " kcal");
 
@@ -64,6 +71,7 @@ public class MainActivity extends AppCompatActivity {
         tv_verfuegbar.setText("Verfügbar: " + String.valueOf(availableCalories()) + " kcal");
 
 
+        // button to go to the calendarview is set
         calendar = findViewById(R.id.goToCalendar);//ImageButton for opening Calendar Activity
         calendar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -72,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // buttons to add food for each field
         addBreakfast = findViewById(R.id.AddBreakfast);
         addBreakfast.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +116,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
 
+        // buttons to switch to the following activities
         foodList = findViewById(R.id.goToFoodList);
         foodList.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,6 +141,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+
+        // function for a click on an item to open the edit menu
         breakfast.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 openEditOrDeleteMealActivity(dateString, 1, position);
@@ -158,6 +170,8 @@ public class MainActivity extends AppCompatActivity {
 
         populateListViews(); // Listview Method for Startscreen
 
+
+        // set the progressbar
         calorieProgress = findViewById(R.id.progressBar);
         calorieProgress.setScaleY(2f);
 
@@ -167,23 +181,27 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    // resume database
     @Override
     protected void onResume() {
         super.onResume();
         dataSource.open();
     }
 
+    // pause database
     @Override
     protected void onPause() {
         super.onPause();
         dataSource.close();
     }
 
+    // function to open a new activity
     private void openNewActivity(Class<?> activity){
         Intent myIntent = new Intent(MainActivity.this,activity);
         MainActivity.this.startActivity(myIntent);
     }
 
+    // function to fill the listviews
     private void populateListViews() {
         populateListView(R.id.ListViewBreakfast, 1);
         populateListView(R.id.ListViewLunch, 2);
@@ -191,6 +209,7 @@ public class MainActivity extends AppCompatActivity {
         populateListView(R.id.ListViewSnacks, 0);
     }
 
+    // function to fill listview
     private void populateListView(@IdRes int id, int category) {
         //Create list of items
         List<String> meals = dataSource.getMealEntries(dateString, category);
@@ -205,6 +224,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    // function to open the meal activitiy
     private void openMealActivity(String date, int category) {
         Intent myIntent = new Intent(MainActivity.this, AddMeal.class);
         myIntent.putExtra("date", date);
@@ -213,6 +233,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    // function to open the editordeletemeal activity
     private void openEditOrDeleteMealActivity(String date, int category, int position){
         Intent myIntent = new Intent(MainActivity.this, EditOrDeleteMeal.class);
         myIntent.putExtra("date", date);
@@ -222,6 +243,7 @@ public class MainActivity extends AppCompatActivity {
         MainActivity.this.startActivity(myIntent);
     }
 
+    // function to calculate available calories
     private int availableCalories(){
        int max = dataSource.getLimitFromProfile();
        int used = dataSource.getConsumedCalories(dateString);

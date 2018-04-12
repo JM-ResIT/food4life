@@ -13,20 +13,26 @@ import database.TagebuchDataSource;
 
 public class AddUnit extends AppCompatActivity {
 
+    // variables for this java class
     private TagebuchDataSource dataSource;
-
     public static final String LOG_TAG = AddUnit.class.getSimpleName();
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_unit);
+
+        // database function is used
         dataSource = new TagebuchDataSource(this);
 
+        // button to add unit is now referencing Id
         Button addUnit = (Button) findViewById(R.id.UnitAdd);
 
+        // database is opened and
         dataSource.open();
 
+        // button to add unit is used
         addUnit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -35,6 +41,7 @@ public class AddUnit extends AppCompatActivity {
         });
     }
 
+    // function to add a unit to database
     private void addUnit(){
         EditText unitName = (EditText) findViewById(R.id.UnitName);
 
@@ -50,11 +57,13 @@ public class AddUnit extends AppCompatActivity {
         }
     }
 
+    // Function for back button to go back to the unitlist
     private void goBack() {
         Intent myIntent = new Intent(AddUnit.this, UnitList.class);
         AddUnit.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -64,12 +73,15 @@ public class AddUnit extends AppCompatActivity {
 
         return super.onKeyDown(keyCode, event);
     }
+
+    // Resume database
     @Override
     protected void onResume() {
         super.onResume();
         dataSource.open();
     }
 
+    // Pause database
     @Override
     protected void onPause() {
         super.onPause();
