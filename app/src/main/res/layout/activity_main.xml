@@ -99,14 +99,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Frühstück"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textsize_text_main"
                     android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/ListViewBreakfast"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
-                    android:layout_marginTop="4dp"></ListView>
+                    android:layout_marginTop="4dp"/>
 
                 <Button
                     android:id="@+id/AddBreakfast"
@@ -141,14 +141,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Mittagessen"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textsize_text_main"
                     android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/ListViewLunch"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
-                    android:layout_marginTop="4dp"></ListView>
+                    android:layout_marginTop="4dp"/>
 
                 <Button
                     android:id="@+id/AddLunch"
@@ -183,14 +183,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Abendessen"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textsize_text_main"
                     android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/ListViewDinner"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
-                    android:layout_marginTop="4dp"></ListView>
+                    android:layout_marginTop="4dp"/>
 
                 <Button
                     android:id="@+id/AddDinner"
@@ -225,14 +225,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Snacks"
-                    android:textSize="20dp"
+                    android:textSize="@dimen/textsize_text_main"
                     android:textStyle="bold" />
 
                 <ListView
                     android:id="@+id/ListViewSnacks"
                     android:layout_width="match_parent"
                     android:layout_height="85dp"
-                    android:layout_marginTop="4dp"></ListView>
+                    android:layout_marginTop="4dp"/>
 
                 <Button
                     android:id="@+id/AddSnacks"

@@ -6,7 +6,6 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-
     tools:context="com.example.mfwis415a.food4life.Calendar">
 
     <LinearLayout
@@ -49,11 +48,11 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:background="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingLeft="4dp">
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:paddingTop="@dimen/padding_button"
+                    android:paddingBottom="@dimen/padding_button"
+                    android:paddingRight="@dimen/padding_button"
+                    android:paddingLeft="@dimen/padding_button">
 
 
                     <TextView
@@ -61,25 +60,25 @@
                         android:layout_height="wrap_content"
                         android:text="Frühstück"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="@dimen/textsize_text"/>
 
                     <ListView
                         android:id="@+id/ListViewBreakfastC"
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:layout_marginTop="4dp">
+                        android:layout_height="@dimen/listview_height"
+                        android:layout_marginTop="@dimen/padding_button">
                     </ListView>
 
                     <Button
                         android:id="@+id/AddBreakfastC"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_width="@dimen/layout_width_height"
+                        android:layout_height="@dimen/layout_width_height"
+                        android:layout_marginTop="@dimen/layout_margin"
                         android:background="@drawable/button_bg_round"
                         android:gravity="center"
                         android:text="+"
                         android:textColor="@color/red"
-                        android:textSize="30dp" />
+                        android:textSize="@dimen/textsize_header" />
 
 
                 </LinearLayout>
@@ -94,11 +93,11 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:background="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingLeft="4dp">
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:paddingTop="@dimen/padding_button"
+                    android:paddingBottom="@dimen/padding_button"
+                    android:paddingRight="@dimen/padding_button"
+                    android:paddingLeft="@dimen/padding_button">
 
 
                     <TextView
@@ -106,25 +105,25 @@
                         android:layout_height="wrap_content"
                         android:text="Mittagessen"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="@dimen/textsize_text"/>
 
                     <ListView
                         android:id="@+id/ListViewLunchC"
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:layout_marginTop="4dp">
+                        android:layout_height="@dimen/listview_height"
+                        android:layout_marginTop="@dimen/padding_button">
                     </ListView>
 
                     <Button
                         android:id="@+id/AddLunchC"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_width="@dimen/layout_width_height"
+                        android:layout_height="@dimen/layout_width_height"
+                        android:layout_marginTop="@dimen/layout_margin"
                         android:background="@drawable/button_bg_round"
                         android:gravity="center"
                         android:text="+"
                         android:textColor="@color/red"
-                        android:textSize="30dp" />
+                        android:textSize="@dimen/textsize_header" />
 
 
                 </LinearLayout>
@@ -139,11 +138,11 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:background="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingLeft="4dp">
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:paddingTop="@dimen/padding_button"
+                    android:paddingBottom="@dimen/padding_button"
+                    android:paddingRight="@dimen/padding_button"
+                    android:paddingLeft="@dimen/padding_button">
 
 
                     <TextView
@@ -151,25 +150,25 @@
                         android:layout_height="wrap_content"
                         android:text="Abendessen"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="@dimen/textsize_text"/>
 
                     <ListView
                         android:id="@+id/ListViewDinnerC"
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:layout_marginTop="4dp">
+                        android:layout_height="@dimen/listview_height"
+                        android:layout_marginTop="@dimen/padding_button">
                     </ListView>
 
                     <Button
                         android:id="@+id/AddDinnerC"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_width="@dimen/layout_width_height"
+                        android:layout_height="@dimen/layout_width_height"
+                        android:layout_marginTop="@dimen/layout_margin"
                         android:background="@drawable/button_bg_round"
                         android:gravity="center"
                         android:text="+"
                         android:textColor="@color/red"
-                        android:textSize="30dp" />
+                        android:textSize="@dimen/textsize_header" />
 
 
                 </LinearLayout>
@@ -184,11 +183,11 @@
                     android:layout_weight="1"
                     android:orientation="vertical"
                     android:background="@color/white"
-                    android:layout_marginTop="10dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp"
-                    android:paddingRight="4dp"
-                    android:paddingLeft="4dp">
+                    android:layout_marginTop="@dimen/layout_margin"
+                    android:paddingTop="@dimen/padding_button"
+                    android:paddingBottom="@dimen/padding_button"
+                    android:paddingRight="@dimen/padding_button"
+                    android:paddingLeft="@dimen/padding_button">
 
 
                     <TextView
@@ -196,25 +195,25 @@
                         android:layout_height="wrap_content"
                         android:text="Snacks"
                         android:textStyle="bold"
-                        android:textSize="20dp"/>
+                        android:textSize="@dimen/textsize_text"/>
 
                     <ListView
                         android:id="@+id/ListViewSnacksC"
                         android:layout_width="match_parent"
-                        android:layout_height="85dp"
-                        android:layout_marginTop="4dp">
+                        android:layout_height="@dimen/listview_height"
+                        android:layout_marginTop="@dimen/padding_button">
                     </ListView>
 
                     <Button
                         android:id="@+id/AddSnacksC"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginTop="8dp"
+                        android:layout_width="@dimen/layout_width_height"
+                        android:layout_height="@dimen/layout_width_height"
+                        android:layout_marginTop="@dimen/layout_margin"
                         android:background="@drawable/button_bg_round"
                         android:gravity="center"
                         android:text="+"
                         android:textColor="@color/red"
-                        android:textSize="30dp" />
+                        android:textSize="@dimen/textsize_header" />
 
 
                 </LinearLayout>

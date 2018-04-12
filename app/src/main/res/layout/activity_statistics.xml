@@ -23,7 +23,7 @@
 
     <TextView
         android:id="@+id/ersteSpanne"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/layout_width_statistic"
         android:layout_height="wrap_content"
         android:layout_below="@id/Überschrift"
         android:textSize="@dimen/listrow_textsize"
@@ -43,7 +43,7 @@
 
     <TextView
         android:id="@+id/zweiteSpanne"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/layout_width_statistic"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_below="@id/ersteSpanne"
@@ -63,7 +63,7 @@
 
     <TextView
         android:id="@+id/dritteSpanne"
-        android:layout_width="150dp"
+        android:layout_width="@dimen/layout_width_statistic"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_below="@id/zweiteSpanne"

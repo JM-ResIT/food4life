@@ -7,9 +7,6 @@
 \contentsline {section}{\numberline {1}Das Team}{1}{section.1}
 \contentsline {subsection}{\numberline {1.1}Teamfoto}{1}{subsection.1.1}
 \contentsline {section}{\numberline {2}Ziel des Projekts}{2}{section.2}
-\contentsline {subsection}{\numberline {2.1}Zielsetzung}{2}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Vorgehensweise}{2}{subsection.2.2}
-\contentsline {subsection}{\numberline {2.3}AntMe!}{2}{subsection.2.3}
 \contentsline {section}{\numberline {3}Benutzerhandbuch}{3}{section.3}
 \contentsline {section}{\numberline {4}Projektplanung}{4}{section.4}
 \contentsline {subsection}{\numberline {4.1}Pflichtenheft}{4}{subsection.4.1}

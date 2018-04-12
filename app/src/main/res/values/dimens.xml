@@ -10,6 +10,7 @@
     <dimen name="textsize_buttonPlus">28sp</dimen>
     <dimen name="view_distance">18dp</dimen>
     <dimen name="view_padding">18dp</dimen>
+    <dimen name="padding_button">4dp</dimen>
     <dimen name="button_height">0.4in</dimen>
     <dimen name="display_height">0.4in</dimen>
     <dimen name="display_width">2.4in</dimen>
@@ -17,5 +18,11 @@
     <dimen name="listrow_textsize">24sp</dimen>
     <dimen name="button_margin">16dp</dimen>
     <dimen name="textsize_header">30dp</dimen>
+    <dimen name="textsize_text">18dp</dimen>
+    <dimen name="textsize_text_main">20dp</dimen>
+    <dimen name="listview_height">85dp</dimen>
+    <dimen name="layout_width_height">40dp</dimen>
+    <dimen name="layout_margin">8dp</dimen>
+    <dimen name="layout_width_statistic">150dp</dimen>
 
 </resources>
