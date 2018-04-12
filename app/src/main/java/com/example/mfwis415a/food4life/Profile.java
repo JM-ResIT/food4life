@@ -25,6 +25,10 @@ public class Profile extends AppCompatActivity {
     // variables for this java class
     private TagebuchDataSource dataSource;
     private EditText limit;
+    private EditText name;
+    private EditText height;
+    private EditText weight;
+    private EditText bday;
     private Button updateProfile, statistics, unitList;
     private EditText displayDate;
     private DatePickerDialog.OnDateSetListener DateSetListener;
@@ -43,6 +47,11 @@ public class Profile extends AppCompatActivity {
         dataSource = new TagebuchDataSource(this);
 
         // edittext and buttons are now referencing Id's
+
+        name = (EditText) findViewById(R.id.ProfileName);
+        height = (EditText) findViewById(R.id.ProfileHeight);
+        bday = (EditText) findViewById(R.id.ProfileBday);
+        weight = (EditText) findViewById(R.id.ProfileWeight);
         limit = (EditText) findViewById(R.id.ProfileCalories);
         updateProfile = (Button) findViewById(R.id.UpdateProfile);
         statistics = (Button) findViewById(R.id.goToStatistics);
