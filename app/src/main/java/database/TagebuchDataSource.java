@@ -107,7 +107,7 @@ public class TagebuchDataSource {
 
     public int getRealIdFromMeal(String date, int category, int position) {
         int pos;
-        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_MENUTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL, position + ",1");
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.IS_ACTIVE + "=? and " + TagebuchHelper.DATUM + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{String.valueOf(1), date, String.valueOf(category)}, null, null, TagebuchHelper.TAGEBUCHEINTRAG_ID, position + ",1");
 
         cursor.moveToFirst();
         pos = Integer.parseInt(cursor.getString(0));
