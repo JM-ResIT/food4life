@@ -16,10 +16,9 @@ import database.TagebuchDataSource;
 
 public class AddFood extends AppCompatActivity {
 
-    // Buttons for this java class
+    // variables for this java class
     private Spinner units;
     private TagebuchDataSource dataSource;
-
     public static final String LOG_TAG = AddFood.class.getSimpleName();
 
 
@@ -28,16 +27,23 @@ public class AddFood extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_food);
+
         // Database is opened
         dataSource = new TagebuchDataSource(this);
+
         // Button to add food to database
         Button addFood = (Button) findViewById(R.id.addFood);
 
+        // Spinner is now referencing Id
         units = (Spinner) findViewById(R.id.foodUnit);
 
+        // Function database ist opened
         dataSource.open();
+
+        // Spinnerdata function is used
         loadSpinnerData();
 
+        // Button for addFood
         addFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -46,18 +52,23 @@ public class AddFood extends AppCompatActivity {
         });
     }
 
+    // function to add food
     private void addFood() {
+
+        // EditText fields are now referencing Id
         EditText foodName = (EditText) findViewById(R.id.foodName);
         EditText foodAmount = (EditText) findViewById(R.id.foodAmount);
         EditText calories = (EditText) findViewById(R.id.equivalent);
         EditText foodDescription = (EditText) findViewById(R.id.foodDescription);
 
+        // Strings are declared
         String foodNameText = foodName.getText().toString();
         String foodDescriptionText = foodDescription.getText().toString();
         String foodAmountText = foodAmount.getText().toString();
         String caloriesText = calories.getText().toString();
         String unit = units.getSelectedItem().toString();
 
+        // Check if the Strings are empty, if not  write back to database
         if (foodNameText.length() > 0 && foodDescriptionText.length() > 0 && foodAmountText.length() > 0 && unit.length() > 0 && caloriesText.length() > 0) {
             dataSource.addFoodEntry(foodNameText, foodDescriptionText, Float.parseFloat(foodAmountText), unit, Integer.parseInt(caloriesText));
 
@@ -68,6 +79,7 @@ public class AddFood extends AppCompatActivity {
         }
     }
 
+    // Function to load Spinnerdata
     private void loadSpinnerData() {
 
         // Spinner Drop down elements
@@ -85,11 +97,13 @@ public class AddFood extends AppCompatActivity {
         units.setAdapter(dataAdapter);
     }
 
+    // Function for back button to go back to the foodlist
     private void goBack() {
         Intent myIntent = new Intent(AddFood.this, FoodList.class);
         AddFood.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
@@ -100,12 +114,14 @@ public class AddFood extends AppCompatActivity {
         return super.onKeyDown(keyCode, event);
     }
 
+    // Resume database
     @Override
     protected void onResume() {
         super.onResume();
         dataSource.open();
     }
 
+    // Pause database
     @Override
     protected void onPause() {
         super.onPause();

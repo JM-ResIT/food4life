@@ -19,6 +19,7 @@ import database.TagebuchDataSource;
 
 public class EditOrDeleteMenu extends AppCompatActivity {
 
+    // variables for this java class
     private ListView foods;
     private EditText menuTitel, menuDesc;
     private Button editMenu, deleteMenu;
@@ -26,23 +27,27 @@ public class EditOrDeleteMenu extends AppCompatActivity {
 
     public static final String LOG_TAG = AddMenu.class.getSimpleName();
 
+    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_or_delete_menu);
 
+
+        // listview and edittexts are now referencing Id's
         foods = (ListView) findViewById(R.id.ListViewMenu);
         menuTitel = (EditText) findViewById(R.id.MenuTitel);
         menuDesc = (EditText) findViewById(R.id.MenuDesc);
 
+        // database is opened
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
-
-
+        //
         loadFoods();
     }
 
+    // function to add menu
     private void addMenu() {
         String titel = menuTitel.getText().toString();
         String desc = menuDesc.getText().toString();
@@ -58,6 +63,7 @@ public class EditOrDeleteMenu extends AppCompatActivity {
 
     }
 
+    // function to get selected items
     private List<Integer> getSelectedItems() {
         List<Integer> positions = new ArrayList<Integer>();
         SparseBooleanArray checked = foods.getCheckedItemPositions();
@@ -71,6 +77,7 @@ public class EditOrDeleteMenu extends AppCompatActivity {
         return positions;
     }
 
+    // function to load food
     private void loadFoods() {
         List<String> lables = dataSource.getAllFoods();
 
@@ -86,11 +93,13 @@ public class EditOrDeleteMenu extends AppCompatActivity {
 
     }
 
+    // Function for back button to go back to the previous activity
     private void goBack() {
         Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
         EditOrDeleteMenu.this.startActivity(myIntent);
     }
 
+    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
