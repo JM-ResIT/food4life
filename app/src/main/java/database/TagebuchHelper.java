@@ -84,6 +84,7 @@ public class TagebuchHelper extends SQLiteOpenHelper {
                     DATABASE_MENUTABLE + "(" +
                     MENU_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     TITEL + " STRING, " +
+                    BESCHREIBUNG + " STRING, " +
                     IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_ENTSPTABLE =
@@ -98,8 +99,9 @@ public class TagebuchHelper extends SQLiteOpenHelper {
     private static final String SQL_CREATE_MENU_LM_TABLE =
             "CREATE TABLE " +
                     DATABASE_MENU_LM_TABLE + "(" +
+                    MENU_ID + " INTEGER, " +
                     LEBENSMITTEL_ID + " INTEGER, " +
-                    MENU_ID + " INTEGER);";
+                    IS_ACTIVE + " BOOLEAN NOT NULL default 1);";
 
     private static final String SQL_CREATE_PROFIL_TABLE =
             "CREATE TABLE " +

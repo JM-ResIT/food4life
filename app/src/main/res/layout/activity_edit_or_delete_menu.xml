@@ -7,7 +7,7 @@
     tools:context="com.example.mfwis415a.food4life.AddMeal">
 
     <EditText
-        android:id="@+id/MenuName"
+        android:id="@+id/MenuTitel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
@@ -23,9 +23,9 @@
         android:id="@+id/MenuDesc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/MenuName"
-        android:layout_alignStart="@+id/MenuName"
-        android:layout_below="@id/MenuName"
+        android:layout_alignLeft="@+id/MenuTitel"
+        android:layout_alignStart="@+id/MenuTitel"
+        android:layout_below="@id/MenuTitel"
         android:ems="10"
         android:hint="Beschreibung des Menüs"
         android:inputType="date"

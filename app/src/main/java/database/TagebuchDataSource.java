@@ -40,7 +40,6 @@ public class TagebuchDataSource {
         }
     }
 
-
     public List<String> getAllFoods() {
         List<String> labels = new ArrayList<String>();
 
@@ -59,6 +58,26 @@ public class TagebuchDataSource {
         // returning lables
         return labels;
     }
+
+    public List<String> getAllMenus() {
+        List<String> labels = new ArrayList<String>();
+
+        // Select Query
+        Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_MENUTABLE, null, TagebuchHelper.IS_ACTIVE + "=?", new String[]{String.valueOf(1)}, null, null, TagebuchHelper.TITEL);
+
+        // looping through all rows and adding to list
+
+        while (cursor.moveToNext()) {
+            labels.add(cursor.getString(1) + " (" + cursor.getString(2) + ")");
+        }
+
+        // closing cursor
+        cursor.close();
+
+        // returning lables
+        return labels;
+    }
+
 
     public List<String> getAllUnits() {
         List<String> labels = new ArrayList<String>();
@@ -162,6 +181,22 @@ public class TagebuchDataSource {
         mealValues.put(TagebuchHelper.ANZAHL, amount);
 
         database.insert(TagebuchHelper.DATABASE_TBTABLE, null, mealValues);
+    }
+
+    public void addMenu(String titel, String description, List<Integer> positions){
+        ContentValues menuValues = new ContentValues();
+        menuValues.put(TagebuchHelper.TITEL, titel);
+        menuValues.put(TagebuchHelper.BESCHREIBUNG, description);
+
+        long menu_id = database.insert(TagebuchHelper.DATABASE_MENUTABLE, null, menuValues);
+
+        for(int elem : positions){
+            ContentValues menu_lmValues = new ContentValues();
+            menu_lmValues.put(TagebuchHelper.MENU_ID, menu_id);
+            menu_lmValues.put(TagebuchHelper.LEBENSMITTEL_ID, getRealIdFromLM(elem));
+            database.insert(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, menu_lmValues);
+        }
+
     }
 
     public void editMealEntry(int meal_id, int is_lm, int id, String date, int category, int calories, float amount){

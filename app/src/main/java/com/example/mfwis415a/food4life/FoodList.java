@@ -52,7 +52,7 @@ public class FoodList extends AppCompatActivity {
     }
 
 
-    public void loadFoods() {
+    private void loadFoods() {
         List<String> lables = dataSource.getAllFoods();
 
         if (!lables.isEmpty()) {
