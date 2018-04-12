@@ -29,10 +29,11 @@ public class AddMeal extends AppCompatActivity {
     private String date = "";
     private String originAmount, originCalories;
     private int category;
-    private Spinner categories, foods;
+    private Spinner categories, foods, menus;
     private int menu_lm_id;
     private int is_lm = 1;
     private boolean fromMain;
+    private int placeholderPosFood, placeholderPosMenu;
 
     private TagebuchDataSource dataSource;
 
@@ -59,6 +60,7 @@ public class AddMeal extends AppCompatActivity {
         dateView = (TextView) findViewById(R.id.MealDate);
         categories = (Spinner) findViewById(R.id.MealCategory);
         foods = (Spinner) findViewById(R.id.Foods);
+        menus = (Spinner) findViewById(R.id.Menus);
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
@@ -71,8 +73,28 @@ public class AddMeal extends AppCompatActivity {
         foods.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
-                menu_lm_id = dataSource.getRealIdFromLM(i);
-                setSelectedFood();
+                if (placeholderPosFood != i) {
+                    menu_lm_id = dataSource.getRealIdFromLM(i);
+                    setSelectedFood();
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                deleteSelectedMenu();
+            }
+        });
+
+        // listener function for selected items
+        menus.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView adapter, View v, int i, long lng) {
+                if (placeholderPosMenu != i) {
+                    menu_lm_id = dataSource.getRealIdFromMenu(i);
+                    setSelectedMenu();
+                }
+
             }
 
             @Override
@@ -80,6 +102,7 @@ public class AddMeal extends AppCompatActivity {
                 deleteSelectedFood();
             }
         });
+
 
         // Listener Function for changed text
         amount.addTextChangedListener(new TextWatcher() {
@@ -143,11 +166,13 @@ public class AddMeal extends AppCompatActivity {
     private void loadData() {
         dateView.setText(date);
         loadCategorySpinnerData();
-        loadFoodsAndMenus();
+        loadFoods();
+        loadMenus();
     }
 
     // function for selected foods to be set from database
     private void setSelectedFood() {
+        menus.setSelection(placeholderPosMenu);
         is_lm = 1;
         originAmount = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ANZAHL, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
         String originUnit = dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.EINHEIT, TagebuchHelper.LEBENSMITTEL_ID, menu_lm_id);
@@ -160,11 +185,27 @@ public class AddMeal extends AppCompatActivity {
 
     // function for selected menus from database
     private void setSelectedMenu() {
+        foods.setSelection(placeholderPosFood);
         is_lm = 0;
+
+        originAmount = "1";
+        String originUnit = "Stück";
+        originCalories = String.valueOf(dataSource.getCaloriesFromMenu(menu_lm_id));
+
+        amount.setText(originAmount);
+        unit.setText(originUnit);
+        calories.setText(originCalories);
     }
 
     // function for fields of selected foods to be cleared
     private void deleteSelectedFood() {
+        amount.setText("");
+        unit.setText("");
+        calories.setText("");
+    }
+
+    // function for fields of selected foods to be cleared
+    private void deleteSelectedMenu() {
         amount.setText("");
         unit.setText("");
         calories.setText("");
@@ -196,9 +237,10 @@ public class AddMeal extends AppCompatActivity {
     }
 
     // function to load food and menu
-    private void loadFoodsAndMenus() {
+    private void loadFoods() {
         // Spinner Drop down elements#
         List<String> labels = dataSource.getActiveFoods();
+        labels.add(" "); //empty placeholder
 
         // Creating adapter for spinner
         ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
@@ -211,11 +253,29 @@ public class AddMeal extends AppCompatActivity {
         // attaching data adapter to spinner
         foods.setAdapter(dataAdapter);
 
-
+        placeholderPosFood = dataAdapter.getPosition(" ");
 
     }
 
-    private void loadFoodUnitData() {
+    private void loadMenus() {
+        // Spinner Drop down elements#
+        List<String> labels = dataSource.getActiveMenus();
+        labels.add(" "); //empty placeholder
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, labels);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter
+                .setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        menus.setAdapter(dataAdapter);
+
+        placeholderPosMenu = dataAdapter.getPosition(" ");
+        menus.setSelection(placeholderPosMenu);
+
 
     }
 

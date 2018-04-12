@@ -224,9 +224,9 @@ public class TagebuchDataSource {
 
         int pos = 0;
         while (allFoods.moveToNext()) {
-            Cursor foodsFromMenus = databaseRead.query(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, TagebuchHelper.MENU_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
-            while (foodsFromMenus.moveToNext()) {
-                if (allFoods.getInt(0) == foodsFromMenus.getInt(1)) {
+            Cursor foodsFromMenu = databaseRead.query(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, TagebuchHelper.MENU_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
+            while (foodsFromMenu.moveToNext()) {
+                if (allFoods.getInt(0) == foodsFromMenu.getInt(1)) {
                     positions.add(pos);
                 }
             }
@@ -261,8 +261,13 @@ public class TagebuchDataSource {
         Cursor cursor = databaseRead.query(TagebuchHelper.DATABASE_TBTABLE, null, TagebuchHelper.DATUM + "=? and " + TagebuchHelper.KATEGORIE + "=?", new String[]{date, String.valueOf(category)}, null, null, null);
 
         while (cursor.moveToNext()) {
+            String mealName;
             //(String table, String column, String key, int id)
-            String mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
+            if(cursor.getInt(1) == 1){
+                 mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_LMTABLE, TagebuchHelper.TITEL, TagebuchHelper.LEBENSMITTEL_ID, Integer.parseInt(cursor.getString(2)));
+            } else {
+                mealName = getEntryFromDBTable(TagebuchHelper.DATABASE_MENUTABLE, TagebuchHelper.TITEL, TagebuchHelper.MENU_ID, Integer.parseInt(cursor.getString(2)));
+            }
             meals.add(mealName + " (" + cursor.getString(5) + " kcal)");
         }
         // closing cursor
@@ -330,7 +335,7 @@ public class TagebuchDataSource {
             cal.add(Calendar.DATE, -i);
             Date dateBeforeNDays = cal.getTime();
             SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
-            calories += getConsumedCalories( showDate.format(dateBeforeNDays));
+            calories += getConsumedCalories(showDate.format(dateBeforeNDays));
         }
 
         return Math.round(calories / days);
@@ -344,6 +349,20 @@ public class TagebuchDataSource {
         entry = cursor.getString(0);
 
         return entry;
+    }
+
+    public int getCaloriesFromMenu(int id) {
+        int calories = 0;
+
+        Cursor foodsFromMenu = databaseRead.query(TagebuchHelper.DATABASE_MENU_LM_TABLE, null, TagebuchHelper.MENU_ID + "=?", new String[]{String.valueOf(id)}, null, null, null);
+
+        while (foodsFromMenu.moveToNext()) {
+            int foodCalories = Integer.parseInt(getEntryFromDBTable(TagebuchHelper.DATABASE_ENTSPTABLE, TagebuchHelper.ENTSPRECHUNG, TagebuchHelper.LEBENSMITTEL_ID, foodsFromMenu.getInt(1)));
+
+            calories += foodCalories;
+        }
+
+        return calories;
     }
 
     public void updateProfile(int limit) {

@@ -34,7 +34,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     private String date = "";
     private String originAmount, originCalories;
     private int category;
-    private Spinner categories, foods;
+    private Spinner categories, foods, menus;
     private int menu_lm_id;
     private int meal_id;
     private int is_lm = 1;
@@ -66,6 +66,7 @@ public class EditOrDeleteMeal extends AppCompatActivity {
         dateView = (EditText) findViewById(R.id.MealDate);
         categories = (Spinner) findViewById(R.id.MealCategory);
         foods = (Spinner) findViewById(R.id.Foods);
+        menus = (Spinner) findViewById(R.id.Menus);
         unit = (TextView) findViewById(R.id.MealUnit);
         calories = (TextView) findViewById(R.id.MealCalories);
         amount = (EditText) findViewById(R.id.MealAmount);
@@ -105,6 +106,8 @@ public class EditOrDeleteMeal extends AppCompatActivity {
                 deleteSelectedFood();
             }
         });
+
+
 
         amount.addTextChangedListener(new TextWatcher() {
 
@@ -266,10 +269,6 @@ public class EditOrDeleteMeal extends AppCompatActivity {
     private int getIdPos() {
         int menu_lm_id = Integer.parseInt(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_TBTABLE, TagebuchHelper.MENU_LM_ID, TagebuchHelper.TAGEBUCHEINTRAG_ID, meal_id));
         return dataSource.getPositionFromFood(menu_lm_id);
-    }
-
-    private void loadFoodUnitData() {
-
     }
 
     private void goBack() {
