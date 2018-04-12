@@ -55,7 +55,7 @@ public class AddMenu extends AppCompatActivity {
         String desc = menuDesc.getText().toString();
         List<Integer> items = getSelectedItems();
 
-        if (titel.length() > 0 && desc.length() > 0 && items != null) {
+        if (titel.length() > 0 && desc.length() > 0 && !items.isEmpty()) {
             dataSource.addMenu(titel, desc, getSelectedItems());
             Intent myIntent = new Intent(AddMenu.this, MenuList.class);
             AddMenu.this.startActivity(myIntent);

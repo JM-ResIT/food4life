@@ -13,11 +13,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:ems="10"
         android:hint="Name des Menüs"
-        android:inputType="textPersonName"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin" />
+        android:inputType="text" />
 
     <EditText
         android:id="@+id/MenuDesc"
@@ -26,88 +26,65 @@
         android:layout_alignLeft="@+id/MenuTitel"
         android:layout_alignStart="@+id/MenuTitel"
         android:layout_below="@id/MenuTitel"
+        android:layout_marginBottom="@dimen/activity_vertical_margin"
+        android:layout_marginTop="@dimen/activity_vertical_margin"
         android:ems="10"
         android:hint="Beschreibung des Menüs"
-        android:inputType="date"
-        android:layout_marginTop="@dimen/activity_vertical_margin"
-        android:layout_marginBottom="@dimen/activity_vertical_margin"/>
-
-
+        android:inputType="text" />
 
     <LinearLayout
         android:id="@+id/LayoutMenu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/white"
         android:layout_below="@id/MenuDesc"
-        android:paddingTop="@dimen/padding_button"
-        android:paddingBottom="@dimen/padding_button"
-        android:paddingRight="@dimen/padding_button"
-        android:paddingLeft="@dimen/padding_button">
-
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="4dp"
+        android:paddingLeft="4dp"
+        android:paddingRight="4dp"
+        android:paddingTop="4dp">
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Menübestandteile"
-            android:textStyle="bold"
-            android:textSize="@dimen/textsize_display"/>
+            android:textSize="@dimen/textsize_display"
+            android:textStyle="bold" />
 
         <ListView
             android:id="@+id/ListViewMenu"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/listview_height"
-            android:layout_marginTop="@dimen/padding_button">
-        </ListView>
-
-        <Button
-            android:id="@+id/AddFoodToMenu"
-            android:layout_width="@dimen/layout_width_height"
-            android:layout_height="@dimen/layout_width_height"
-            android:layout_marginTop="@dimen/layout_margin"
-            android:background="@drawable/button_bg_round"
-            android:gravity="center"
-            android:text="+"
-            android:textColor="@color/red"
-            android:textSize="@dimen/textsize_button" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="kcal"
-            android:textStyle="bold"
-            android:textSize="@dimen/textsize_display"/>
-
-        <LinearLayout
-            android:id="@+id/buttons"
-            android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingTop="@dimen/activity_vertical_margin"
-            android:orientation="horizontal"
-            android:gravity="bottom"
-            android:layout_below="@+id/MealCalories"
-            android:layout_alignParentBottom="true">
-
-            <Button
-                android:id="@+id/deleteMenu"
-                android:layout_width="match_parent"
-                android:layout_weight="1"
-                android:layout_height="wrap_content"
-                android:text="Löschen" />
-
-            <Button
-                android:id="@+id/editMenu"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Speichern" />
-
-
-        </LinearLayout>
+            android:layout_marginTop="4dp"></ListView>
 
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/MealCalories"
+        android:gravity="bottom"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/activity_vertical_margin">
+
+        <Button
+            android:id="@+id/deleteMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Löschen" />
+
+        <Button
+            android:id="@+id/editMenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Speichern" />
+
+
+    </LinearLayout>
 
 
 </RelativeLayout>

@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -31,6 +32,15 @@ public class MenuList extends AppCompatActivity {
         dataSource.open();
 
         loadMenus();
+
+        menuList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myIntent = new Intent(MenuList.this, EditOrDeleteMenu.class);
+                MenuList.this.startActivity(myIntent);
+            }
+        });
+
+
         addMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
