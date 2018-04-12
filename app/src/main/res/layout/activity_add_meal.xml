@@ -75,7 +75,7 @@
         android:layout_alignStart="@+id/MealUnit"
         android:layout_below="@id/MealUnit"
         android:text="Kalorien"
-        android:textSize="18dp"
+        android:textSize="@dimen/textsize_text"
         android:layout_marginTop="@dimen/activity_vertical_margin"
         android:layout_marginBottom="@dimen/activity_vertical_margin"  />
 
