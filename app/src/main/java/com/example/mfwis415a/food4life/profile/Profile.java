@@ -88,9 +88,12 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String limitText = limit.getText().toString();
-                dataSource.updateProfile(Integer.parseInt(limitText));
-                Intent myIntent = new Intent(Profile.this, MainActivity.class);
-                Profile.this.startActivity(myIntent);
+                if(limitText.length() > 0){
+                    dataSource.updateProfile(Integer.parseInt(limitText));
+                    Intent myIntent = new Intent(Profile.this, MainActivity.class);
+                    Profile.this.startActivity(myIntent);
+                }
+
             }
         });
 
