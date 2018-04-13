@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.editordeletemeal;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -19,11 +19,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.mfwis415a.food4life.main.MainActivity;
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.calendar.Calendar;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import database.TagebuchDataSource;
-import database.TagebuchHelper;
+import common.TagebuchDataSource;
+import common.TagebuchHelper;
 
 public class EditOrDeleteMeal extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.menulist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +10,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.addmenu.AddMenu;
+import com.example.mfwis415a.food4life.editordeletemenu.EditOrDeleteMenu;
+import com.example.mfwis415a.food4life.main.MainActivity;
+
 import java.util.List;
 
-import database.TagebuchDataSource;
+import common.TagebuchDataSource;
 
 public class MenuList extends AppCompatActivity {
 

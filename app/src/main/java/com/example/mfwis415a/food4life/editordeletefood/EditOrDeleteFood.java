@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.editordeletefood;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -6,18 +6,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
+import com.example.mfwis415a.food4life.foodlist.FoodList;
+import com.example.mfwis415a.food4life.R;
 
-import java.util.List;
-
-import database.TagebuchDataSource;
-import database.TagebuchHelper;
+import common.TagebuchDataSource;
+import common.TagebuchHelper;
 
 public class EditOrDeleteFood extends AppCompatActivity {
 

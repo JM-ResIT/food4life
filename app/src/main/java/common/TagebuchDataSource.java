@@ -1,4 +1,4 @@
-package database;
+package common;
 
 /**
  * Created by bburczek on 19.03.2018.

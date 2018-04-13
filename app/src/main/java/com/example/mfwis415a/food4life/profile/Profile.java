@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.profile;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
@@ -11,14 +11,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.DatePicker;
-import android.widget.TextView;
+
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.statistics.Statistics;
+import com.example.mfwis415a.food4life.unitlist.UnitList;
+import com.example.mfwis415a.food4life.main.MainActivity;
 
 import java.util.Calendar;
 
 
 
-import database.TagebuchDataSource;
-import database.TagebuchHelper;
+import common.TagebuchDataSource;
+import common.TagebuchHelper;
 
 public class Profile extends AppCompatActivity {
 

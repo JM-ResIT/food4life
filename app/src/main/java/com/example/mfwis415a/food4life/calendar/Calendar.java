@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.calendar;
 
 import android.content.Intent;
 import android.support.annotation.IdRes;
@@ -14,11 +14,15 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.ListView;
 
+import com.example.mfwis415a.food4life.editordeletemeal.EditOrDeleteMeal;
+import com.example.mfwis415a.food4life.main.MainActivity;
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.addmeal.AddMeal;
+
 import java.text.SimpleDateFormat;
 import java.util.List;
 
-import database.TagebuchDataSource;
-import database.TagebuchHelper;
+import common.TagebuchDataSource;
 
 
 public class Calendar extends AppCompatActivity {

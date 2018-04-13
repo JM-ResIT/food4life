@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.addunit;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +9,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import database.TagebuchDataSource;
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.unitlist.UnitList;
+
+import common.TagebuchDataSource;
 
 public class AddUnit extends AppCompatActivity {
 

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context="com.example.mfwis415a.food4life.Calendar">
+    tools:context="com.example.mfwis415a.food4life.calendar.Calendar">
 
     <LinearLayout
         android:gravity="center"

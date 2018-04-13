@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.statistics;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -7,9 +7,10 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.widget.TextView;
 
-import java.text.SimpleDateFormat;
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.profile.Profile;
 
-import database.TagebuchDataSource;
+import common.TagebuchDataSource;
 
 public class Statistics extends AppCompatActivity {
 

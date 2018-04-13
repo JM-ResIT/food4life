@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.addmeal;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -15,11 +15,15 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.example.mfwis415a.food4life.calendar.Calendar;
+import com.example.mfwis415a.food4life.main.MainActivity;
+import com.example.mfwis415a.food4life.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import database.TagebuchDataSource;
-import database.TagebuchHelper;
+import common.TagebuchDataSource;
+import common.TagebuchHelper;
 
 public class AddMeal extends AppCompatActivity {
 

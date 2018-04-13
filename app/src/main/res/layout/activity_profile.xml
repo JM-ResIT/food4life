@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.mfwis415a.food4life.Profile">
+    tools:context="com.example.mfwis415a.food4life.profile.Profile">
 
     <EditText
         android:id="@+id/ProfileName"

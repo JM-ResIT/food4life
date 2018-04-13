@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_marginLeft="@dimen/textsize_button"
     android:layout_marginRight="@dimen/textsize_button"
-    tools:context=".Statistics">
+    tools:context=".statistics.Statistics">
 
     <TextView
         android:id="@+id/Überschrift"

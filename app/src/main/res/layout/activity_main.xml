@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/babyblue"
-    tools:context="com.example.mfwis415a.food4life.MainActivity">
+    tools:context="com.example.mfwis415a.food4life.main.MainActivity">
 
 
     <LinearLayout
@@ -78,7 +78,7 @@
             android:layout_height="0dp"
             android:background="@color/babyblue"
             android:orientation="vertical"
-            tools:context="com.example.mfwis415a.food4life.MainActivity">
+            tools:context="com.example.mfwis415a.food4life.main.MainActivity">
 
 
             <LinearLayout

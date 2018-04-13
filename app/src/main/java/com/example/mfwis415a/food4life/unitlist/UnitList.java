@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.unitlist;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -10,9 +10,15 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.addunit.AddUnit;
+import com.example.mfwis415a.food4life.editordeleteunit.EditOrDeleteUnit;
+import com.example.mfwis415a.food4life.foodlist.FoodList;
+import com.example.mfwis415a.food4life.profile.Profile;
+
 import java.util.List;
 
-import database.TagebuchDataSource;
+import common.TagebuchDataSource;
 
 public class UnitList extends AppCompatActivity {
 

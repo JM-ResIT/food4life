@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".main.MainActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,46 +19,46 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".AddMeal"
+            android:name=".addmeal.AddMeal"
             android:label="Hinzufügen" />
         <activity
-            android:name=".FoodList"
+            android:name=".foodlist.FoodList"
             android:label="Lebensmittel" />
         <activity
-            android:name=".MenuList"
+            android:name=".menulist.MenuList"
             android:label="Menü-Übersicht" />
         <activity
-            android:name=".UnitList"
+            android:name=".unitlist.UnitList"
             android:label="Einheiten-Übersicht" />
         <activity
-            android:name=".Profile"
+            android:name=".profile.Profile"
             android:label="Mein Profil" />
         <activity
-            android:name=".Calendar"
+            android:name=".calendar.Calendar"
             android:label="Kalender" />
         <activity
-            android:name=".AddFood"
+            android:name=".addfood.AddFood"
             android:label="Lebensmittel Hinzufügen" />
         <activity
-            android:name=".EditOrDeleteFood"
+            android:name=".editordeletefood.EditOrDeleteFood"
             android:label="Bearbeiten/ Löschen" />
         <activity
-            android:name=".AddMenu"
+            android:name=".addmenu.AddMenu"
             android:label="Menü hinzufügen" />
         <activity
-            android:name=".Statistics"
+            android:name=".statistics.Statistics"
             android:label="Statistische Auswertungen" />
         <activity
-            android:name=".EditOrDeleteMeal"
+            android:name=".editordeletemeal.EditOrDeleteMeal"
             android:label="Eintrag bearbeiten" />
         <activity
-            android:name=".EditOrDeleteMenu"
+            android:name=".editordeletemenu.EditOrDeleteMenu"
             android:label="Menü bearbeiten" />
         <activity
-            android:name=".AddUnit"
+            android:name=".addunit.AddUnit"
             android:label="Einheit hinzufügen" />
         <activity
-            android:name=".EditOrDeleteUnit"
+            android:name=".editordeleteunit.EditOrDeleteUnit"
             android:label="Einheit bearbeiten" />
     </application>
 

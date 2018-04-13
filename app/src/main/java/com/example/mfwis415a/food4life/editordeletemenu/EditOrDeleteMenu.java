@@ -1,4 +1,4 @@
-package com.example.mfwis415a.food4life;
+package com.example.mfwis415a.food4life.editordeletemenu;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
@@ -12,66 +12,91 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 
+import com.example.mfwis415a.food4life.menulist.MenuList;
+import com.example.mfwis415a.food4life.R;
+import com.example.mfwis415a.food4life.addmenu.AddMenu;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import database.TagebuchDataSource;
+import common.TagebuchDataSource;
+import common.TagebuchHelper;
 
-public class AddMenu extends AppCompatActivity {
+public class EditOrDeleteMenu extends AppCompatActivity {
 
-    // variables for this java class
     private ListView foods;
     private EditText menuTitel, menuDesc;
-    private Button addMenu;
+    private Button editMenu, deleteMenu;
     private TagebuchDataSource dataSource;
+    private int menu_id;
+
     public static final String LOG_TAG = AddMenu.class.getSimpleName();
 
-    // onCreate creates the Activity with the chosen Layout
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_menu);
+        setContentView(R.layout.activity_edit_or_delete_menu);
 
-        // Listviews Buttons and Edittexts are now referencing Id's
         foods = (ListView) findViewById(R.id.ListViewMenu);
-        addMenu = (Button) findViewById(R.id.MenuAdd);
         menuTitel = (EditText) findViewById(R.id.MenuTitel);
         menuDesc = (EditText) findViewById(R.id.MenuDesc);
+        editMenu = (Button) findViewById(R.id.editMenu);
+        deleteMenu = (Button) findViewById(R.id.deleteMenu);
 
-        // database is opened and function is used
+        Intent mIntent = getIntent();
+        int position = mIntent.getIntExtra("position", 0);
+
         dataSource = new TagebuchDataSource(this);
         dataSource.open();
 
-        // button function to add menu is set
-        addMenu.setOnClickListener(new View.OnClickListener() {
+        menu_id = dataSource.getRealIdFromMenu(position);
+
+        editMenu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                addMenu();
+                editMenu();
+
             }
         });
 
+        deleteMenu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                deleteMenu();
 
-        // loadFoods function is used
+            }
+        });
+
         loadFoods();
+        loadMenuData();
     }
 
-    //function to add a menu
-    private void addMenu() {
+    private void loadMenuData(){
+        menuTitel.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_MENUTABLE, TagebuchHelper.TITEL, TagebuchHelper.MENU_ID, menu_id));
+        menuDesc.setText(dataSource.getEntryFromDBTable(TagebuchHelper.DATABASE_MENUTABLE, TagebuchHelper.BESCHREIBUNG, TagebuchHelper.MENU_ID, menu_id));
+    }
+
+    private void deleteMenu(){
+        dataSource.updateStatusOfMenu(menu_id, 0);
+        Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
+        EditOrDeleteMenu.this.startActivity(myIntent);
+    }
+
+    private void editMenu() {
         String titel = menuTitel.getText().toString();
         String desc = menuDesc.getText().toString();
         List<Integer> items = getSelectedItems();
 
         if (titel.length() > 0 && desc.length() > 0 && !items.isEmpty()) {
-            dataSource.addMenuEntry(titel, desc, items);
-            Intent myIntent = new Intent(AddMenu.this, MenuList.class);
-            AddMenu.this.startActivity(myIntent);
+            dataSource.editMenu(titel, desc, getSelectedItems(), menu_id);
+            Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
+            EditOrDeleteMenu.this.startActivity(myIntent);
         } else {
             Log.d(LOG_TAG, "Bitte alle Felder und mindestens eine Checkbox befüllen!");
         }
 
     }
 
-    // function to get selected items
     private List<Integer> getSelectedItems() {
         List<Integer> positions = new ArrayList<Integer>();
         SparseBooleanArray checked = foods.getCheckedItemPositions();
@@ -85,7 +110,6 @@ public class AddMenu extends AppCompatActivity {
         return positions;
     }
 
-    // function loadfoods is declared
     private void loadFoods() {
         List<String> lables = dataSource.getActiveFoods();
 
@@ -95,19 +119,26 @@ public class AddMenu extends AppCompatActivity {
                     android.R.layout.simple_list_item_multiple_choice, lables));
 
             foods.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
-            foods.setItemsCanFocus(false);
+            preSelectFoods();
+
         }
-
-
     }
 
-    // Function for back button to go back to the menulist
+
+    private void preSelectFoods(){
+        List<Integer> positions = dataSource.getFoodPosFromMenu(menu_id);
+
+        for(int pos: positions){
+            foods.setItemChecked(pos, true);
+        }
+    }
+
+
     private void goBack() {
-        Intent myIntent = new Intent(AddMenu.this, MenuList.class);
-        AddMenu.this.startActivity(myIntent);
+        Intent myIntent = new Intent(EditOrDeleteMenu.this, MenuList.class);
+        EditOrDeleteMenu.this.startActivity(myIntent);
     }
 
-    // Listener function for back key
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && event.getRepeatCount() == 0) {
