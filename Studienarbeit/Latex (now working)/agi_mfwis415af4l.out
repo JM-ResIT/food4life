@@ -1,0 +1,140 @@
+\BOOKMARK [1][-]{section.1}{Das Team}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Das food4life Team}{section.1}% 2
+\BOOKMARK [1][-]{section.2}{Ziel des Projekts}{}% 3
+\BOOKMARK [1][-]{section.3}{Benutzerhandbuch}{}% 4
+\BOOKMARK [1][-]{section.4}{Projektplanung}{}% 5
+\BOOKMARK [2][-]{subsection.4.1}{Pflichtenheft}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.2}{Projektablaufplan}{section.4}% 7
+\BOOKMARK [2][-]{subsection.4.3}{Planung der Software}{section.4}% 8
+\BOOKMARK [3][-]{subsubsection.4.3.1}{Planung der Mockups}{subsection.4.3}% 9
+\BOOKMARK [3][-]{subsubsection.4.3.2}{Planung der Datenstrukturen und Schnittstellen}{subsection.4.3}% 10
+\BOOKMARK [3][-]{subsubsection.4.3.3}{Planung der Activities und Layouts}{subsection.4.3}% 11
+\BOOKMARK [3][-]{subsubsection.4.3.4}{Planung der Navigation und des Datenaustausches zwischen den Activities}{subsection.4.3}% 12
+\BOOKMARK [2][-]{subsection.4.4}{Geplante Aufgabenverteilung im Team}{section.4}% 13
+\BOOKMARK [1][-]{section.5}{Beschreibung des Projektverlaufs}{}% 14
+\BOOKMARK [2][-]{subsection.5.1}{Tats\344chliche Aufgabenverteilung im Team}{section.5}% 15
+\BOOKMARK [2][-]{subsection.5.2}{Teammeetingprotokolle}{section.5}% 16
+\BOOKMARK [2][-]{subsection.5.3}{Projekttageb\374cher aller Teammitglieder}{section.5}% 17
+\BOOKMARK [2][-]{subsection.5.4}{Beschreibung von Problemen}{section.5}% 18
+\BOOKMARK [1][-]{section.6}{Dokumentation der Software}{}% 19
+\BOOKMARK [2][-]{subsection.6.1}{Dokumentation der Paketstruktur des Android-Projektes}{section.6}% 20
+\BOOKMARK [2][-]{subsection.6.2}{Dokumentation der Activities}{section.6}% 21
+\BOOKMARK [3][-]{subsubsection.6.2.1}{Activity 1}{subsection.6.2}% 22
+\BOOKMARK [4][-]{paragraph.6.2.1.1}{Aufgabe und Funktion}{subsubsection.6.2.1}% 23
+\BOOKMARK [4][-]{paragraph.6.2.1.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.1}% 24
+\BOOKMARK [4][-]{paragraph.6.2.1.3}{Use-Case}{subsubsection.6.2.1}% 25
+\BOOKMARK [4][-]{paragraph.6.2.1.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.1}% 26
+\BOOKMARK [4][-]{paragraph.6.2.1.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.1}% 27
+\BOOKMARK [4][-]{paragraph.6.2.1.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.1}% 28
+\BOOKMARK [3][-]{subsubsection.6.2.2}{Activity 2}{subsection.6.2}% 29
+\BOOKMARK [4][-]{paragraph.6.2.2.1}{Aufgabe und Funktion}{subsubsection.6.2.2}% 30
+\BOOKMARK [4][-]{paragraph.6.2.2.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.2}% 31
+\BOOKMARK [4][-]{paragraph.6.2.2.3}{Use-Case}{subsubsection.6.2.2}% 32
+\BOOKMARK [4][-]{paragraph.6.2.2.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.2}% 33
+\BOOKMARK [4][-]{paragraph.6.2.2.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.2}% 34
+\BOOKMARK [4][-]{paragraph.6.2.2.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.2}% 35
+\BOOKMARK [3][-]{subsubsection.6.2.3}{Activity 3}{subsection.6.2}% 36
+\BOOKMARK [4][-]{paragraph.6.2.3.1}{Aufgabe und Funktion}{subsubsection.6.2.3}% 37
+\BOOKMARK [4][-]{paragraph.6.2.3.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.3}% 38
+\BOOKMARK [4][-]{paragraph.6.2.3.3}{Use-Case}{subsubsection.6.2.3}% 39
+\BOOKMARK [4][-]{paragraph.6.2.3.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.3}% 40
+\BOOKMARK [4][-]{paragraph.6.2.3.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.3}% 41
+\BOOKMARK [4][-]{paragraph.6.2.3.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.3}% 42
+\BOOKMARK [3][-]{subsubsection.6.2.4}{Activity 4}{subsection.6.2}% 43
+\BOOKMARK [4][-]{paragraph.6.2.4.1}{Aufgabe und Funktion}{subsubsection.6.2.4}% 44
+\BOOKMARK [4][-]{paragraph.6.2.4.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.4}% 45
+\BOOKMARK [4][-]{paragraph.6.2.4.3}{Use-Case}{subsubsection.6.2.4}% 46
+\BOOKMARK [4][-]{paragraph.6.2.4.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.4}% 47
+\BOOKMARK [4][-]{paragraph.6.2.4.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.4}% 48
+\BOOKMARK [4][-]{paragraph.6.2.4.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.4}% 49
+\BOOKMARK [3][-]{subsubsection.6.2.5}{Activity 5}{subsection.6.2}% 50
+\BOOKMARK [4][-]{paragraph.6.2.5.1}{Aufgabe und Funktion}{subsubsection.6.2.5}% 51
+\BOOKMARK [4][-]{paragraph.6.2.5.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.5}% 52
+\BOOKMARK [4][-]{paragraph.6.2.5.3}{Use-Case}{subsubsection.6.2.5}% 53
+\BOOKMARK [4][-]{paragraph.6.2.5.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.5}% 54
+\BOOKMARK [4][-]{paragraph.6.2.5.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.5}% 55
+\BOOKMARK [4][-]{paragraph.6.2.5.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.5}% 56
+\BOOKMARK [3][-]{subsubsection.6.2.6}{Activity 6}{subsection.6.2}% 57
+\BOOKMARK [4][-]{paragraph.6.2.6.1}{Aufgabe und Funktion}{subsubsection.6.2.6}% 58
+\BOOKMARK [4][-]{paragraph.6.2.6.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.6}% 59
+\BOOKMARK [4][-]{paragraph.6.2.6.3}{Use-Case}{subsubsection.6.2.6}% 60
+\BOOKMARK [4][-]{paragraph.6.2.6.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.6}% 61
+\BOOKMARK [4][-]{paragraph.6.2.6.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.6}% 62
+\BOOKMARK [4][-]{paragraph.6.2.6.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.6}% 63
+\BOOKMARK [3][-]{subsubsection.6.2.7}{Activity 7}{subsection.6.2}% 64
+\BOOKMARK [4][-]{paragraph.6.2.7.1}{Aufgabe und Funktion}{subsubsection.6.2.7}% 65
+\BOOKMARK [4][-]{paragraph.6.2.7.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.7}% 66
+\BOOKMARK [4][-]{paragraph.6.2.7.3}{Use-Case}{subsubsection.6.2.7}% 67
+\BOOKMARK [4][-]{paragraph.6.2.7.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.7}% 68
+\BOOKMARK [4][-]{paragraph.6.2.7.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.7}% 69
+\BOOKMARK [4][-]{paragraph.6.2.7.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.7}% 70
+\BOOKMARK [3][-]{subsubsection.6.2.8}{Activity 8}{subsection.6.2}% 71
+\BOOKMARK [4][-]{paragraph.6.2.8.1}{Aufgabe und Funktion}{subsubsection.6.2.8}% 72
+\BOOKMARK [4][-]{paragraph.6.2.8.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.8}% 73
+\BOOKMARK [4][-]{paragraph.6.2.8.3}{Use-Case}{subsubsection.6.2.8}% 74
+\BOOKMARK [4][-]{paragraph.6.2.8.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.8}% 75
+\BOOKMARK [4][-]{paragraph.6.2.8.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.8}% 76
+\BOOKMARK [4][-]{paragraph.6.2.8.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.8}% 77
+\BOOKMARK [3][-]{subsubsection.6.2.9}{Activity 9}{subsection.6.2}% 78
+\BOOKMARK [4][-]{paragraph.6.2.9.1}{Aufgabe und Funktion}{subsubsection.6.2.9}% 79
+\BOOKMARK [4][-]{paragraph.6.2.9.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.9}% 80
+\BOOKMARK [4][-]{paragraph.6.2.9.3}{Use-Case}{subsubsection.6.2.9}% 81
+\BOOKMARK [4][-]{paragraph.6.2.9.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.9}% 82
+\BOOKMARK [4][-]{paragraph.6.2.9.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.9}% 83
+\BOOKMARK [4][-]{paragraph.6.2.9.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.9}% 84
+\BOOKMARK [3][-]{subsubsection.6.2.10}{Activity 10}{subsection.6.2}% 85
+\BOOKMARK [4][-]{paragraph.6.2.10.1}{Aufgabe und Funktion}{subsubsection.6.2.10}% 86
+\BOOKMARK [4][-]{paragraph.6.2.10.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.10}% 87
+\BOOKMARK [4][-]{paragraph.6.2.10.3}{Use-Case}{subsubsection.6.2.10}% 88
+\BOOKMARK [4][-]{paragraph.6.2.10.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.10}% 89
+\BOOKMARK [4][-]{paragraph.6.2.10.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.10}% 90
+\BOOKMARK [4][-]{paragraph.6.2.10.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.10}% 91
+\BOOKMARK [3][-]{subsubsection.6.2.11}{Activity 11}{subsection.6.2}% 92
+\BOOKMARK [4][-]{paragraph.6.2.11.1}{Aufgabe und Funktion}{subsubsection.6.2.11}% 93
+\BOOKMARK [4][-]{paragraph.6.2.11.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.11}% 94
+\BOOKMARK [4][-]{paragraph.6.2.11.3}{Use-Case}{subsubsection.6.2.11}% 95
+\BOOKMARK [4][-]{paragraph.6.2.11.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.11}% 96
+\BOOKMARK [4][-]{paragraph.6.2.11.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.11}% 97
+\BOOKMARK [4][-]{paragraph.6.2.11.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.11}% 98
+\BOOKMARK [3][-]{subsubsection.6.2.12}{Activity 12}{subsection.6.2}% 99
+\BOOKMARK [4][-]{paragraph.6.2.12.1}{Aufgabe und Funktion}{subsubsection.6.2.12}% 100
+\BOOKMARK [4][-]{paragraph.6.2.12.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.12}% 101
+\BOOKMARK [4][-]{paragraph.6.2.12.3}{Use-Case}{subsubsection.6.2.12}% 102
+\BOOKMARK [4][-]{paragraph.6.2.12.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.12}% 103
+\BOOKMARK [4][-]{paragraph.6.2.12.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.12}% 104
+\BOOKMARK [4][-]{paragraph.6.2.12.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.12}% 105
+\BOOKMARK [3][-]{subsubsection.6.2.13}{Activity 13}{subsection.6.2}% 106
+\BOOKMARK [4][-]{paragraph.6.2.13.1}{Aufgabe und Funktion}{subsubsection.6.2.13}% 107
+\BOOKMARK [4][-]{paragraph.6.2.13.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.13}% 108
+\BOOKMARK [4][-]{paragraph.6.2.13.3}{Use-Case}{subsubsection.6.2.13}% 109
+\BOOKMARK [4][-]{paragraph.6.2.13.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.13}% 110
+\BOOKMARK [4][-]{paragraph.6.2.13.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.13}% 111
+\BOOKMARK [4][-]{paragraph.6.2.13.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.13}% 112
+\BOOKMARK [3][-]{subsubsection.6.2.14}{Activity 14}{subsection.6.2}% 113
+\BOOKMARK [4][-]{paragraph.6.2.14.1}{Aufgabe und Funktion}{subsubsection.6.2.14}% 114
+\BOOKMARK [4][-]{paragraph.6.2.14.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.14}% 115
+\BOOKMARK [4][-]{paragraph.6.2.14.3}{Use-Case}{subsubsection.6.2.14}% 116
+\BOOKMARK [4][-]{paragraph.6.2.14.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.14}% 117
+\BOOKMARK [4][-]{paragraph.6.2.14.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.14}% 118
+\BOOKMARK [4][-]{paragraph.6.2.14.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.14}% 119
+\BOOKMARK [3][-]{subsubsection.6.2.15}{Activity 15}{subsection.6.2}% 120
+\BOOKMARK [4][-]{paragraph.6.2.15.1}{Aufgabe und Funktion}{subsubsection.6.2.15}% 121
+\BOOKMARK [4][-]{paragraph.6.2.15.2}{Layout, Screenshot\(s\)}{subsubsection.6.2.15}% 122
+\BOOKMARK [4][-]{paragraph.6.2.15.3}{Use-Case}{subsubsection.6.2.15}% 123
+\BOOKMARK [4][-]{paragraph.6.2.15.4}{Datenverwaltung innerhalb der Activity}{subsubsection.6.2.15}% 124
+\BOOKMARK [4][-]{paragraph.6.2.15.5}{Datenschnittstellen zu anderen Activity}{subsubsection.6.2.15}% 125
+\BOOKMARK [4][-]{paragraph.6.2.15.6}{Dokumentation des Quelltextes der Activity}{subsubsection.6.2.15}% 126
+\BOOKMARK [2][-]{subsection.6.3}{Dokumentation der Navigation und des Datenaustauschs zwischen Activities}{section.6}% 127
+\BOOKMARK [2][-]{subsection.6.4}{Dokumentation der Activity-ubergreifenden, persistenten Datenhaltung}{section.6}% 128
+\BOOKMARK [2][-]{subsection.6.5}{Dokumentation der Activity-ubergreifenden Klassen}{section.6}% 129
+\BOOKMARK [1][-]{section.7}{Fazits aller Teammitglieder}{}% 130
+\BOOKMARK [2][-]{subsection.7.1}{Jannik Maes}{section.7}% 131
+\BOOKMARK [2][-]{subsection.7.2}{Sven Kuczera}{section.7}% 132
+\BOOKMARK [2][-]{subsection.7.3}{Henryk Schaffrath}{section.7}% 133
+\BOOKMARK [2][-]{subsection.7.4}{Benedikt Burczek}{section.7}% 134
+\BOOKMARK [1][-]{section.8}{Anhang}{}% 135
+\BOOKMARK [1][-]{section.8}{Anhang}{}% 136
+\BOOKMARK [2][-]{subsection.8.1}{Anhang mit allen Quelltexten}{section.8}% 137
+\BOOKMARK [2][-]{subsection.8.2}{Anhang mit einem Verzeichnis der verwendeten Tools und Hilfsprogramme}{section.8}% 138
+\BOOKMARK [1][-]{section*.2}{Quellenverzeichnis}{}% 139
+\BOOKMARK [1][-]{section*.3}{Ehrenw\366rtliche Erkl\344rung}{}% 140

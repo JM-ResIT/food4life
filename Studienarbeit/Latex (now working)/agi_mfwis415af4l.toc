@@ -1,0 +1,143 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\defcounter {refsection}{0}\relax 
+\select@language {ngerman}
+\contentsline {section}{\numberline {1}Das Team}{2}{section.1}
+\contentsline {subsection}{\numberline {1.1}Das food4life Team}{2}{subsection.1.1}
+\contentsline {section}{\numberline {2}Ziel des Projekts}{3}{section.2}
+\contentsline {section}{\numberline {3}Benutzerhandbuch}{4}{section.3}
+\contentsline {section}{\numberline {4}Projektplanung}{7}{section.4}
+\contentsline {subsection}{\numberline {4.1}Pflichtenheft}{7}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Projektablaufplan}{8}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Planung der Software}{8}{subsection.4.3}
+\contentsline {subsubsection}{\numberline {4.3.1}Planung der Mockups}{8}{subsubsection.4.3.1}
+\contentsline {subsubsection}{\numberline {4.3.2}Planung der Datenstrukturen und Schnittstellen}{9}{subsubsection.4.3.2}
+\contentsline {subsubsection}{\numberline {4.3.3}Planung der Activities und Layouts}{9}{subsubsection.4.3.3}
+\contentsline {subsubsection}{\numberline {4.3.4}Planung der Navigation und des Datenaustausches zwischen den Activities}{9}{subsubsection.4.3.4}
+\contentsline {subsection}{\numberline {4.4}Geplante Aufgabenverteilung im Team}{9}{subsection.4.4}
+\contentsline {section}{\numberline {5}Beschreibung des Projektverlaufs}{10}{section.5}
+\contentsline {subsection}{\numberline {5.1}Tats\IeC {\"a}chliche Aufgabenverteilung im Team}{10}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Teammeetingprotokolle}{12}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Projekttageb\IeC {\"u}cher aller Teammitglieder}{14}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Beschreibung von Problemen}{14}{subsection.5.4}
+\contentsline {section}{\numberline {6}Dokumentation der Software}{16}{section.6}
+\contentsline {subsection}{\numberline {6.1}Dokumentation der Paketstruktur des Android-Projektes}{16}{subsection.6.1}
+\contentsline {subsection}{\numberline {6.2}Dokumentation der Activities}{16}{subsection.6.2}
+\contentsline {subsubsection}{\numberline {6.2.1}Activity 1}{16}{subsubsection.6.2.1}
+\contentsline {paragraph}{\numberline {6.2.1.1}Aufgabe und Funktion}{16}{paragraph.6.2.1.1}
+\contentsline {paragraph}{\numberline {6.2.1.2}Layout, Screenshot(s)}{16}{paragraph.6.2.1.2}
+\contentsline {paragraph}{\numberline {6.2.1.3}Use-Case}{16}{paragraph.6.2.1.3}
+\contentsline {paragraph}{\numberline {6.2.1.4}Datenverwaltung innerhalb der Activity}{17}{paragraph.6.2.1.4}
+\contentsline {paragraph}{\numberline {6.2.1.5}Datenschnittstellen zu anderen Activity}{17}{paragraph.6.2.1.5}
+\contentsline {paragraph}{\numberline {6.2.1.6}Dokumentation des Quelltextes der Activity}{17}{paragraph.6.2.1.6}
+\contentsline {subsubsection}{\numberline {6.2.2}Activity 2}{17}{subsubsection.6.2.2}
+\contentsline {paragraph}{\numberline {6.2.2.1}Aufgabe und Funktion}{17}{paragraph.6.2.2.1}
+\contentsline {paragraph}{\numberline {6.2.2.2}Layout, Screenshot(s)}{18}{paragraph.6.2.2.2}
+\contentsline {paragraph}{\numberline {6.2.2.3}Use-Case}{18}{paragraph.6.2.2.3}
+\contentsline {paragraph}{\numberline {6.2.2.4}Datenverwaltung innerhalb der Activity}{18}{paragraph.6.2.2.4}
+\contentsline {paragraph}{\numberline {6.2.2.5}Datenschnittstellen zu anderen Activity}{18}{paragraph.6.2.2.5}
+\contentsline {paragraph}{\numberline {6.2.2.6}Dokumentation des Quelltextes der Activity}{18}{paragraph.6.2.2.6}
+\contentsline {subsubsection}{\numberline {6.2.3}Activity 3}{19}{subsubsection.6.2.3}
+\contentsline {paragraph}{\numberline {6.2.3.1}Aufgabe und Funktion}{19}{paragraph.6.2.3.1}
+\contentsline {paragraph}{\numberline {6.2.3.2}Layout, Screenshot(s)}{19}{paragraph.6.2.3.2}
+\contentsline {paragraph}{\numberline {6.2.3.3}Use-Case}{19}{paragraph.6.2.3.3}
+\contentsline {paragraph}{\numberline {6.2.3.4}Datenverwaltung innerhalb der Activity}{19}{paragraph.6.2.3.4}
+\contentsline {paragraph}{\numberline {6.2.3.5}Datenschnittstellen zu anderen Activity}{19}{paragraph.6.2.3.5}
+\contentsline {paragraph}{\numberline {6.2.3.6}Dokumentation des Quelltextes der Activity}{19}{paragraph.6.2.3.6}
+\contentsline {subsubsection}{\numberline {6.2.4}Activity 4}{20}{subsubsection.6.2.4}
+\contentsline {paragraph}{\numberline {6.2.4.1}Aufgabe und Funktion}{20}{paragraph.6.2.4.1}
+\contentsline {paragraph}{\numberline {6.2.4.2}Layout, Screenshot(s)}{20}{paragraph.6.2.4.2}
+\contentsline {paragraph}{\numberline {6.2.4.3}Use-Case}{20}{paragraph.6.2.4.3}
+\contentsline {paragraph}{\numberline {6.2.4.4}Datenverwaltung innerhalb der Activity}{21}{paragraph.6.2.4.4}
+\contentsline {paragraph}{\numberline {6.2.4.5}Datenschnittstellen zu anderen Activity}{21}{paragraph.6.2.4.5}
+\contentsline {paragraph}{\numberline {6.2.4.6}Dokumentation des Quelltextes der Activity}{21}{paragraph.6.2.4.6}
+\contentsline {subsubsection}{\numberline {6.2.5}Activity 5}{22}{subsubsection.6.2.5}
+\contentsline {paragraph}{\numberline {6.2.5.1}Aufgabe und Funktion}{22}{paragraph.6.2.5.1}
+\contentsline {paragraph}{\numberline {6.2.5.2}Layout, Screenshot(s)}{22}{paragraph.6.2.5.2}
+\contentsline {paragraph}{\numberline {6.2.5.3}Use-Case}{22}{paragraph.6.2.5.3}
+\contentsline {paragraph}{\numberline {6.2.5.4}Datenverwaltung innerhalb der Activity}{23}{paragraph.6.2.5.4}
+\contentsline {paragraph}{\numberline {6.2.5.5}Datenschnittstellen zu anderen Activity}{24}{paragraph.6.2.5.5}
+\contentsline {paragraph}{\numberline {6.2.5.6}Dokumentation des Quelltextes der Activity}{24}{paragraph.6.2.5.6}
+\contentsline {subsubsection}{\numberline {6.2.6}Activity 6}{24}{subsubsection.6.2.6}
+\contentsline {paragraph}{\numberline {6.2.6.1}Aufgabe und Funktion}{24}{paragraph.6.2.6.1}
+\contentsline {paragraph}{\numberline {6.2.6.2}Layout, Screenshot(s)}{24}{paragraph.6.2.6.2}
+\contentsline {paragraph}{\numberline {6.2.6.3}Use-Case}{24}{paragraph.6.2.6.3}
+\contentsline {paragraph}{\numberline {6.2.6.4}Datenverwaltung innerhalb der Activity}{24}{paragraph.6.2.6.4}
+\contentsline {paragraph}{\numberline {6.2.6.5}Datenschnittstellen zu anderen Activity}{25}{paragraph.6.2.6.5}
+\contentsline {paragraph}{\numberline {6.2.6.6}Dokumentation des Quelltextes der Activity}{25}{paragraph.6.2.6.6}
+\contentsline {subsubsection}{\numberline {6.2.7}Activity 7}{25}{subsubsection.6.2.7}
+\contentsline {paragraph}{\numberline {6.2.7.1}Aufgabe und Funktion}{25}{paragraph.6.2.7.1}
+\contentsline {paragraph}{\numberline {6.2.7.2}Layout, Screenshot(s)}{25}{paragraph.6.2.7.2}
+\contentsline {paragraph}{\numberline {6.2.7.3}Use-Case}{25}{paragraph.6.2.7.3}
+\contentsline {paragraph}{\numberline {6.2.7.4}Datenverwaltung innerhalb der Activity}{26}{paragraph.6.2.7.4}
+\contentsline {paragraph}{\numberline {6.2.7.5}Datenschnittstellen zu anderen Activity}{26}{paragraph.6.2.7.5}
+\contentsline {paragraph}{\numberline {6.2.7.6}Dokumentation des Quelltextes der Activity}{26}{paragraph.6.2.7.6}
+\contentsline {subsubsection}{\numberline {6.2.8}Activity 8}{26}{subsubsection.6.2.8}
+\contentsline {paragraph}{\numberline {6.2.8.1}Aufgabe und Funktion}{26}{paragraph.6.2.8.1}
+\contentsline {paragraph}{\numberline {6.2.8.2}Layout, Screenshot(s)}{26}{paragraph.6.2.8.2}
+\contentsline {paragraph}{\numberline {6.2.8.3}Use-Case}{26}{paragraph.6.2.8.3}
+\contentsline {paragraph}{\numberline {6.2.8.4}Datenverwaltung innerhalb der Activity}{27}{paragraph.6.2.8.4}
+\contentsline {paragraph}{\numberline {6.2.8.5}Datenschnittstellen zu anderen Activity}{28}{paragraph.6.2.8.5}
+\contentsline {paragraph}{\numberline {6.2.8.6}Dokumentation des Quelltextes der Activity}{28}{paragraph.6.2.8.6}
+\contentsline {subsubsection}{\numberline {6.2.9}Activity 9}{28}{subsubsection.6.2.9}
+\contentsline {paragraph}{\numberline {6.2.9.1}Aufgabe und Funktion}{28}{paragraph.6.2.9.1}
+\contentsline {paragraph}{\numberline {6.2.9.2}Layout, Screenshot(s)}{28}{paragraph.6.2.9.2}
+\contentsline {paragraph}{\numberline {6.2.9.3}Use-Case}{28}{paragraph.6.2.9.3}
+\contentsline {paragraph}{\numberline {6.2.9.4}Datenverwaltung innerhalb der Activity}{29}{paragraph.6.2.9.4}
+\contentsline {paragraph}{\numberline {6.2.9.5}Datenschnittstellen zu anderen Activity}{29}{paragraph.6.2.9.5}
+\contentsline {paragraph}{\numberline {6.2.9.6}Dokumentation des Quelltextes der Activity}{29}{paragraph.6.2.9.6}
+\contentsline {subsubsection}{\numberline {6.2.10}Activity 10}{30}{subsubsection.6.2.10}
+\contentsline {paragraph}{\numberline {6.2.10.1}Aufgabe und Funktion}{30}{paragraph.6.2.10.1}
+\contentsline {paragraph}{\numberline {6.2.10.2}Layout, Screenshot(s)}{30}{paragraph.6.2.10.2}
+\contentsline {paragraph}{\numberline {6.2.10.3}Use-Case}{30}{paragraph.6.2.10.3}
+\contentsline {paragraph}{\numberline {6.2.10.4}Datenverwaltung innerhalb der Activity}{30}{paragraph.6.2.10.4}
+\contentsline {paragraph}{\numberline {6.2.10.5}Datenschnittstellen zu anderen Activity}{30}{paragraph.6.2.10.5}
+\contentsline {paragraph}{\numberline {6.2.10.6}Dokumentation des Quelltextes der Activity}{30}{paragraph.6.2.10.6}
+\contentsline {subsubsection}{\numberline {6.2.11}Activity 11}{31}{subsubsection.6.2.11}
+\contentsline {paragraph}{\numberline {6.2.11.1}Aufgabe und Funktion}{31}{paragraph.6.2.11.1}
+\contentsline {paragraph}{\numberline {6.2.11.2}Layout, Screenshot(s)}{31}{paragraph.6.2.11.2}
+\contentsline {paragraph}{\numberline {6.2.11.3}Use-Case}{31}{paragraph.6.2.11.3}
+\contentsline {paragraph}{\numberline {6.2.11.4}Datenverwaltung innerhalb der Activity}{31}{paragraph.6.2.11.4}
+\contentsline {paragraph}{\numberline {6.2.11.5}Datenschnittstellen zu anderen Activity}{31}{paragraph.6.2.11.5}
+\contentsline {paragraph}{\numberline {6.2.11.6}Dokumentation des Quelltextes der Activity}{31}{paragraph.6.2.11.6}
+\contentsline {subsubsection}{\numberline {6.2.12}Activity 12}{32}{subsubsection.6.2.12}
+\contentsline {paragraph}{\numberline {6.2.12.1}Aufgabe und Funktion}{32}{paragraph.6.2.12.1}
+\contentsline {paragraph}{\numberline {6.2.12.2}Layout, Screenshot(s)}{32}{paragraph.6.2.12.2}
+\contentsline {paragraph}{\numberline {6.2.12.3}Use-Case}{32}{paragraph.6.2.12.3}
+\contentsline {paragraph}{\numberline {6.2.12.4}Datenverwaltung innerhalb der Activity}{32}{paragraph.6.2.12.4}
+\contentsline {paragraph}{\numberline {6.2.12.5}Datenschnittstellen zu anderen Activity}{32}{paragraph.6.2.12.5}
+\contentsline {paragraph}{\numberline {6.2.12.6}Dokumentation des Quelltextes der Activity}{32}{paragraph.6.2.12.6}
+\contentsline {subsubsection}{\numberline {6.2.13}Activity 13}{33}{subsubsection.6.2.13}
+\contentsline {paragraph}{\numberline {6.2.13.1}Aufgabe und Funktion}{33}{paragraph.6.2.13.1}
+\contentsline {paragraph}{\numberline {6.2.13.2}Layout, Screenshot(s)}{33}{paragraph.6.2.13.2}
+\contentsline {paragraph}{\numberline {6.2.13.3}Use-Case}{33}{paragraph.6.2.13.3}
+\contentsline {paragraph}{\numberline {6.2.13.4}Datenverwaltung innerhalb der Activity}{34}{paragraph.6.2.13.4}
+\contentsline {paragraph}{\numberline {6.2.13.5}Datenschnittstellen zu anderen Activity}{34}{paragraph.6.2.13.5}
+\contentsline {paragraph}{\numberline {6.2.13.6}Dokumentation des Quelltextes der Activity}{34}{paragraph.6.2.13.6}
+\contentsline {subsubsection}{\numberline {6.2.14}Activity 14}{34}{subsubsection.6.2.14}
+\contentsline {paragraph}{\numberline {6.2.14.1}Aufgabe und Funktion}{34}{paragraph.6.2.14.1}
+\contentsline {paragraph}{\numberline {6.2.14.2}Layout, Screenshot(s)}{34}{paragraph.6.2.14.2}
+\contentsline {paragraph}{\numberline {6.2.14.3}Use-Case}{35}{paragraph.6.2.14.3}
+\contentsline {paragraph}{\numberline {6.2.14.4}Datenverwaltung innerhalb der Activity}{35}{paragraph.6.2.14.4}
+\contentsline {paragraph}{\numberline {6.2.14.5}Datenschnittstellen zu anderen Activity}{35}{paragraph.6.2.14.5}
+\contentsline {paragraph}{\numberline {6.2.14.6}Dokumentation des Quelltextes der Activity}{36}{paragraph.6.2.14.6}
+\contentsline {subsubsection}{\numberline {6.2.15}Activity 15}{36}{subsubsection.6.2.15}
+\contentsline {paragraph}{\numberline {6.2.15.1}Aufgabe und Funktion}{36}{paragraph.6.2.15.1}
+\contentsline {paragraph}{\numberline {6.2.15.2}Layout, Screenshot(s)}{36}{paragraph.6.2.15.2}
+\contentsline {paragraph}{\numberline {6.2.15.3}Use-Case}{36}{paragraph.6.2.15.3}
+\contentsline {paragraph}{\numberline {6.2.15.4}Datenverwaltung innerhalb der Activity}{37}{paragraph.6.2.15.4}
+\contentsline {paragraph}{\numberline {6.2.15.5}Datenschnittstellen zu anderen Activity}{37}{paragraph.6.2.15.5}
+\contentsline {paragraph}{\numberline {6.2.15.6}Dokumentation des Quelltextes der Activity}{38}{paragraph.6.2.15.6}
+\contentsline {subsection}{\numberline {6.3}Dokumentation der Navigation und des Datenaustauschs zwischen Activities}{38}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}Dokumentation der Activity-u\GenericError {(inputenc) }{Package inputenc Error: Unicode char ̈ (U+308)\MessageBreak not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}bergreifenden, persistenten Datenhaltung}{38}{subsection.6.4}
+\contentsline {subsection}{\numberline {6.5}Dokumentation der Activity-u\GenericError {(inputenc) }{Package inputenc Error: Unicode char ̈ (U+308)\MessageBreak not set up for use with LaTeX}{See the inputenc package documentation for explanation.}{Your command was ignored.\MessageBreak Type I <command> <return> to replace it with another command,\MessageBreak or <return> to continue without it.}bergreifenden Klassen}{38}{subsection.6.5}
+\contentsline {section}{\numberline {7}Fazits aller Teammitglieder}{39}{section.7}
+\contentsline {subsection}{\numberline {7.1}Jannik Maes}{39}{subsection.7.1}
+\contentsline {subsection}{\numberline {7.2}Sven Kuczera}{39}{subsection.7.2}
+\contentsline {subsection}{\numberline {7.3}Henryk Schaffrath}{40}{subsection.7.3}
+\contentsline {subsection}{\numberline {7.4}Benedikt Burczek}{41}{subsection.7.4}
+\contentsline {section}{\numberline {8}Anhang}{42}{section.8}
+\contentsline {section}{Anhang}{42}{section.8}
+\contentsline {subsection}{\numberline {8.1}Anhang mit allen Quelltexten}{42}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Anhang mit einem Verzeichnis der verwendeten Tools und Hilfsprogramme}{42}{subsection.8.2}
+\contentsline {section}{Quellenverzeichnis}{43}{section*.2}
+\contentsline {section}{Ehrenw\IeC {\"o}rtliche Erkl\IeC {\"a}rung}{44}{section*.3}
