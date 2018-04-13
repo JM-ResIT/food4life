@@ -292,17 +292,15 @@ public class TagebuchDataSource {
         addUnitEntry(titel);
     }
 
-    public void insertSampleData() {
+    private void insertSampleData() {
         ContentValues units = new ContentValues();
 
-        units.put(TagebuchHelper.TITEL, "Stück");
-        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, units);
-        units.put(TagebuchHelper.TITEL, "g");
-        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, units);
-        units.put(TagebuchHelper.TITEL, "L");
-        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, units);
-        units.put(TagebuchHelper.TITEL, "ml");
-        database.insert(TagebuchHelper.DATABASE_EINTABLE, null, units);
+        addUnitEntry("g");
+        addUnitEntry("EL");
+        addUnitEntry("TL");
+        addUnitEntry("Stück");
+        addUnitEntry("ml");
+        addUnitEntry("Portion");
 
         ContentValues limit = new ContentValues();
         limit.put(TagebuchHelper.LIMIT, 2000);
@@ -312,7 +310,21 @@ public class TagebuchDataSource {
         addFoodEntry("Schokolade", "100g", 100, "g", 456);
         addFoodEntry("Pizza Dr. Oetker", "1 Stück", 1, "Stück", 750);
         addFoodEntry("Reis", "100g", 100, "g", 400);
+        addFoodEntry("Reis", "1 EL", 1, "EL", 18);
         addFoodEntry("Milch", "100ml", 100, "ml", 40);
+        addFoodEntry("Ei", "1", 1, "Stück", 60);
+
+        for (int i = 0; i < 30; i++) {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -i);
+            Date dateBeforeNDays = cal.getTime();
+            SimpleDateFormat showDate = new SimpleDateFormat("dd.MM.yyyy");
+            //showDate.format(dateBeforeNDays)
+            addMealEntry(1, 3, showDate.format(dateBeforeNDays), 1, 750, 1);
+            addMealEntry(1, 3, showDate.format(dateBeforeNDays), 2, 750, 1);
+            addMealEntry(1, 1, showDate.format(dateBeforeNDays), 3, 80, 1);
+        }
+
     }
 
     public void insertSampleDataIfEmpty() {
